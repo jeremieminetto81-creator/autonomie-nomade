@@ -8,10 +8,15 @@
     "capacityWh": "268 (à confirmer sur fiche constructeur)",
     "outputW": "600 continu, 1200 en pointe (à confirmer)",
     "batteryType": "LiFePO4",
-    "strengths": ["à vérifier"],
-    "limits": ["à vérifier"],
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
     "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs et presse (newswire.com, galaxus.fr, storagereview.com). ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+    "source": "Fiches revendeurs et presse (newswire.com, galaxus.fr, storagereview.com). ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
+    "solarInputW": "200 (à confirmer)"
   },
   {
     "id": "ecoflow-river-3-plus",
@@ -22,10 +27,15 @@
     "capacityWh": "286 (à confirmer sur fiche constructeur)",
     "outputW": "600 continu, 1200 en pointe en mode X-Boost (à confirmer)",
     "batteryType": "LiFePO4",
-    "strengths": ["à vérifier"],
-    "limits": ["à vérifier"],
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
     "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs (castorama.fr, galaxus.ch, camping-car-plus.com). Poids divergent selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+    "source": "Fiches revendeurs (castorama.fr, galaxus.ch, camping-car-plus.com). Poids divergent selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
+    "solarInputW": "220 (à confirmer)"
   },
   {
     "id": "jackery-explorer-1000-v2",
@@ -36,10 +46,15 @@
     "capacityWh": "1070 (à confirmer sur fiche constructeur)",
     "outputW": "1500 continu, 3000 en pointe (à confirmer)",
     "batteryType": "LiFePO4",
-    "strengths": ["à vérifier"],
-    "limits": ["à vérifier"],
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
     "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs (galaxus.at, digitec.ch, outboundpower.com). Garantie divergente selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+    "source": "Fiches revendeurs (galaxus.at, digitec.ch, outboundpower.com). Garantie divergente selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
+    "solarInputW": "à vérifier"
   },
   {
     "id": "anker-solix-c1000-gen-2",
@@ -50,10 +65,14 @@
     "capacityWh": "1024 (à confirmer sur fiche constructeur)",
     "outputW": "2000 continu, pointe divergente selon les sources (à vérifier)",
     "batteryType": "LiFePO4",
-    "strengths": ["à vérifier"],
-    "limits": ["à vérifier"],
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
     "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs (buildwithrise.com, solarpowersupply.eu). Pointe, ports et poids divergent. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+    "source": "Fiches revendeurs (buildwithrise.com, solarpowersupply.eu). Pointe, ports et poids divergent. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
+    "solarInputW": "600 (à confirmer)"
   }
 ]
-

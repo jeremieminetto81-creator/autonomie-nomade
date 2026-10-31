@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+import products from '../data/products.json';
+import { articleSchemas } from '../lib/schema';
+import { LAST_UPDATE } from '../config';
+
+const title = 'Quel panneau solaire portable pour sa station électrique ?';
+const description =
+  "Puissance réelle d'un panneau solaire portable, limite d'entrée solaire de la station, tension, temps de recharge : un guide et un calculateur pour bien dimensionner.";
+
+const faq = [
+  {
+    q: 'Un panneau de 200 W fournit-il 200 W ?',
+    a: "Rarement. La puissance indiquée est mesurée en laboratoire dans des conditions idéales (1 000 W/m² et 25 °C). Dehors, nuages, chaleur, orientation et ombre réduisent la production.",
+  },
+  {
+    q: 'Peut-on brancher n\'importe quel panneau sur une station ?',
+    a: "Non. Il faut respecter la plage de tension et la puissance d'entrée solaire indiquées par le fabricant, et utiliser des connecteurs compatibles. Quand on associe des panneaux en série, les tensions s'additionnent.",
+  },
+  {
+    q: 'Combien de temps pour recharger une station avec un panneau ?',
+    a: "Divisez la capacité de la station (Wh) par l'énergie réellement produite par jour (W réels × heures de bon ensoleillement). Notre calculateur le fait pour vous.",
+  },
+];
+const schemas = articleSchemas({
+  site: Astro.site!,
+  path: '/panneau-solaire-portable-station-electrique/',
+  title, description,
+  crumb: 'Panneau solaire portable',
+  published: '2026-10-31', modified: '2026-10-31', faq,
+});
+---
+<Base title="Panneau solaire portable pour station électrique" description={description}>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Panneau solaire portable</nav>
+  <h1>Quel panneau solaire portable pour sa station électrique ?</h1>
+  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+
+  <p><strong>Réponse courte :</strong> la puissance d'un panneau est une valeur de laboratoire. En pratique, comptez sensiblement moins, puis vérifiez que la station accepte cette puissance et cette tension. Pour estimer la recharge, multipliez la puissance réellement produite par le nombre d'heures de bon ensoleillement.</p>
+
+  <Disclosure />
+
+  <h2>Pourquoi un panneau de 200 W ne donne pas 200 W</h2>
+  <p>La puissance nominale d'un panneau (en watts-crête) est mesurée dans des conditions de test normalisées : 1 000 W/m² d'éclairement, 25 °C de température de cellule, orientation parfaite et aucune ombre. Dans la vraie vie, le soleil est plus faible, le panneau chauffe, et un panneau posé au sol n'est pas toujours bien orienté. La production réelle est donc plus faible, et varie fortement selon la saison et le lieu.</p>
+  <p class="warning">Il n'existe pas de coefficient universel. Notre calculateur propose une valeur de départ modifiable : ajustez-la, et pour votre lieu consultez l'outil gratuit PVGIS de la Commission européenne.</p>
+
+  <h2>Calculateur de recharge solaire</h2>
+  <p>Les valeurs préremplies sont des exemples modifiables, pas des mesures. Le calcul se fait dans votre navigateur et rien n'est enregistré.</p>
+  <div id="solar" class="calc" role="group" aria-label="Calculateur de recharge solaire">
+    <p><label for="s-cap">Capacité de la station (Wh) </label><input id="s-cap" type="number" min="0" step="any" inputmode="decimal" value="1000"></p>
+    <p><label for="s-panel">Puissance du panneau (W) </label><input id="s-panel" type="number" min="0" step="any" inputmode="decimal" value="200"></p>
+    <p><label for="s-coef">Rendement réel estimé (% de la puissance nominale) </label><input id="s-coef" type="number" min="0" max="100" step="any" inputmode="decimal" value="50"></p>
+    <p><label for="s-hours">Heures de bon ensoleillement par jour </label><input id="s-hours" type="number" min="0" max="24" step="any" inputmode="decimal" value="4"></p>
+    <p><label for="s-limit">Limite d'entrée solaire de la station (W), si connue </label><input id="s-limit" type="number" min="0" step="any" inputmode="decimal"></p>
+    <div class="result" aria-live="polite">
+      <p>Puissance réelle utilisée : <strong id="s-real">0 W</strong></p>
+      <p>Énergie récupérée par jour : <strong id="s-day">0 Wh</strong></p>
+      <p>Temps pour remplir la station : <strong id="s-full">à calculer</strong></p>
+    </div>
+    <noscript><p class="warning">Le calculateur demande JavaScript. Calcul à la main : capacité (Wh) ÷ (puissance du panneau × rendement × heures).</p></noscript>
+  </div>
+  <p>Le rendement de 50 % et les 4 heures sont des hypothèses de départ. Le calcul ne tient pas compte des pertes de la station ni de l'énergie que vous consommez en même temps.</p>
+
+  <h2>Ce qu'il faut vérifier avant d'acheter un panneau</h2>
+  <ul>
+    <li><strong>Puissance d'entrée solaire de la station :</strong> un panneau plus puissant que cette limite ne sera pas pleinement exploité.</li>
+    <li><strong>Tension :</strong> la tension à vide du panneau (Voc) doit rester sous la limite d'entrée de la station. En série, les tensions s'additionnent.</li>
+    <li><strong>Connecteurs :</strong> ils doivent correspondre à l'entrée de la station, sinon il faut un câble adaptateur adapté.</li>
+    <li><strong>Encombrement et poids :</strong> un panneau portable se déplie et se transporte, à chaque sortie.</li>
+    <li><strong>Placement :</strong> orientez-le vers le soleil, évitez même une petite ombre, qui peut réduire fortement la production.</li>
+  </ul>
+
+  <h2>Entrée solaire des stations de notre sélection</h2>
+  <p>Valeurs relevées sur des fiches de revendeurs, à confirmer sur la fiche constructeur avant d'acheter un panneau.</p>
+  <table>
+    <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Entrée solaire max (W)</th><th scope="col">Lien</th></tr></thead>
+    <tbody>
+      {products.map((p) => (
+        <tr>
+          <th scope="row">{p.name}</th>
+          <td>{p.capacityWh}</td>
+          <td>{p.solarInputW}</td>
+          <td><AffiliateLink name={p.name} asin={p.asin} label="Voir" /></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p>Nous n'avons testé aucun de ces produits. Prix et disponibilité : consultez-les sur Amazon.fr.</p>
+
+  <p class="warning"><strong>Sécurité.</strong> Ne branchez que des panneaux et câbles compatibles avec la fiche de la station, ne dépassez pas les tensions indiquées, et ne manipulez pas de câbles abîmés.</p>
+
+  <h2>Questions fréquentes</h2>
+  {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+  <h2 id="sources">Sources</h2>
+  <ul>
+    <li><a href="https://www.connaissancedesenergies.org/questions-et-reponses-energies/solaire-photovoltaique-que-signifie-la-puissance-crete">Connaissance des énergies, ce que signifie la puissance crête</a></li>
+    <li><a href="https://www.edf-solutions-solaires.com/lexique/watt-crete/">EDF Solutions Solaires, lexique : watt-crête</a></li>
+    <li><a href="https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/getting-started-pvgis/using-pvgis-frequently-asked-questions_en">Commission européenne (JRC), PVGIS : questions fréquentes</a></li>
+  </ul>
+
+  <p>À lire aussi : <a href="/quelle-capacite-station-electrique/">quelle capacité de station électrique choisir</a> · <a href="/station-electrique-portable-vs-groupe-electrogene/">station électrique ou groupe électrogène</a></p>
+  <script src="/calculateur-solaire.js" defer></script>
+</Base>

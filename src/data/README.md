@@ -13,6 +13,7 @@ Champs d'un produit (une donnée inconnue vaut `"à vérifier"`, jamais une vale
   "capacityWh": "à vérifier",
   "outputW": "à vérifier",
   "batteryType": "à vérifier",
+  "solarInputW": "à vérifier",
   "strengths": ["à vérifier"],
   "limits": ["à vérifier"],
   "lastChecked": "AAAA-MM-JJ",
