@@ -1,0 +1,18 @@
+---
+import products from '../data/products.json';
+import AffiliateLink from './AffiliateLink.astro';
+---
+<table>
+  <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Puissance (W)</th><th scope="col">Batterie</th><th scope="col">Lien</th></tr></thead>
+  <tbody>
+    {products.map((p) => (
+      <tr>
+        <th scope="row">{p.name}</th>
+        <td>{p.capacityWh}</td>
+        <td>{p.outputW}</td>
+        <td>{p.batteryType}</td>
+        <td><AffiliateLink name={p.name} asin={p.asin} label="Voir" /></td>
+      </tr>
+    ))}
+  </tbody>
+</table>

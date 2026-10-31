@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import ProductTable from '../components/ProductTable.astro';
+import { articleSchemas } from '../lib/schema';
+import { LAST_UPDATE } from '../config';
+
+const title = 'Station électrique portable ou groupe électrogène : lequel choisir ?';
+const description =
+  "Station électrique portable ou groupe électrogène : bruit, autonomie, sécurité (monoxyde de carbone), usage en intérieur et en extérieur. Un comparatif clair pour choisir.";
+
+const faq = [
+  {
+    q: 'Peut-on utiliser un groupe électrogène à l\'intérieur ?',
+    a: "Non. Les consignes officielles demandent d'installer les groupes électrogènes à l'extérieur des bâtiments, jamais dans une maison, une cave ou un garage, à cause du risque d'intoxication au monoxyde de carbone.",
+  },
+  {
+    q: 'Une station électrique portable est-elle silencieuse ?',
+    a: "Elle ne contient pas de moteur thermique, donc elle est en général beaucoup plus discrète qu'un groupe électrogène. Certains modèles ont un ventilateur qui peut se déclencher sous forte charge : vérifiez la fiche du produit.",
+  },
+  {
+    q: 'Quelle solution choisir pour une longue coupure de courant ?',
+    a: "Le groupe électrogène peut produire de l'énergie tant que vous le ravitaillez en carburant, mais il doit rester à l'extérieur. Une station électrique est limitée par sa capacité en Wh, mais peut être rechargée par des panneaux solaires.",
+  },
+];
+const schemas = articleSchemas({
+  site: Astro.site!,
+  path: '/station-electrique-portable-vs-groupe-electrogene/',
+  title, description,
+  crumb: 'Station électrique ou groupe électrogène',
+  published: '2026-10-31', modified: '2026-10-31', faq,
+});
+---
+<Base title="Station électrique portable ou groupe électrogène ?" description={description}>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Station électrique ou groupe électrogène</nav>
+  <h1>Station électrique portable ou groupe électrogène : lequel choisir ?</h1>
+  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+
+  <p><strong>Réponse courte :</strong> choisissez une station électrique portable pour des besoins modérés, du silence et un usage proche de vous, y compris à l'abri. Choisissez un groupe électrogène seulement si vous avez besoin de beaucoup d'énergie pendant longtemps et si vous pouvez l'utiliser en toute sécurité à l'extérieur.</p>
+
+  <p class="warning"><strong>Sécurité.</strong> Un groupe électrogène rejette du monoxyde de carbone, un gaz sans odeur ni couleur. Il doit toujours être placé à l'extérieur des bâtiments, jamais dans une maison, une cave ou un garage, et éloigné des fenêtres et des prises d'air. Voir les <a href="#sources">sources officielles</a>.</p>
+
+  <Disclosure />
+
+  <h2>Comparatif</h2>
+  <table>
+    <thead><tr><th scope="col">Critère</th><th scope="col">Station électrique portable</th><th scope="col">Groupe électrogène</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Source d'énergie</th><td>Batterie rechargée (secteur, voiture, solaire)</td><td>Moteur thermique à carburant</td></tr>
+      <tr><th scope="row">Bruit</th><td>Peu ou pas de bruit moteur ; un ventilateur peut tourner</td><td>Bruyant, très variable selon le modèle</td></tr>
+      <tr><th scope="row">Émissions à l'usage</th><td>Aucune émission de gaz d'échappement</td><td>Gaz d'échappement dont le monoxyde de carbone</td></tr>
+      <tr><th scope="row">Où l'utiliser</th><td>À l'abri comme dehors, en respectant la ventilation et la chaleur</td><td>À l'extérieur uniquement</td></tr>
+      <tr><th scope="row">Durée de fonctionnement</th><td>Limitée par la capacité en Wh</td><td>Tant que vous ajoutez du carburant</td></tr>
+      <tr><th scope="row">Forte puissance</th><td>Limitée par la puissance de sortie du modèle</td><td>Disponible sur de nombreux modèles, au prix du bruit et du carburant</td></tr>
+      <tr><th scope="row">Entretien</th><td>Peu d'entretien ; surveiller la batterie</td><td>Entretien du moteur, stockage du carburant</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Autonomie : ne comparez pas les chiffres à l'aveugle</h2>
+  <p>Pour une station, l'autonomie se calcule en Wh : voir notre <a href="/quelle-capacite-station-electrique/">guide et calculateur de capacité</a>. Pour un groupe, elle dépend de la taille du réservoir et de la charge. Les fabricants annoncent souvent l'autonomie à 25 % ou 50 % de charge : à pleine charge, elle est bien plus courte.</p>
+
+  <h2>Bruit : deux mesures différentes</h2>
+  <p>Les fiches de groupes électrogènes donnent parfois la puissance acoustique (en dB(A), norme européenne) et parfois la pression acoustique à une distance donnée, par exemple 7 m. Ces deux valeurs ne se comparent pas. Comparez toujours la même mesure.</p>
+
+  <h2>Quel choix selon votre situation ?</h2>
+  <table>
+    <thead><tr><th scope="col">Situation</th><th scope="col">Plutôt</th><th scope="col">Pourquoi</th></tr></thead>
+    <tbody>
+      <tr><td>Camping, week-end, van</td><td>Station électrique</td><td>Silence, pas d'émission, usage simple</td></tr>
+      <tr><td>Courte coupure de courant</td><td>Station électrique</td><td>Utilisable à l'abri pour éclairage, box et recharges</td></tr>
+      <tr><td>Longue coupure, besoins importants</td><td>Dépend</td><td>Station avec recharge solaire pour des besoins modérés ; groupe à l'extérieur pour de gros besoins</td></tr>
+      <tr><td>Chantier avec gros outils</td><td>Groupe, ou station de forte puissance</td><td>Vérifiez la puissance continue et les pointes de démarrage</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Exemples de stations disponibles sur Amazon.fr</h2>
+  <p>Quatre modèles de tailles différentes, à titre d'exemples. Les valeurs viennent de fiches de revendeurs et restent à confirmer sur la fiche du produit. Nous n'avons testé aucun de ces produits.</p>
+  <ProductTable />
+  <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
+
+  <h2>Questions fréquentes</h2>
+  {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+  <h2 id="sources">Sources</h2>
+  <ul>
+    <li><a href="https://www.normandie.ars.sante.fr/media/116193/download">ARS Normandie, consignes sur les groupes électrogènes et le monoxyde de carbone (novembre 2023)</a></li>
+    <li><a href="https://questions.assemblee-nationale.fr/dyn/15/questions/QANR5L15QE25003.pdf">Assemblée nationale, question écrite et réponse sur les risques des groupes électrogènes</a></li>
+    <li><a href="https://www.santepubliquefrance.fr/regions-et-territoires/auvergne-rhone-alpes/bulletin-regional/surveillance-sanitaire-en-rhone-alpes-point-epidemiologique-au-21-novembre-2013">Santé publique France, bulletin régional Auvergne-Rhône-Alpes (2013)</a></li>
+    <li>Fiches techniques de fabricants de groupes électrogènes, pour les notions de puissance acoustique, pression acoustique et autonomie selon la charge.</li>
+  </ul>
+
+  <p>À lire aussi : <a href="/quelle-capacite-station-electrique/">quelle capacité de station électrique choisir</a> · <a href="/a-propos/">notre méthode</a></p>
+</Base>
