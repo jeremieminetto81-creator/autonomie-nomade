@@ -6,7 +6,7 @@ Je ne suis pas juriste. Cette liste sert à vérifier point par point. Dernière
 - [x] Texte de référence vérifié sur Légifrance : article 1-1 de la LCEN (loi n° 2004-575), créé par la loi SREN n° 2024-449, en vigueur depuis le 23 mai 2024. L'ancien article 6-III n'est plus la bonne référence.
 - [x] Régime « éditeur non professionnel » (art. 1-1, II) : on peut ne publier que le nom et l'adresse de l'hébergeur. Le téléphone de l'hébergeur n'est pas exigé dans ce régime.
 - [x] Hébergeur publié : Netlify, Inc., 101 2nd Street, San Francisco, CA 94105 (relevé sur netlify.com/privacy).
-- [ ] **À faire par l'éditeur** : l'anonymat suppose d'avoir communiqué ses éléments d'identification (nom, prénom, domicile, téléphone) à l'hébergeur. Vérifier que le compte Netlify les contient, sinon les renseigner ou publier son identité.
+- [x] L'anonymat suppose d'avoir communiqué ses éléments d'identification (nom, prénom, domicile, téléphone) à l'hébergeur. Confirmé par l'éditeur le 31 octobre 2026 : renseignés dans le compte Netlify.
 - [ ] **Risque à surveiller** : le régime non professionnel cesse si l'activité devient professionnelle. Des revenus d'affiliation réguliers peuvent suffire. Il faudrait alors publier l'identité complète (art. 1-1, I) et, le cas échéant, un numéro d'immatriculation.
 - Sanction en cas de manquement (art. 1-2) : jusqu'à un an d'emprisonnement et 75 000 € d'amende.
 
