@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
-import AffiliateLink from '../components/AffiliateLink.astro';
-import products from '../data/products.json';
+import ProductTable from '../components/ProductTable.astro';
 import { SITE_NAME, LAST_UPDATE } from '../config';
 
 const title = 'Quelle capacité de station électrique choisir ? (calculateur en Wh)';
@@ -126,20 +125,7 @@ const jsonLd = [
 
   <h2>Exemples de stations disponibles sur Amazon.fr</h2>
   <p>Quatre modèles de tailles différentes, à titre d'exemples. Les valeurs viennent de fiches de revendeurs et restent à confirmer sur la fiche du produit. Nous n'avons testé aucun de ces produits.</p>
-  <table>
-    <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Puissance (W)</th><th scope="col">Batterie</th><th scope="col">Lien</th></tr></thead>
-    <tbody>
-      {products.map((p) => (
-        <tr>
-          <th scope="row">{p.name}</th>
-          <td>{p.capacityWh}</td>
-          <td>{p.outputW}</td>
-          <td>{p.batteryType}</td>
-          <td><AffiliateLink name={p.name} asin={p.asin} label="Voir" /></td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <ProductTable />
   <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
 
   <h2>Questions fréquentes</h2>
