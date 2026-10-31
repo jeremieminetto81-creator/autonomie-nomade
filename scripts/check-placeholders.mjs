@@ -3,7 +3,10 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const patterns = [/VOTRE-TAG-21/, /VOTRE-SITE/i, /\[À COMPLÉTER/, /\[NOM DU SITE\]/];
+// ALLOW_PLACEHOLDER_TAG=1 : exception temporaire pour une première mise en ligne avant d'avoir l'identifiant Amazon.
+// Les liens n'ouvrent alors aucune commission. À retirer dès que AMAZON_TAG est renseigné.
+const allowTag = process.env.ALLOW_PLACEHOLDER_TAG === '1';
+const patterns = [...(allowTag ? [] : [/VOTRE-TAG-21/]), /VOTRE-SITE/i, /\[À COMPLÉTER/, /\[NOM DU SITE\]/];
 const textExt = /\.(html|xml|txt|js|css|json)$/;
 
 const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => {

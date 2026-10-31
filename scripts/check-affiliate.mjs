@@ -14,7 +14,7 @@ for (const file of walk('dist')) {
     const tag = m[0];
     if (!/[?&]tag=[^&"]+/.test(m[1])) { console.error(`Sans tag : ${file}`); errors++; }
     if (!/rel="sponsored nofollow noopener"/.test(tag)) { console.error(`rel manquant : ${file}`); errors++; }
-    if (process.env.CI_PRODUCTION && m[1].includes('VOTRE-TAG-21')) { console.error(`Tag de remplacement : ${file}`); errors++; }
+    if (process.env.CI_PRODUCTION && process.env.ALLOW_PLACEHOLDER_TAG !== '1' && m[1].includes('VOTRE-TAG-21')) { console.error(`Tag de remplacement : ${file}`); errors++; }
   }
   if (process.env.CI_PRODUCTION && html.includes('[À COMPLÉTER')) { console.error(`Champ à compléter restant : ${file}`); errors++; }
 }
