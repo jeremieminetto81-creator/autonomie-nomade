@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME, AMAZON_MENTION, LAST_UPDATE } from '../config';
+---
+<Base title="Notre méthode et comment nous gagnons de l'argent" description="Comment ce site est financé par l'affiliation Amazon, comment les produits sont choisis et ce que nous avons testé ou non.">
+  <h1>Notre méthode et comment nous gagnons de l'argent</h1>
+  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+
+  <h2>Comment nous gagnons de l'argent</h2>
+  <p>{SITE_NAME} est financé par l'affiliation. Nos liens vers Amazon.fr sont des liens affiliés : si vous achetez après avoir cliqué, nous recevons une commission, sans surcoût pour vous. {AMAZON_MENTION}</p>
+  <p>Ces liens sont signalés près des recommandations. Cette relation commerciale peut influencer ce que nous recommandons : c'est pourquoi nous détaillons nos critères ci-dessous.</p>
+
+  <h2>Qui écrit ici</h2>
+  <p>[À COMPLÉTER : présentation de l'auteur, nom réel ou pseudonyme, et expérience personnelle avec l'énergie nomade, si elle existe.]</p>
+
+  <h2>Ce que nous avons testé, et ce que nous n'avons pas testé</h2>
+  <p>Nous n'avons testé aucun produit nous-mêmes. Nos analyses reposent sur les caractéristiques publiées par les fabricants et les revendeurs, sur les fiches Amazon.fr et sur des retours publics, toujours cités. Nous ne parlons de test que lorsque nous avons réellement testé un produit.</p>
+
+  <h2>Comment nous choisissons et classons les produits</h2>
+  <ul>
+    <li>Capacité (Wh) et puissance de sortie (W), pour correspondre à l'usage.</li>
+    <li>Type de batterie (par exemple LiFePO4) et durée de vie annoncée.</li>
+    <li>Possibilités de recharge, notamment solaire.</li>
+    <li>Sécurité, garantie et disponibilité de l'assistance.</li>
+    <li>Présence du produit sur Amazon.fr, puisque nos liens y renvoient.</li>
+  </ul>
+  <p>Nous ne recevons aucun produit gratuit ni aucune rémunération des marques. Si cela change, nous l'indiquerons ici et sur les pages concernées.</p>
+
+  <h2>Prix et disponibilité</h2>
+  <p>Nous n'affichons pas de prix : ils changent souvent. Consultez-les sur la fiche Amazon.fr du produit.</p>
+
+  <h2>Sécurité</h2>
+  <p class="warning">Une station électrique portable ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, avec les câbles fournis, et respectez les règles de transport des batteries au lithium (notamment en avion).</p>
+
+  <h2>Corrections</h2>
+  <p>Vous voyez une erreur ? Écrivez-nous (voir les <a href="/mentions-legales/">mentions légales</a>) et nous corrigerons.</p>
+</Base>

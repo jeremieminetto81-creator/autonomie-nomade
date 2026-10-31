@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { SITE_NAME, SITE_DESCRIPTION, NAV, AMAZON_MENTION } from '../config';
+interface Props { title: string; description?: string; noindex?: boolean }
+const { title, description = SITE_DESCRIPTION, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: new URL('/', Astro.site).href,
+  inLanguage: 'fr',
+});
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  {noindex && <meta name="robots" content="noindex">}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <script type="application/ld+json" set:html={jsonLd}></script>
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="wrap">
+    <a class="logo" href="/">{SITE_NAME}</a>
+    <nav aria-label="Navigation principale">
+      {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
+    </nav>
+  </header>
+  <main id="contenu" class="wrap">
+    <slot />
+  </main>
+  <footer class="wrap">
+    <p>{AMAZON_MENTION}</p>
+    <p><a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a> · <a href="/a-propos/">Notre méthode</a></p>
+  </footer>
+</body>
+</html>

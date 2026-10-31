@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import { SITE_NAME } from '../config';
+---
+<Base title={SITE_NAME}>
+  <h1>Choisir sa station électrique portable sans se tromper</h1>
+  <p class="lead">Guides, comparatifs et réponses claires pour trouver l'énergie nomade adaptée à votre usage : camping-car, van, camping, coupure de courant, chantier.</p>
+  <Disclosure />
+  <p class="warning"><strong>Sécurité.</strong> Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale.</p>
+  <h2>Commencer ici</h2>
+  <p><a href="/quelle-capacite-station-electrique/">Quelle capacité de station électrique choisir ?</a> Un guide avec calculateur en Wh pour savoir de combien d'énergie vous avez besoin.</p>
+</Base>

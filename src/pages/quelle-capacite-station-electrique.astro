@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+import products from '../data/products.json';
+import { SITE_NAME, LAST_UPDATE } from '../config';
+
+const title = 'Quelle capacité de station électrique choisir ? (calculateur en Wh)';
+const description =
+  "Comment calculer la capacité en Wh et la puissance en W d'une station électrique portable selon vos appareils, avec un calculateur gratuit et sans collecte de données.";
+const url = new URL('/quelle-capacite-station-electrique/', Astro.site).href;
+
+const faq = [
+  {
+    q: 'Quelle est la différence entre Wh et W ?',
+    a: "Les Wh (wattheures) mesurent l'énergie stockée dans la batterie, donc combien de temps vous pouvez alimenter un appareil. Les W (watts) mesurent la puissance que la station peut fournir à un instant donné, donc quels appareils vous pouvez brancher.",
+  },
+  {
+    q: 'Comment calculer les Wh dont j\'ai besoin ?',
+    a: "Pour chaque appareil, multipliez sa puissance en watts par le nombre d'heures d'utilisation. Additionnez les résultats, puis ajoutez une marge pour tenir compte des pertes de conversion.",
+  },
+  {
+    q: 'Une station électrique peut-elle alimenter un appareil de chauffage ?',
+    a: "Les appareils qui chauffent (bouilloire, radiateur, sèche-cheveux) demandent une grande puissance. Vérifiez que la puissance de sortie de la station est supérieure à celle de l'appareil, et gardez à l'esprit que la batterie se vide très vite.",
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    inLanguage: 'fr',
+    datePublished: '2026-10-31',
+    dateModified: '2026-10-31',
+    author: { '@type': 'Organization', name: SITE_NAME },
+    publisher: { '@type': 'Organization', name: SITE_NAME },
+    mainEntityOfPage: url,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: 'Quelle capacité choisir', item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Base title="Quelle capacité de station électrique choisir ?" description={description}>
+  {jsonLd.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Quelle capacité choisir</nav>
+  <h1>Quelle capacité de station électrique choisir ?</h1>
+  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+
+  <p><strong>Réponse courte :</strong> additionnez, pour chaque appareil, sa puissance (W) multipliée par sa durée d'utilisation (h). Le résultat est l'énergie nécessaire en Wh. Ajoutez une marge, puis vérifiez que la puissance de sortie de la station (W) dépasse celle des appareils branchés en même temps.</p>
+
+  <Disclosure />
+
+  <h2>Les deux chiffres à connaître : Wh et W</h2>
+  <table>
+    <thead><tr><th scope="col">Unité</th><th scope="col">Ce que c'est</th><th scope="col">Ce que ça décide</th></tr></thead>
+    <tbody>
+      <tr><td>Wh (wattheure)</td><td>L'énergie stockée dans la batterie</td><td>Combien de temps vous tenez</td></tr>
+      <tr><td>W (watt)</td><td>La puissance fournie à un instant</td><td>Quels appareils vous pouvez brancher</td></tr>
+    </tbody>
+  </table>
+  <p>La formule : <strong>Wh = W × heures</strong>. Une lampe de 10 W allumée 5 heures consomme 50 Wh.</p>
+
+  <h2>Calculateur de capacité</h2>
+  <p>Saisissez vos appareils. Les lignes ci-dessous sont des exemples à modifier. Le calcul se fait dans votre navigateur : aucune donnée n'est envoyée ni enregistrée.</p>
+  <form id="calc" class="calc">
+    <table>
+      <thead><tr><th scope="col">Appareil</th><th scope="col">Puissance (W)</th><th scope="col">Heures par jour</th><th scope="col">Énergie</th><th scope="col"><span class="sr-only">Supprimer</span></th></tr></thead>
+      <tbody id="calc-body">
+        <tr><td><input class="name" type="text" aria-label="Nom de l'appareil" value="Éclairage LED"></td><td><input class="w" type="number" min="0" step="any" inputmode="decimal" aria-label="Puissance en watts" value="10"></td><td><input class="h" type="number" min="0" step="any" inputmode="decimal" aria-label="Heures par jour" value="5"></td><td class="wh">0 Wh</td><td><button type="button" class="del" aria-label="Supprimer cette ligne">×</button></td></tr>
+        <tr><td><input class="name" type="text" aria-label="Nom de l'appareil" value="Ordinateur portable"></td><td><input class="w" type="number" min="0" step="any" inputmode="decimal" aria-label="Puissance en watts" value="60"></td><td><input class="h" type="number" min="0" step="any" inputmode="decimal" aria-label="Heures par jour" value="4"></td><td class="wh">0 Wh</td><td><button type="button" class="del" aria-label="Supprimer cette ligne">×</button></td></tr>
+        <tr><td><input class="name" type="text" aria-label="Nom de l'appareil" value="Mini-frigo à compresseur"></td><td><input class="w" type="number" min="0" step="any" inputmode="decimal" aria-label="Puissance en watts" value="50"></td><td><input class="h" type="number" min="0" step="any" inputmode="decimal" aria-label="Heures par jour" value="8"></td><td class="wh">0 Wh</td><td><button type="button" class="del" aria-label="Supprimer cette ligne">×</button></td></tr>
+      </tbody>
+    </table>
+    <p><button type="button" id="calc-add" class="btn-alt">Ajouter un appareil</button></p>
+    <p><label for="calc-margin">Marge pour les pertes (%) </label><input id="calc-margin" type="number" min="0" max="100" value="20" inputmode="numeric"></p>
+    <div class="result" aria-live="polite">
+      <p>Énergie par jour : <strong id="calc-wh-day">0 Wh</strong></p>
+      <p>Capacité conseillée, marge comprise : <strong id="calc-wh-rec">0 Wh</strong></p>
+      <p>Puissance si tout fonctionne en même temps : <strong id="calc-peak">0 W</strong></p>
+    </div>
+    <noscript><p class="warning">Le calculateur demande JavaScript. Vous pouvez faire le calcul à la main avec la formule ci-dessus.</p></noscript>
+  </form>
+  <p>La marge de 20 % est une hypothèse de départ, pas une valeur constructeur : le rendement réel dépend du modèle et de la charge. Ajustez-la.</p>
+  <p>Pour la puissance, comparez le résultat à la puissance de sortie continue de la station. Certains appareils à moteur ou à résistance demandent davantage au démarrage : consultez leur étiquette et la fiche de la station.</p>
+
+  <h2>Quelle capacité selon l'usage ?</h2>
+  <p>Ce sont des ordres de grandeur pour s'orienter. Seul votre calcul compte.</p>
+  <table>
+    <thead><tr><th scope="col">Usage</th><th scope="col">Ce qu'il faut regarder</th></tr></thead>
+    <tbody>
+      <tr><td>Recharger téléphones, tablette, ordinateur</td><td>Peu d'énergie et peu de puissance : une petite station suffit souvent.</td></tr>
+      <tr><td>Week-end de camping</td><td>Éclairage, recharges, parfois une glacière électrique : calculez la durée du frigo.</td></tr>
+      <tr><td>Camping-car ou van</td><td>La consommation quotidienne du frigo et de la recharge pèse lourd ; pensez au solaire.</td></tr>
+      <tr><td>Coupure de courant</td><td>Listez le strict nécessaire : box, éclairage, recharge, petit appareil médical non vital seulement.</td></tr>
+      <tr><td>Chantier, outils</td><td>La puissance continue et les pointes de démarrage comptent plus que les Wh.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Les erreurs fréquentes</h2>
+  <ul>
+    <li>Confondre Wh et W.</li>
+    <li>Oublier les pertes de conversion et viser la capacité exacte.</li>
+    <li>Brancher un appareil qui chauffe sans vérifier la puissance de sortie.</li>
+    <li>Compter 24 h de fonctionnement pour un frigo à compresseur, qui tourne par cycles.</li>
+  </ul>
+
+  <p class="warning"><strong>Sécurité.</strong> Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et respectez les règles de transport des batteries au lithium.</p>
+
+  <h2>Exemples de stations disponibles sur Amazon.fr</h2>
+  <p>Quatre modèles de tailles différentes, à titre d'exemples. Les valeurs viennent de fiches de revendeurs et restent à confirmer sur la fiche du produit. Nous n'avons testé aucun de ces produits.</p>
+  <table>
+    <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Puissance (W)</th><th scope="col">Batterie</th><th scope="col">Lien</th></tr></thead>
+    <tbody>
+      {products.map((p) => (
+        <tr>
+          <th scope="row">{p.name}</th>
+          <td>{p.capacityWh}</td>
+          <td>{p.outputW}</td>
+          <td>{p.batteryType}</td>
+          <td><AffiliateLink name={p.name} asin={p.asin} label="Voir" /></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
+
+  <h2>Questions fréquentes</h2>
+  {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+  <p>À lire aussi : <a href="/a-propos/">notre méthode</a>.</p>
+  <script src="/calculateur.js" defer></script>
+</Base>

@@ -1,0 +1,6 @@
+---
+import { amazonUrl } from '../lib/affiliate';
+interface Props { name: string; asin?: string; label?: string }
+const { name, asin, label = 'Voir sur Amazon' } = Astro.props;
+---
+<a class="btn" href={amazonUrl({ name, asin })} rel="sponsored nofollow noopener" target="_blank">{label}<span class="sr-only"> : {name} (lien affilié, nouvel onglet)</span></a>

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "bluetti-eb3a",
+    "name": "Bluetti EB3A",
+    "brand": "Bluetti",
+    "category": "station-electrique",
+    "asin": "B0B5RJSPD6",
+    "capacityWh": "268 (à confirmer sur fiche constructeur)",
+    "outputW": "600 continu, 1200 en pointe (à confirmer)",
+    "batteryType": "LiFePO4",
+    "strengths": ["à vérifier"],
+    "limits": ["à vérifier"],
+    "lastChecked": "2026-10-31",
+    "source": "Fiches revendeurs et presse (newswire.com, galaxus.fr, storagereview.com). ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+  },
+  {
+    "id": "ecoflow-river-3-plus",
+    "name": "EcoFlow River 3 Plus",
+    "brand": "EcoFlow",
+    "category": "station-electrique",
+    "asin": "B0DFVZ6MYX",
+    "capacityWh": "286 (à confirmer sur fiche constructeur)",
+    "outputW": "600 continu, 1200 en pointe en mode X-Boost (à confirmer)",
+    "batteryType": "LiFePO4",
+    "strengths": ["à vérifier"],
+    "limits": ["à vérifier"],
+    "lastChecked": "2026-10-31",
+    "source": "Fiches revendeurs (castorama.fr, galaxus.ch, camping-car-plus.com). Poids divergent selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+  },
+  {
+    "id": "jackery-explorer-1000-v2",
+    "name": "Jackery Explorer 1000 v2",
+    "brand": "Jackery",
+    "category": "station-electrique",
+    "asin": "B0DB1T34X5",
+    "capacityWh": "1070 (à confirmer sur fiche constructeur)",
+    "outputW": "1500 continu, 3000 en pointe (à confirmer)",
+    "batteryType": "LiFePO4",
+    "strengths": ["à vérifier"],
+    "limits": ["à vérifier"],
+    "lastChecked": "2026-10-31",
+    "source": "Fiches revendeurs (galaxus.at, digitec.ch, outboundpower.com). Garantie divergente selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+  },
+  {
+    "id": "anker-solix-c1000-gen-2",
+    "name": "Anker SOLIX C1000 Gen 2",
+    "brand": "Anker",
+    "category": "station-electrique",
+    "asin": "B0FN7MSY4L",
+    "capacityWh": "1024 (à confirmer sur fiche constructeur)",
+    "outputW": "2000 continu, pointe divergente selon les sources (à vérifier)",
+    "batteryType": "LiFePO4",
+    "strengths": ["à vérifier"],
+    "limits": ["à vérifier"],
+    "lastChecked": "2026-10-31",
+    "source": "Fiches revendeurs (buildwithrise.com, solarpowersupply.eu). Pointe, ports et poids divergent. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée."
+  }
+]
+

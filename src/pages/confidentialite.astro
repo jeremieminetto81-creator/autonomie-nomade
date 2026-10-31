@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME, EDITOR_EMAIL, LAST_UPDATE } from '../config';
+---
+<Base title="Politique de confidentialité et cookies" noindex>
+  <h1>Politique de confidentialité et cookies</h1>
+  <p class="lead">Dernière mise à jour : {LAST_UPDATE}</p>
+
+  <h2>En bref</h2>
+  <p>{SITE_NAME} ne demande aucune donnée personnelle : pas de compte, pas de formulaire, pas de newsletter, pas de commentaires. Le site ne dépose aucun cookie et ne charge aucun script de suivi ou de publicité.</p>
+
+  <h2>Responsable du traitement</h2>
+  <p>L'éditeur du site, un particulier. Contact : {EDITOR_EMAIL}</p>
+
+  <h2>Données traitées</h2>
+  <h3>Journaux techniques de l'hébergeur</h3>
+  <p>Comme tout site, les serveurs de l'hébergeur enregistrent des informations techniques lors de la visite (adresse IP, date, page demandée). Elles servent à la sécurité et au bon fonctionnement du service. La durée de conservation est fixée par l'hébergeur : [À COMPLÉTER après lecture de sa politique de confidentialité].</p>
+  <p>Hébergeur : [À COMPLÉTER : Netlify, à confirmer]. Ses serveurs peuvent se trouver hors de l'Union européenne ; vérifiez dans sa politique les garanties de transfert.</p>
+
+  <h3>Mesure d'audience</h3>
+  <p>[À COMPLÉTER : aucune mesure d'audience n'est active à ce jour. Si un outil est ajouté, indiquer son nom, ce qu'il mesure, qu'il ne dépose pas de traceur, et le droit de s'opposer.]</p>
+
+  <h2>Cookies</h2>
+  <p>Ce site ne dépose aucun cookie. Aucun bandeau de consentement n'est donc affiché.</p>
+
+  <h2>Liens vers Amazon</h2>
+  <p>Ce site contient des liens affiliés vers Amazon.fr. Quand vous cliquez, vous quittez ce site et vous arrivez sur celui d'Amazon, qui applique sa propre politique de confidentialité et ses propres cookies. L'éditeur est Partenaire Amazon et peut recevoir d'Amazon des informations sur les achats réalisés via ses liens, sans accès à votre identité.</p>
+
+  <h2>Vos droits</h2>
+  <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité des données qui vous concernent. Pour les exercer : {EDITOR_EMAIL}. Vous pouvez aussi saisir la <a href="https://www.cnil.fr/">CNIL</a>.</p>
+</Base>

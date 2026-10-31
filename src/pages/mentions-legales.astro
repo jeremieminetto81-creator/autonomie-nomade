@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME, EDITOR_EMAIL, LAST_UPDATE, AMAZON_MENTION } from '../config';
+---
+<Base title="Mentions légales" noindex>
+  <h1>Mentions légales</h1>
+  <p class="lead">Dernière mise à jour : {LAST_UPDATE}</p>
+
+  <h2>Éditeur du site</h2>
+  <p>{SITE_NAME} est un site édité à titre non professionnel par un particulier. Conformément à l'article 6-III de la loi du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'éditeur a communiqué son identité à l'hébergeur et ne la publie pas ici.</p>
+  <p>Contact : {EDITOR_EMAIL}</p>
+  <p>Directeur de la publication : l'éditeur du site.</p>
+
+  <h2>Hébergeur</h2>
+  <p>[À COMPLÉTER : nom, adresse et téléphone de l'hébergeur, à relever sur le site de Netlify]</p>
+
+  <h2>Affiliation</h2>
+  <p>{AMAZON_MENTION} Voir <a href="/a-propos/">comment nous gagnons de l'argent</a>.</p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>Les textes et visuels de ce site sont originaux, sauf mention contraire. Les noms de marques et de produits appartiennent à leurs propriétaires respectifs et sont cités à titre d'information. Amazon et le logo Amazon sont des marques d'Amazon.com, Inc. ou de ses filiales.</p>
+
+  <h2>Responsabilité</h2>
+  <p>Les informations sont données à titre indicatif et peuvent contenir des erreurs. Vérifiez toujours les caractéristiques, les prix et la disponibilité sur la fiche du produit avant d'acheter. Ce site ne remplace pas l'avis d'un électricien ou d'un professionnel de santé.</p>
+</Base>
