@@ -25,6 +25,7 @@ a:hover{color:var(--accent-d)}
 table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
 th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
 th{background:var(--card)}
+caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:6px}
 .crumbs{font-size:.85rem;color:var(--muted);margin-top:16px}
 .crumbs a{color:var(--muted)}
 .calc input[type=text],.calc input[type=number]{width:100%;min-width:0;padding:6px 8px;font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px}

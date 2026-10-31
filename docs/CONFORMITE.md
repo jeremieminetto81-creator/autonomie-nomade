@@ -1,35 +1,44 @@
 # Checklist de conformité (base à faire valider, pas une garantie)
 
-Je ne suis pas juriste. Cette liste sert à vérifier point par point avant toute publication.
+Je ne suis pas juriste. Cette liste sert à vérifier point par point. Dernière revue : 31 octobre 2026.
 
-## Bloquants avant mise en ligne
-- [ ] Compte Programme Partenaires Amazon approuvé et tag réel dans `AMAZON_TAG`.
-- [ ] Mention Amazon (`src/config.ts`) comparée MOT POUR MOT au contrat opérationnel actuel (section « S'identifier comme Partenaire »). Texte relevé via sources secondaires : iubenda.com, wizishop.fr.
-- [ ] Contrat Amazon relu : conditions d'acceptation et de maintien du compte (ventes qualifiantes dans un délai donné), usage des images, interdiction de copier prix et disponibilité.
-- [ ] Hébergeur renseigné dans les mentions légales (nom, adresse, téléphone) et identité de l'éditeur communiquée à l'hébergeur (LCEN art. 6-III, statut non professionnel).
-- [ ] E-mail de contact renseigné (`EDITOR_EMAIL`).
-- [ ] Durée de conservation des journaux et transferts hors UE de l'hébergeur lus dans sa politique.
-- [ ] Section « Qui écrit ici » complétée.
-- [ ] `security.txt` : contact renseigné.
+## Mentions légales (LCEN)
+- [x] Texte de référence vérifié sur Légifrance : article 1-1 de la LCEN (loi n° 2004-575), créé par la loi SREN n° 2024-449, en vigueur depuis le 23 mai 2024. L'ancien article 6-III n'est plus la bonne référence.
+- [x] Régime « éditeur non professionnel » (art. 1-1, II) : on peut ne publier que le nom et l'adresse de l'hébergeur. Le téléphone de l'hébergeur n'est pas exigé dans ce régime.
+- [x] Hébergeur publié : Netlify, Inc., 101 2nd Street, San Francisco, CA 94105 (relevé sur netlify.com/privacy).
+- [ ] **À faire par l'éditeur** : l'anonymat suppose d'avoir communiqué ses éléments d'identification (nom, prénom, domicile, téléphone) à l'hébergeur. Vérifier que le compte Netlify les contient, sinon les renseigner ou publier son identité.
+- [ ] **Risque à surveiller** : le régime non professionnel cesse si l'activité devient professionnelle. Des revenus d'affiliation réguliers peuvent suffire. Il faudrait alors publier l'identité complète (art. 1-1, I) et, le cas échéant, un numéro d'immatriculation.
+- Sanction en cas de manquement (art. 1-2) : jusqu'à un an d'emprisonnement et 75 000 € d'amende.
+
+## Affiliation et publicité
+- [x] Mention « Publicité : liens affiliés » dans l'encadré d'en-tête de chaque guide et en légende de chaque tableau de liens.
+- [x] Mention Amazon en pied de page et sur la page « Notre méthode ».
+- [x] Page « Notre méthode » : financement, critères de classement, produits non testés, absence de rémunération des marques.
+- [x] Liens en `rel="sponsored nofollow noopener"` (contrôle automatique).
+- [x] Aucun prix ni disponibilité écrits en dur.
+- [ ] Mention Amazon comparée MOT POUR MOT au contrat opérationnel actuel (espace Partenaires). Texte actuel relevé via des sources secondaires.
+- [ ] Contrat Amazon relu : conditions de maintien du compte (ventes qualifiantes dans un délai), images, logos, interdiction des liens dans les e-mails.
+- Loi n° 2023-451 du 9 juin 2023 (influence commerciale) : un cabinet d'avocats estime que l'affiliation rémunérée entre dans son champ. Non confirmé par un texte officiel. Par prudence, la mention « Publicité » est affichée près des liens.
+- Code de la consommation, art. L. 111-7 (plateformes en ligne) : vise les professionnels qui classent ou référencent des offres de tiers. Applicabilité à un site non professionnel incertaine. Par prudence : critères de classement accessibles depuis toutes les pages (pied de page) et mention de la relation commerciale près des liens.
+
+## Données personnelles et cookies (RGPD, CNIL)
+- [x] Aucun cookie, aucun script tiers, aucun formulaire : pas de bandeau nécessaire.
+- [x] Politique de confidentialité : responsable, données techniques de l'hébergeur, conservation (90 jours en ligne puis un an hors ligne, selon l'accord de traitement de Netlify), transfert vers les États-Unis (Data Privacy Framework et clauses types selon Netlify), droits, recours CNIL.
+- [ ] Si une mesure d'audience est ajoutée : conditions d'exemption CNIL (fiche n°16) et mise à jour de la politique et de la CSP.
+
+## Sécurité, droit d'auteur, consommateurs
+- [x] Textes originaux, sources citées, aucun visuel copié d'Amazon.
+- [x] Avertissements de sécurité sur les batteries et les groupes électrogènes.
+- [x] Aucun « testé » sans test réel, aucune fausse urgence ni fausse promotion.
 - [ ] ASIN ouverts un par un sur Amazon.fr et caractéristiques comparées à la fiche constructeur.
 
-## Points à faire valider par un professionnel
-- Le statut « non professionnel » reste-t-il vrai si les revenus d'affiliation augmentent ? Des revenus réguliers peuvent changer le régime fiscal et le statut de l'éditeur (service-public.fr, impots.gouv.fr).
-- Aucun cookie déposé par ce site : à re-vérifier si un outil est ajouté. Un lien sortant vers Amazon ne dépose pas de cookie sur ce site ; les cookies d'Amazon relèvent de sa propre politique.
-
-## Mesure d'audience (non activée)
-Conditions CNIL pour une mesure exemptée de consentement (fiche n°16, cnil.fr) : finalité limitée à la mesure d'audience, dernier octet de l'IP tronqué, traceurs de 13 mois maximum, information des utilisateurs, droit d'opposition, pas de recoupement avec d'autres traitements ni d'autres sites. Ne rien activer sans vérifier l'outil et le mettre à jour dans `confidentialite.astro` et dans la CSP (`public/_headers`).
-
-## Affiliation (DGCCRF, Code de la consommation)
-- [x] Mention d'affiliation en en-tête de page (composant `Disclosure`) et en pied de page.
-- [x] Page « Notre méthode » : critères, ce qui n'est pas testé, financement.
-- [x] Liens en `rel="sponsored nofollow noopener"` (contrôlé par `npm run check:affiliate`).
-- [x] Aucun prix écrit en dur.
-- [ ] Aucun mot « testé » sauf test réel.
-- [ ] Aucune fausse urgence ni fausse promotion.
+## Fiscalité (hors site, à vérifier)
+- Les commissions d'affiliation sont des revenus à déclarer. Le régime exact (catégorie, seuils, éventuelle micro-entreprise) est à vérifier sur impots.gouv.fr ou auprès d'un professionnel.
 
 ## Sources consultées
-- LCEN art. 6-III : explications de cms.law, gocardless.com, senat.fr (pas Légifrance directement).
-- CNIL fiche n°16 : https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications
-- Contrat Amazon : sources secondaires uniquement (iubenda.com, wizishop.fr).
-- DGCCRF : articles de presse sur les contenus sponsorisés ; rien de spécifique aux liens affiliés trouvé.
+- Légifrance, LCEN (articles 1-1 et 1-2) : https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000801164
+- Légifrance, loi n° 2023-451 du 9 juin 2023 : https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047663185
+- Légifrance, Code de la consommation, art. L. 111-7 : https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035732365
+- CNIL, fiche n°16 : https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications
+- Netlify, confidentialité : https://www.netlify.com/privacy/ et accord de traitement : https://www.netlify.com/pdf/netlify-dpa.pdf
+- Analyses secondaires : simonnetavocat.fr (renumérotation LCEN), deshoulieres-avocats.com (affiliation et influence), economie.gouv.fr (mentions des sites professionnels).

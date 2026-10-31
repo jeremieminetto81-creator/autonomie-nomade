@@ -3,6 +3,7 @@ import products from '../data/products.json';
 import AffiliateLink from './AffiliateLink.astro';
 ---
 <table>
+  <caption>Publicité : liens affiliés vers Amazon.fr, nous percevons une commission sur les achats.</caption>
   <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Puissance (W)</th><th scope="col">Batterie</th><th scope="col">Lien</th></tr></thead>
   <tbody>
     {products.map((p) => (
