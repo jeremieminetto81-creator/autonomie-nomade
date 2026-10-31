@@ -1,6 +1,13 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && npm run check:affiliate && npm run check:headers && npm run check:links"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "24"
+
+# En production, on refuse de publier tant qu'il reste un champ à compléter ou le tag de remplacement.
+[context.production]
+  command = "npm run build && npm run check:affiliate && npm run check:headers && npm run check:links && npm run check:prod"
+
+[context.production.environment]
+  CI_PRODUCTION = "true"

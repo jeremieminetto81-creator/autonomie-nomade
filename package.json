@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "check:affiliate": "node scripts/check-affiliate.mjs",
     "check:secrets": "node scripts/check-secrets.mjs",
+    "check:prod": "node scripts/check-placeholders.mjs",
     "check:headers": "node scripts/check-headers.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:html": "html-validate dist/",
