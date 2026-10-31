@@ -1,5 +1,5 @@
 // Réglages du site. Les valeurs à compléter sont volontairement visibles.
-export const SITE_NAME = '[NOM DU SITE]';
+export const SITE_NAME = 'Autonomie Nomade';
 export const SITE_DESCRIPTION =
   "Guides et comparatifs indépendants pour choisir une station électrique portable, des panneaux solaires portables ou un kit solaire de balcon.";
 
