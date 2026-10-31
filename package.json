@@ -9,10 +9,22 @@
     "preview": "astro preview",
     "check:affiliate": "node scripts/check-affiliate.mjs",
     "check:secrets": "node scripts/check-secrets.mjs",
-    "check": "npm run build && npm run check:affiliate && npm run check:secrets"
+    "check:headers": "node scripts/check-headers.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:html": "html-validate dist/",
+    "audit:pages": "node scripts/audit.mjs",
+    "check": "npm run build && npm run check:affiliate && npm run check:secrets && npm run check:headers && npm run check:links && npm run check:html",
+    "check:full": "npm run check && npm run audit:pages"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
     "astro": "7.4.4"
+  },
+  "devDependencies": {
+    "axe-core": "4.14.0",
+    "chrome-launcher": "1.2.2",
+    "html-validate": "11.17.0",
+    "lighthouse": "13.5.0",
+    "puppeteer-core": "25.16.0"
   }
 }

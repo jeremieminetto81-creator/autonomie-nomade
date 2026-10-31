@@ -80,7 +80,7 @@ const jsonLd = [
 
   <h2>Calculateur de capacité</h2>
   <p>Saisissez vos appareils. Les lignes ci-dessous sont des exemples à modifier. Le calcul se fait dans votre navigateur : aucune donnée n'est envoyée ni enregistrée.</p>
-  <form id="calc" class="calc">
+  <div id="calc" class="calc" role="group" aria-label="Calculateur de capacité">
     <table>
       <thead><tr><th scope="col">Appareil</th><th scope="col">Puissance (W)</th><th scope="col">Heures par jour</th><th scope="col">Énergie</th><th scope="col"><span class="sr-only">Supprimer</span></th></tr></thead>
       <tbody id="calc-body">
@@ -97,7 +97,7 @@ const jsonLd = [
       <p>Puissance si tout fonctionne en même temps : <strong id="calc-peak">0 W</strong></p>
     </div>
     <noscript><p class="warning">Le calculateur demande JavaScript. Vous pouvez faire le calcul à la main avec la formule ci-dessus.</p></noscript>
-  </form>
+  </div>
   <p>La marge de 20 % est une hypothèse de départ, pas une valeur constructeur : le rendement réel dépend du modèle et de la charge. Ajustez-la.</p>
   <p>Pour la puissance, comparez le résultat à la puissance de sortie continue de la station. Certains appareils à moteur ou à résistance demandent davantage au démarrage : consultez leur étiquette et la fiche de la station.</p>
 

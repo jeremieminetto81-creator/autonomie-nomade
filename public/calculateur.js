@@ -50,8 +50,6 @@
     }
   });
 
-  var form = document.getElementById('calc');
-  form.addEventListener('submit', function (e) { e.preventDefault(); });
-  form.addEventListener('input', update);
+  document.getElementById('calc').addEventListener('input', update);
   update();
 })();
