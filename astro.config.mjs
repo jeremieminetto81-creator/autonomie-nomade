@@ -7,7 +7,8 @@ const site = process.env.SITE_URL || 'https://VOTRE-SITE.netlify.app';
 export default defineConfig({
   site,
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  // Les pages marquées noindex ne doivent pas figurer dans le sitemap.
+  integrations: [sitemap({ filter: (page) => !/\/(mentions-legales|confidentialite)\/$/.test(page) })],
   build: {
     // Le CSS reste dans un fichier : pas de style inline, donc une CSP stricte.
     inlineStylesheets: 'never',
