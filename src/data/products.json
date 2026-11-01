@@ -43,8 +43,8 @@
     "brand": "Jackery",
     "category": "station-electrique",
     "asin": "B0DB1T34X5",
-    "capacityWh": "1070 (à confirmer sur fiche constructeur)",
-    "outputW": "1500 continu, 3000 en pointe (à confirmer)",
+    "capacityWh": "1070",
+    "outputW": "1500 continu, 3000 en pointe",
     "batteryType": "LiFePO4",
     "strengths": [
       "à vérifier"
@@ -52,9 +52,14 @@
     "limits": [
       "à vérifier"
     ],
-    "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs (galaxus.at, digitec.ch, outboundpower.com). Garantie divergente selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
-    "solarInputW": "à vérifier"
+    "lastChecked": "2026-11-01",
+    "source": "Fiche officielle Jackery EU (eu.jackery.com/products/explorer-1000-v2-portable-power-station), consultée le 01/11/2026.",
+    "solarInputW": "400",
+    "weightKg": "10,8",
+    "acCharge": "1,7 h (1 h en mode urgence via l'application)",
+    "ports": "2 prises CA, 2 USB-C, 1 USB-A, 1 allume-cigare",
+    "cycles": "4000 cycles jusqu'à 70 % de capacité",
+    "warranty": "3 + 2 ans"
   },
   {
     "id": "anker-solix-c1000-gen-2",
@@ -62,8 +67,8 @@
     "brand": "Anker",
     "category": "station-electrique",
     "asin": "B0FN7MSY4L",
-    "capacityWh": "1024 (à confirmer sur fiche constructeur)",
-    "outputW": "2000 continu, pointe divergente selon les sources (à vérifier)",
+    "capacityWh": "1024",
+    "outputW": "2000 continu, 3000 en pointe (fiche Amazon)",
     "batteryType": "LiFePO4",
     "strengths": [
       "à vérifier"
@@ -71,8 +76,13 @@
     "limits": [
       "à vérifier"
     ],
-    "lastChecked": "2026-10-31",
-    "source": "Fiches revendeurs (buildwithrise.com, solarpowersupply.eu). Pointe, ports et poids divergent. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
-    "solarInputW": "600 (à confirmer)"
+    "lastChecked": "2026-11-01",
+    "source": "Support Anker (specs) et guide utilisateur FR A1763 sur support.ankersolix.com, consultés le 01/11/2026 ; pointe, cycles, recharge en 49 min et absence de batterie d'extension d'après la fiche Amazon.fr B0FN7MSY4L.",
+    "solarInputW": "600",
+    "weightKg": "11,3",
+    "acCharge": "1200 W max (1600 W en mode UltraFast via l'application, recharge complète annoncée en 49 min sur la fiche Amazon)",
+    "ports": "prises CA (nombre à vérifier), 3 USB-C, 1 USB-A, 1 allume-cigare",
+    "cycles": "4000 cycles en gardant au moins 80 % (fiche Amazon)",
+    "warranty": "à vérifier"
   }
 ]

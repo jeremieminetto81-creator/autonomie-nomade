@@ -2,8 +2,9 @@
 import products from '../data/products.json';
 import AffiliateLink from './AffiliateLink.astro';
 // variant « solar » : affiche l'entrée solaire au lieu de la puissance et de la batterie.
-interface Props { variant?: 'specs' | 'solar' }
-const { variant = 'specs' } = Astro.props;
+interface Props { variant?: 'specs' | 'solar'; ids?: string[] }
+const { variant = 'specs', ids } = Astro.props;
+const list = ids ? products.filter((p) => ids.includes(p.id)) : products;
 const cols = variant === 'solar'
   ? [{ key: 'capacityWh', label: 'Capacité (Wh)' }, { key: 'solarInputW', label: 'Entrée solaire max (W)' }]
   : [{ key: 'capacityWh', label: 'Capacité (Wh)' }, { key: 'outputW', label: 'Puissance (W)' }, { key: 'batteryType', label: 'Batterie' }];
@@ -12,7 +13,7 @@ const cols = variant === 'solar'
   <caption>Publicité : liens affiliés vers Amazon.fr, nous percevons une commission sur les achats.</caption>
   <thead><tr><th scope="col">Modèle</th>{cols.map((c) => <th scope="col">{c.label}</th>)}<th scope="col">Lien</th></tr></thead>
   <tbody>
-    {products.map((p) => (
+    {list.map((p) => (
       <tr>
         <th scope="row">{p.name}</th>
         {cols.map((c) => <td data-label={c.label}>{p[c.key as keyof typeof p]}</td>)}

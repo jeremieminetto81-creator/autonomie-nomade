@@ -38,6 +38,13 @@ export const GUIDES = [
     desc: 'Puissance réelle, tension et temps de recharge, avec calculateur.',
     icon: 'sun',
   },
+  {
+    href: '/station-electrique-portable-1000-wh/',
+    short: '1000 Wh',
+    title: 'Station électrique 1000 Wh : Jackery ou Anker ?',
+    desc: 'Ce que 1000 Wh permettent, et deux modèles comparés sur fiches officielles.',
+    icon: 'scale',
+  },
 ] as const;
 
 export const NAV = [

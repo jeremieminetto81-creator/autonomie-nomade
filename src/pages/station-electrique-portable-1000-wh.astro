@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import Callout from '../components/Callout.astro';
+import Toc from '../components/Toc.astro';
+import ProductTable from '../components/ProductTable.astro';
+import products from '../data/products.json';
+import { articleSchemas } from '../lib/schema';
+import { LAST_UPDATE } from '../config';
+
+const title = 'Station électrique portable 1000 Wh : que choisir ? (Jackery ou Anker)';
+const description =
+  "Ce qu'une station électrique de 1000 Wh permet d'alimenter, et comparaison du Jackery Explorer 1000 v2 et de l'Anker SOLIX C1000 Gen 2 d'après les fiches officielles.";
+
+const ids = ['jackery-explorer-1000-v2', 'anker-solix-c1000-gen-2'];
+const [jackery, anker] = ids.map((id) => products.find((p) => p.id === id)!);
+
+// Calcul théorique : 1000 Wh ÷ puissance, puis avec une marge de 20 % pour les pertes (hypothèse, voir le guide capacité).
+const examples = [
+  { w: 10, label: 'Éclairage LED' },
+  { w: 60, label: 'Ordinateur portable' },
+  { w: 100, label: 'Petit appareil de 100 W' },
+  { w: 500, label: 'Appareil de 500 W' },
+  { w: 1500, label: 'Appareil chauffant de 1500 W' },
+];
+const fmtH = (h: number) => (h >= 2 ? `${Math.round(h * 10) / 10} h`.replace('.', ',') : h >= 1 ? `1 h ${Math.round((h - 1) * 60)}` : `${Math.round(h * 60)} min`);
+const rows = examples.map((e) => ({ ...e, raw: fmtH(1000 / e.w), margin: fmtH(1000 / (e.w * 1.2)) }));
+
+const specs: { key: keyof typeof jackery; label: string }[] = [
+  { key: 'capacityWh', label: 'Capacité (Wh)' },
+  { key: 'batteryType', label: 'Batterie' },
+  { key: 'outputW', label: 'Puissance de sortie (W)' },
+  { key: 'ports', label: 'Ports' },
+  { key: 'acCharge', label: 'Recharge sur secteur' },
+  { key: 'solarInputW', label: 'Entrée solaire max (W)' },
+  { key: 'weightKg', label: 'Poids (kg)' },
+  { key: 'cycles', label: 'Durée de vie annoncée' },
+  { key: 'warranty', label: 'Garantie' },
+];
+
+const faq = [
+  {
+    q: "Combien de temps tient une station de 1000 Wh ?",
+    a: "En théorie, divisez 1000 par la puissance de l'appareil en watts pour obtenir des heures. En pratique, comptez moins à cause des pertes de conversion : notre tableau applique une marge de 20 %, qui reste une hypothèse.",
+  },
+  {
+    q: 'Une station de 1000 Wh peut-elle faire fonctionner une bouilloire ?',
+    a: "Seulement si la puissance de la bouilloire est inférieure à la puissance de sortie continue de la station. Même dans ce cas, la batterie se vide vite : un appareil de 1500 W la vide en moins d'une heure en théorie.",
+  },
+  {
+    q: 'Le Jackery 1000 v2 ou l\'Anker C1000 Gen 2 tient-il plus longtemps ?',
+    a: "Leurs capacités sont proches (1070 Wh pour le Jackery, 1024 Wh pour l'Anker). La différence d'autonomie à usage égal est donc faible. Ils se distinguent surtout par la puissance de sortie, l'entrée solaire et le poids.",
+  },
+];
+const schemas = articleSchemas({
+  site: Astro.site!,
+  path: '/station-electrique-portable-1000-wh/',
+  title, description,
+  crumb: 'Station électrique 1000 Wh',
+  published: '2026-11-01', modified: '2026-11-01', faq,
+});
+const toc = [
+  { id: 'ce-que-permettent-1000-wh', label: 'Ce que permettent 1000 Wh' },
+  { id: 'comparatif', label: 'Jackery Explorer 1000 v2 ou Anker SOLIX C1000 Gen 2' },
+  { id: 'lequel-choisir', label: 'Lequel choisir selon votre usage' },
+  { id: 'liens', label: 'Voir les deux modèles sur Amazon.fr' },
+  { id: 'questions-frequentes', label: 'Questions fréquentes' },
+  { id: 'sources', label: 'Sources' },
+];
+---
+<Base title="Station électrique portable 1000 Wh : que choisir ?" description={description}>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Station électrique 1000 Wh</nav>
+  <h1>Station électrique portable 1000 Wh : que choisir ?</h1>
+  <p class="lead">Mis à jour le 1er novembre 2026</p>
+
+  <Callout type="answer" title="Réponse courte">
+    Une station d'environ 1000 Wh convient bien pour un week-end en van, du télétravail nomade ou une coupure de courant de quelques heures. Entre les deux modèles de cette taille de notre sélection, l'Anker SOLIX C1000 Gen 2 offre plus de puissance de sortie et d'entrée solaire ; le Jackery Explorer 1000 v2 est un peu plus léger et a une capacité légèrement supérieure.
+  </Callout>
+
+  <Toc items={toc} />
+
+  <Disclosure />
+
+  <h2 id="ce-que-permettent-1000-wh">Ce que permettent 1000 Wh</h2>
+  <p>Durée théorique pour une station pleine de 1000 Wh avec un seul appareil branché. Ce sont des calculs (1000 ÷ puissance), pas des mesures.</p>
+  <table>
+    <thead><tr><th scope="col">Appareil</th><th scope="col">Puissance</th><th scope="col">Durée théorique</th><th scope="col">Avec 20 % de marge</th></tr></thead>
+    <tbody>
+      {rows.map((r) => <tr><td>{r.label}</td><td>{r.w} W</td><td>{r.raw}</td><td>{r.margin}</td></tr>)}
+    </tbody>
+  </table>
+  <Callout type="tip" title="Astuce">
+    Pour votre propre liste d'appareils, utilisez notre <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a>. Vérifiez aussi que la puissance de sortie de la station dépasse celle des appareils branchés en même temps.
+  </Callout>
+
+  <h2 id="comparatif">Jackery Explorer 1000 v2 ou Anker SOLIX C1000 Gen 2</h2>
+  <p>Données relevées sur les fiches officielles des fabricants le 1er novembre 2026. Quand une donnée ne vient que de la fiche Amazon, nous l'indiquons. Nous n'avons testé aucun de ces produits.</p>
+  <table>
+    <thead><tr><th scope="col">Caractéristique</th><th scope="col">{jackery.name}</th><th scope="col">{anker.name}</th></tr></thead>
+    <tbody>
+      {specs.map((s) => <tr><th scope="row">{s.label}</th><td>{jackery[s.key]}</td><td>{anker[s.key]}</td></tr>)}
+    </tbody>
+  </table>
+  <Callout type="tip" title="Attention aux comparaisons de durée de vie">
+    Les deux fabricants annoncent 4000 cycles, mais pas au même seuil : jusqu'à 70 % de capacité pour Jackery, en gardant au moins 80 % pour Anker. Ces chiffres ne se comparent donc pas directement.
+  </Callout>
+
+  <h2 id="lequel-choisir">Lequel choisir selon votre usage</h2>
+  <table>
+    <thead><tr><th scope="col">Votre priorité</th><th scope="col">Plutôt</th><th scope="col">Pourquoi</th></tr></thead>
+    <tbody>
+      <tr><td>Brancher des appareils puissants</td><td>Anker SOLIX C1000 Gen 2</td><td>2000 W en continu contre 1500 W</td></tr>
+      <tr><td>Recharger au solaire</td><td>Anker SOLIX C1000 Gen 2</td><td>Entrée solaire de 600 W contre 400 W</td></tr>
+      <tr><td>Porter la station souvent</td><td>Jackery Explorer 1000 v2</td><td>10,8 kg contre 11,3 kg</td></tr>
+      <tr><td>Un peu plus de capacité</td><td>Jackery Explorer 1000 v2</td><td>1070 Wh contre 1024 Wh, un écart faible</td></tr>
+      <tr><td>Ajouter une batterie plus tard</td><td>À vérifier</td><td>L'Anker C1000 Gen 2 n'est pas extensible selon sa fiche Amazon ; pour le Jackery, vérifiez la fiche</td></tr>
+    </tbody>
+  </table>
+  <p>Pour la recharge solaire, voir notre <a href="/panneau-solaire-portable-station-electrique/">guide des panneaux solaires portables</a>.</p>
+
+  <Callout type="warning" title="Sécurité">
+    Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et respectez les règles de transport des batteries au lithium.
+  </Callout>
+
+  <h2 id="liens">Voir les deux modèles sur Amazon.fr</h2>
+  <ProductTable ids={ids} />
+  <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
+
+  <h2 id="questions-frequentes">Questions fréquentes</h2>
+  {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+  <h2 id="sources">Sources</h2>
+  <ul>
+    <li><a href="https://eu.jackery.com/products/explorer-1000-v2-portable-power-station">Jackery EU, fiche officielle Explorer 1000 v2</a></li>
+    <li><a href="https://support.ankersolix.com/s/article/What-are-the-basic-specifications-of-Anker-SOLIX-C1000-Gen-2">Support Anker SOLIX, caractéristiques du C1000 Gen 2</a></li>
+    <li><a href="https://support.ankersolix.com/s/article/Anker-SOLIX-C1000-Gen-2-Portable-Power-Station-Guide-de-l-utilisateur-A1763-FR">Support Anker SOLIX, guide utilisateur du C1000 Gen 2 (FR)</a></li>
+    <li>Fiche Amazon.fr de l'Anker SOLIX C1000 Gen 2 (ASIN B0FN7MSY4L), pour la puissance de pointe, la durée de vie, la recharge en 49 minutes et l'absence de batterie d'extension.</li>
+  </ul>
+
+  <p>À lire aussi : <a href="/quelle-capacite-station-electrique/">quelle capacité choisir</a> · <a href="/station-electrique-portable-vs-groupe-electrogene/">station électrique ou groupe électrogène</a></p>
+</Base>
