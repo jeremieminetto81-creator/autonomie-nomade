@@ -58,7 +58,7 @@ const jsonLd = [
   },
 ];
 ---
-<Base title="Quelle capacité de station électrique choisir ?" description={description} ogType="article" progress>
+<Base title="Capacité de station électrique : calculateur en Wh" description={description} ogType="article" progress>
   {jsonLd.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <GuideHero slot="hero" crumb="Quelle capacité choisir" kicker="Guide et calculateur" title="Quelle capacité de station électrique choisir ?" updated={LAST_UPDATE} minutes={5} scene="capacity" />

@@ -16,11 +16,11 @@ const ids = idsFor((p) => p.brand === b);
 const list = ids.map((id) => products.find((p) => p.id === id)!);
 const title = `Stations électriques ${b} : notre sélection`;
 const description = `Les stations électriques portables ${b} de notre sélection, de ${list[0].capWh} à ${list[list.length - 1].capWh} Wh, avec leurs caractéristiques clés et leur point fort.`;
-const schemas = listSchemas({ site: Astro.site!, path: `/marque/${brandSlug(b)}/`, title, crumb: b, items: list.map((p) => p.name) });
+const schemas = listSchemas({ site: Astro.site!, path: `/marque/${brandSlug(b)}/`, title, description, crumb: b });
 ---
 <Base title={title} description={description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
-  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={title} updated={LAST_UPDATE} minutes={2} scene="selection" />
+  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={`Les stations électriques portables ${b}`} updated={LAST_UPDATE} minutes={2} scene="selection" />
 
   <div class="prose">
     <p>{list.length} modèles {b} figurent dans notre sélection, classés du plus petit au plus grand. Les caractéristiques viennent des fiches des fabricants ou d'Amazon.fr, et chaque fiche indique sa source. Nous n'avons testé aucun de ces produits.</p>

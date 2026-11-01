@@ -10,6 +10,8 @@ export interface Selection {
   group: 'usage' | 'capacite';
   short: string;
   title: string;
+  // Titre visible (H1), différent du titre de l'onglet pour ne pas faire doublon.
+  h1: string;
   description: string;
   kicker: string;
   scene: Scene;
@@ -26,6 +28,7 @@ export const SELECTIONS: Selection[] = [
     group: 'usage',
     short: 'Camping et randonnée',
     title: 'Stations électriques pour le camping et la randonnée',
+    h1: 'Quelle station électrique emporter en camping ou en randonnée ?',
     description: "Petites stations électriques portables pour le camping : recharger téléphones, lampes et appareils photo sans prise, avec un poids réduit.",
     kicker: 'Sélection par usage',
     scene: 'solar',
@@ -43,6 +46,7 @@ export const SELECTIONS: Selection[] = [
     group: 'usage',
     short: 'Van et camping-car',
     title: 'Stations électriques pour van et camping-car',
+    h1: 'Quelle station électrique pour un van ou un camping-car ?',
     description: "Stations électriques portables pour van et camping-car : capacité autour de 1000 Wh pour le frigo, l'éclairage et le télétravail en itinérance.",
     kicker: 'Sélection par usage',
     scene: 'solar',
@@ -60,6 +64,7 @@ export const SELECTIONS: Selection[] = [
     group: 'usage',
     short: 'Coupure de courant',
     title: 'Stations électriques pour les coupures de courant',
+    h1: 'Quelle station électrique pour une coupure de courant ?',
     description: "Stations électriques portables pour faire face à une coupure de courant : box internet, éclairage, recharges et petits appareils, à l'abri et sans bruit.",
     kicker: 'Sélection par usage',
     scene: 'capacity',
@@ -77,6 +82,7 @@ export const SELECTIONS: Selection[] = [
     group: 'usage',
     short: 'Chantier et outils',
     title: 'Stations électriques pour le chantier et les outils',
+    h1: 'Quelle station électrique pour le chantier et les outils ?',
     description: "Stations électriques portables puissantes pour le chantier : outils électriques sans prise, avec une puissance de sortie continue d'au moins 1800 W.",
     kicker: 'Sélection par usage',
     scene: 'generator',
@@ -94,6 +100,7 @@ export const SELECTIONS: Selection[] = [
     group: 'capacite',
     short: 'Moins de 500 Wh',
     title: 'Stations électriques portables de moins de 500 Wh',
+    h1: 'Petites stations électriques : moins de 500 Wh',
     description: "Stations électriques portables de moins de 500 Wh : modèles compacts et légers pour recharger de petits appareils, comparés sur leurs caractéristiques.",
     kicker: 'Sélection par capacité',
     scene: 'capacity',
@@ -111,6 +118,7 @@ export const SELECTIONS: Selection[] = [
     group: 'capacite',
     short: '1000 à 1500 Wh',
     title: 'Stations électriques portables de 1000 à 1500 Wh',
+    h1: 'Stations électriques polyvalentes de 1000 à 1500 Wh',
     description: "Stations électriques portables de 1000 à 1500 Wh : le format polyvalent pour le van, le télétravail nomade et les coupures de courant.",
     kicker: 'Sélection par capacité',
     scene: 'compare',
@@ -128,6 +136,7 @@ export const SELECTIONS: Selection[] = [
     group: 'capacite',
     short: '2000 Wh et plus',
     title: 'Stations électriques portables de 2000 Wh et plus',
+    h1: 'Grandes stations électriques : 2000 Wh et plus',
     description: "Stations électriques portables de 2000 Wh et plus : grande capacité et forte puissance pour les longues coupures, le chantier ou l'autonomie prolongée.",
     kicker: 'Sélection par capacité',
     scene: 'capacity',

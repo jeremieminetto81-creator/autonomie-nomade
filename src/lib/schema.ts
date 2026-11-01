@@ -65,17 +65,20 @@ export function articleSchemas(opts: {
   return out;
 }
 
-// Page de sélection : une liste de produits, sans note ni avis (nous n'en avons pas).
-export function listSchemas(opts: { site: URL; path: string; title: string; crumb: string; items: string[] }) {
+// Page de sélection : une page de collection. Pas d'ItemList : Google l'interprète comme un
+// carrousel, qui exige une page par élément sur ce site (nos produits renvoient vers Amazon).
+// Pas de Product non plus : il exigerait prix ou avis, que nous n'avons pas.
+export function listSchemas(opts: { site: URL; path: string; title: string; description: string; crumb: string }) {
   const url = new URL(opts.path, opts.site).href;
   return [
     {
       '@context': 'https://schema.org',
-      '@type': 'ItemList',
+      '@type': 'CollectionPage',
       name: opts.title,
+      description: opts.description,
       url,
-      numberOfItems: opts.items.length,
-      itemListElement: opts.items.map((name, i) => ({ '@type': 'ListItem', position: i + 1, name })),
+      inLanguage: 'fr',
+      isPartOf: { '@type': 'WebSite', url: new URL('/', opts.site).href },
     },
     breadcrumb(opts.site, url, opts.crumb),
   ];
