@@ -11,7 +11,6 @@ const brands = [...new Set(products.map((p) => p.brand))];
 // Garde le nombre en tête d'une valeur (« 600 continu… » -> « 600 »), sinon rien.
 const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
 ---
-<p class="pcards-ad">Publicité : liens affiliés vers Amazon.fr, nous percevons une commission sur les achats. Prix et disponibilité sur Amazon.</p>
 <ul class="pcards">
   {list.map((p) => {
     const cap = num(p.capacityWh);

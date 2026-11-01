@@ -11,8 +11,9 @@ Je ne suis pas juriste. Cette liste sert à vérifier point par point. Dernière
 - Sanction en cas de manquement (art. 1-2) : jusqu'à un an d'emprisonnement et 75 000 € d'amende.
 
 ## Affiliation et publicité
-- [x] Mention « Publicité : liens affiliés » dans l'encadré d'en-tête de chaque guide et en légende de chaque tableau de liens.
-- [x] Mention Amazon en pied de page et sur la page « Notre méthode ».
+- [x] Version discrète choisie par l'éditeur le 01/11/2026 : mention « Publicité : lien affilié » sous chaque bouton Amazon (fiches produits), plus la phrase Amazon en pied de page. L'encadré en haut des guides a été retiré.
+- [ ] Risque assumé à réévaluer : vérifier que cette version discrète satisfait le contrat Amazon (« clairement ») et l'art. L. 121-4 du Code de la consommation (publicité déguisée), idéalement avec un professionnel.
+- [x] Mention Amazon en pied de page et sur la page « Notre méthode » (accessible uniquement depuis le pied de page).
 - [x] Page « Notre méthode » : financement, critères de classement, produits non testés, absence de rémunération des marques.
 - [x] Liens en `rel="sponsored nofollow noopener"` (contrôle automatique).
 - [x] Aucun prix ni disponibilité écrits en dur.

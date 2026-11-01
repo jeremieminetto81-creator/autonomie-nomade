@@ -67,7 +67,6 @@ caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);pad
 .btn:hover{background:var(--accent-d);color:var(--on-accent)}
 
 /* Fiches produits */
-.pcards-ad{font-size:.85rem;color:var(--muted);margin:16px 0 8px}
 .pcards{list-style:none;padding:0;margin:0 0 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .pcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .pcard-visual{position:relative;display:flex;align-items:center;justify-content:center;height:130px;background:var(--tone-soft)}

@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Disclosure from '../components/Disclosure.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
 import ProductCards from '../components/ProductCards.astro';
@@ -44,7 +43,6 @@ const schemas = articleSchemas({
 
   <Toc items={[{"id":"pourquoi-un-panneau-de-200-w-ne-donne-pas-200-w","label":"Pourquoi un panneau de 200 W ne donne pas 200 W"},{"id":"calculateur-de-recharge-solaire","label":"Calculateur de recharge solaire"},{"id":"ce-qu-il-faut-verifier-avant-d-acheter-un-panneau","label":"Ce qu'il faut vérifier avant d'acheter un panneau"},{"id":"entree-solaire-des-stations-de-notre-selection","label":"Entrée solaire des stations de notre sélection"},{"id":"questions-frequentes","label":"Questions fréquentes"},{"id":"sources","label":"Sources"}]} />
 
-  <Disclosure />
 
   <h2 id="pourquoi-un-panneau-de-200-w-ne-donne-pas-200-w">Pourquoi un panneau de 200 W ne donne pas 200 W</h2>
   <p>La puissance nominale d'un panneau (en watts-crête) est mesurée dans des conditions de test normalisées : 1 000 W/m² d'éclairement, 25 °C de température de cellule, orientation parfaite et aucune ombre. Dans la vraie vie, le soleil est plus faible, le panneau chauffe, et un panneau posé au sol n'est pas toujours bien orienté. La production réelle est donc plus faible, et varie fortement selon la saison et le lieu.</p>
