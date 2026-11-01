@@ -1,9 +1,11 @@
 ---
 import '../styles/global.css';
-import { SITE_NAME, SITE_DESCRIPTION, NAV, AMAZON_MENTION, GOOGLE_SITE_VERIFICATION } from '../config';
+import Icon from '../components/Icon.astro';
+import { SITE_NAME, SITE_DESCRIPTION, NAV, GUIDES, AMAZON_MENTION, GOOGLE_SITE_VERIFICATION } from '../config';
 interface Props { title: string; description?: string; noindex?: boolean }
 const { title, description = SITE_DESCRIPTION, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site).href;
 const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -33,18 +35,36 @@ const jsonLd = JSON.stringify({
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <header class="wrap">
-    <a class="logo" href="/">{SITE_NAME}</a>
-    <nav aria-label="Navigation principale">
-      {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
-    </nav>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="/"><span class="logo-mark"><Icon name="battery" size={22} /></span>{SITE_NAME}</a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        {NAV.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+      </nav>
+    </div>
   </header>
   <main id="contenu" class="wrap">
     <slot />
   </main>
-  <footer class="wrap">
-    <p>{AMAZON_MENTION}</p>
-    <p><a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a> · <a href="/a-propos/">Notre méthode</a></p>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-cols">
+        <div>
+          <p class="footer-title">Guides</p>
+          <ul>{GUIDES.map((g) => <li><a href={g.href}>{g.title}</a></li>)}</ul>
+        </div>
+        <div>
+          <p class="footer-title">Le site</p>
+          <ul>
+            <li><a href="/a-propos/">Notre méthode et affiliation</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">{AMAZON_MENTION}</p>
+      <p class="footer-note">{SITE_NAME} · guides indépendants sur l'énergie nomade</p>
+    </div>
   </footer>
 </body>
 </html>

@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
+import Callout from '../components/Callout.astro';
+import Toc from '../components/Toc.astro';
 import ProductTable from '../components/ProductTable.astro';
 import { SITE_NAME, LAST_UPDATE } from '../config';
 
@@ -63,11 +65,13 @@ const jsonLd = [
   <h1>Quelle capacité de station électrique choisir ?</h1>
   <p class="lead">Mis à jour le {LAST_UPDATE}</p>
 
-  <p><strong>Réponse courte :</strong> additionnez, pour chaque appareil, sa puissance (W) multipliée par sa durée d'utilisation (h). Le résultat est l'énergie nécessaire en Wh. Ajoutez une marge, puis vérifiez que la puissance de sortie de la station (W) dépasse celle des appareils branchés en même temps.</p>
+  <Callout type="answer" title="Réponse courte">Additionnez, pour chaque appareil, sa puissance (W) multipliée par sa durée d'utilisation (h). Le résultat est l'énergie nécessaire en Wh. Ajoutez une marge, puis vérifiez que la puissance de sortie de la station (W) dépasse celle des appareils branchés en même temps.</Callout>
+
+  <Toc items={[{"id":"les-deux-chiffres-a-connaitre-wh-et-w","label":"Les deux chiffres à connaître : Wh et W"},{"id":"calculateur-de-capacite","label":"Calculateur de capacité"},{"id":"quelle-capacite-selon-l-usage","label":"Quelle capacité selon l'usage ?"},{"id":"les-erreurs-frequentes","label":"Les erreurs fréquentes"},{"id":"exemples-de-stations-disponibles-sur-amazon-fr","label":"Exemples de stations disponibles sur Amazon.fr"},{"id":"questions-frequentes","label":"Questions fréquentes"}]} />
 
   <Disclosure />
 
-  <h2>Les deux chiffres à connaître : Wh et W</h2>
+  <h2 id="les-deux-chiffres-a-connaitre-wh-et-w">Les deux chiffres à connaître : Wh et W</h2>
   <table>
     <thead><tr><th scope="col">Unité</th><th scope="col">Ce que c'est</th><th scope="col">Ce que ça décide</th></tr></thead>
     <tbody>
@@ -77,7 +81,7 @@ const jsonLd = [
   </table>
   <p>La formule : <strong>Wh = W × heures</strong>. Une lampe de 10 W allumée 5 heures consomme 50 Wh.</p>
 
-  <h2>Calculateur de capacité</h2>
+  <h2 id="calculateur-de-capacite">Calculateur de capacité</h2>
   <p>Saisissez vos appareils. Les lignes ci-dessous sont des exemples à modifier. Le calcul se fait dans votre navigateur : aucune donnée n'est envoyée ni enregistrée.</p>
   <div id="calc" class="calc" role="group" aria-label="Calculateur de capacité">
     <table>
@@ -97,10 +101,10 @@ const jsonLd = [
     </div>
     <noscript><p class="warning">Le calculateur demande JavaScript. Vous pouvez faire le calcul à la main avec la formule ci-dessus.</p></noscript>
   </div>
-  <p>La marge de 20 % est une hypothèse de départ, pas une valeur constructeur : le rendement réel dépend du modèle et de la charge. Ajustez-la.</p>
+  <Callout type="tip" title="Astuce">La marge de 20 % est une hypothèse de départ, pas une valeur constructeur : le rendement réel dépend du modèle et de la charge. Ajustez-la.</Callout>
   <p>Pour la puissance, comparez le résultat à la puissance de sortie continue de la station. Certains appareils à moteur ou à résistance demandent davantage au démarrage : consultez leur étiquette et la fiche de la station.</p>
 
-  <h2>Quelle capacité selon l'usage ?</h2>
+  <h2 id="quelle-capacite-selon-l-usage">Quelle capacité selon l'usage ?</h2>
   <p>Ce sont des ordres de grandeur pour s'orienter. Seul votre calcul compte.</p>
   <table>
     <thead><tr><th scope="col">Usage</th><th scope="col">Ce qu'il faut regarder</th></tr></thead>
@@ -113,7 +117,7 @@ const jsonLd = [
     </tbody>
   </table>
 
-  <h2>Les erreurs fréquentes</h2>
+  <h2 id="les-erreurs-frequentes">Les erreurs fréquentes</h2>
   <ul>
     <li>Confondre Wh et W.</li>
     <li>Oublier les pertes de conversion et viser la capacité exacte.</li>
@@ -121,14 +125,14 @@ const jsonLd = [
     <li>Compter 24 h de fonctionnement pour un frigo à compresseur, qui tourne par cycles.</li>
   </ul>
 
-  <p class="warning"><strong>Sécurité.</strong> Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et respectez les règles de transport des batteries au lithium.</p>
+  <Callout type="warning" title="Sécurité">Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et respectez les règles de transport des batteries au lithium.</Callout>
 
-  <h2>Exemples de stations disponibles sur Amazon.fr</h2>
+  <h2 id="exemples-de-stations-disponibles-sur-amazon-fr">Exemples de stations disponibles sur Amazon.fr</h2>
   <p>Quatre modèles de tailles différentes, à titre d'exemples. Les valeurs viennent de fiches de revendeurs et restent à confirmer sur la fiche du produit. Nous n'avons testé aucun de ces produits.</p>
   <ProductTable />
   <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
 
-  <h2>Questions fréquentes</h2>
+  <h2 id="questions-frequentes">Questions fréquentes</h2>
   {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
 
   <p>À lire aussi : <a href="/station-electrique-portable-vs-groupe-electrogene/">station électrique portable ou groupe électrogène</a> · <a href="/a-propos/">notre méthode</a>.</p>

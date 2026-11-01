@@ -1,6 +1,7 @@
 ---
+import Callout from './Callout.astro';
 import { AMAZON_MENTION } from '../config';
 ---
-<aside class="disclosure">
-  <p><strong>Publicité : liens affiliés.</strong> {AMAZON_MENTION} Les prix et la disponibilité peuvent changer : consultez-les sur Amazon. <a href="/a-propos/">Comment nous gagnons de l'argent</a>.</p>
-</aside>
+<Callout type="ad" title="Publicité : liens affiliés">
+  {AMAZON_MENTION} Les prix et la disponibilité peuvent changer : consultez-les sur Amazon. <a href="/a-propos/">Comment nous gagnons de l'argent</a>.
+</Callout>

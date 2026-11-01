@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
-import AffiliateLink from '../components/AffiliateLink.astro';
-import products from '../data/products.json';
+import Callout from '../components/Callout.astro';
+import Toc from '../components/Toc.astro';
+import ProductTable from '../components/ProductTable.astro';
 import { articleSchemas } from '../lib/schema';
 import { LAST_UPDATE } from '../config';
 
@@ -39,15 +40,17 @@ const schemas = articleSchemas({
   <h1>Quel panneau solaire portable pour sa station électrique ?</h1>
   <p class="lead">Mis à jour le {LAST_UPDATE}</p>
 
-  <p><strong>Réponse courte :</strong> la puissance d'un panneau est une valeur de laboratoire. En pratique, comptez sensiblement moins, puis vérifiez que la station accepte cette puissance et cette tension. Pour estimer la recharge, multipliez la puissance réellement produite par le nombre d'heures de bon ensoleillement.</p>
+  <Callout type="answer" title="Réponse courte">La puissance d'un panneau est une valeur de laboratoire. En pratique, comptez sensiblement moins, puis vérifiez que la station accepte cette puissance et cette tension. Pour estimer la recharge, multipliez la puissance réellement produite par le nombre d'heures de bon ensoleillement.</Callout>
+
+  <Toc items={[{"id":"pourquoi-un-panneau-de-200-w-ne-donne-pas-200-w","label":"Pourquoi un panneau de 200 W ne donne pas 200 W"},{"id":"calculateur-de-recharge-solaire","label":"Calculateur de recharge solaire"},{"id":"ce-qu-il-faut-verifier-avant-d-acheter-un-panneau","label":"Ce qu'il faut vérifier avant d'acheter un panneau"},{"id":"entree-solaire-des-stations-de-notre-selection","label":"Entrée solaire des stations de notre sélection"},{"id":"questions-frequentes","label":"Questions fréquentes"},{"id":"sources","label":"Sources"}]} />
 
   <Disclosure />
 
-  <h2>Pourquoi un panneau de 200 W ne donne pas 200 W</h2>
+  <h2 id="pourquoi-un-panneau-de-200-w-ne-donne-pas-200-w">Pourquoi un panneau de 200 W ne donne pas 200 W</h2>
   <p>La puissance nominale d'un panneau (en watts-crête) est mesurée dans des conditions de test normalisées : 1 000 W/m² d'éclairement, 25 °C de température de cellule, orientation parfaite et aucune ombre. Dans la vraie vie, le soleil est plus faible, le panneau chauffe, et un panneau posé au sol n'est pas toujours bien orienté. La production réelle est donc plus faible, et varie fortement selon la saison et le lieu.</p>
-  <p class="warning">Il n'existe pas de coefficient universel. Notre calculateur propose une valeur de départ modifiable : ajustez-la, et pour votre lieu consultez l'outil gratuit PVGIS de la Commission européenne.</p>
+  <Callout type="tip" title="Astuce">Il n'existe pas de coefficient universel. Notre calculateur propose une valeur de départ modifiable : ajustez-la, et pour votre lieu consultez l'outil gratuit PVGIS de la Commission européenne.</Callout>
 
-  <h2>Calculateur de recharge solaire</h2>
+  <h2 id="calculateur-de-recharge-solaire">Calculateur de recharge solaire</h2>
   <p>Les valeurs préremplies sont des exemples modifiables, pas des mesures. Le calcul se fait dans votre navigateur et rien n'est enregistré.</p>
   <div id="solar" class="calc" role="group" aria-label="Calculateur de recharge solaire">
     <p><label for="s-cap">Capacité de la station (Wh) </label><input id="s-cap" type="number" min="0" step="any" inputmode="decimal" value="1000"></p>
@@ -64,7 +67,7 @@ const schemas = articleSchemas({
   </div>
   <p>Le rendement de 50 % et les 4 heures sont des hypothèses de départ. Le calcul ne tient pas compte des pertes de la station ni de l'énergie que vous consommez en même temps.</p>
 
-  <h2>Ce qu'il faut vérifier avant d'acheter un panneau</h2>
+  <h2 id="ce-qu-il-faut-verifier-avant-d-acheter-un-panneau">Ce qu'il faut vérifier avant d'acheter un panneau</h2>
   <ul>
     <li><strong>Puissance d'entrée solaire de la station :</strong> un panneau plus puissant que cette limite ne sera pas pleinement exploité.</li>
     <li><strong>Tension :</strong> la tension à vide du panneau (Voc) doit rester sous la limite d'entrée de la station. En série, les tensions s'additionnent.</li>
@@ -73,27 +76,14 @@ const schemas = articleSchemas({
     <li><strong>Placement :</strong> orientez-le vers le soleil, évitez même une petite ombre, qui peut réduire fortement la production.</li>
   </ul>
 
-  <h2>Entrée solaire des stations de notre sélection</h2>
+  <h2 id="entree-solaire-des-stations-de-notre-selection">Entrée solaire des stations de notre sélection</h2>
   <p>Valeurs relevées sur des fiches de revendeurs, à confirmer sur la fiche constructeur avant d'acheter un panneau.</p>
-  <table>
-    <caption>Publicité : liens affiliés vers Amazon.fr, nous percevons une commission sur les achats.</caption>
-    <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité (Wh)</th><th scope="col">Entrée solaire max (W)</th><th scope="col">Lien</th></tr></thead>
-    <tbody>
-      {products.map((p) => (
-        <tr>
-          <th scope="row">{p.name}</th>
-          <td>{p.capacityWh}</td>
-          <td>{p.solarInputW}</td>
-          <td><AffiliateLink name={p.name} asin={p.asin} label="Voir" /></td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <ProductTable variant="solar" />
   <p>Nous n'avons testé aucun de ces produits. Prix et disponibilité : consultez-les sur Amazon.fr.</p>
 
-  <p class="warning"><strong>Sécurité.</strong> Ne branchez que des panneaux et câbles compatibles avec la fiche de la station, ne dépassez pas les tensions indiquées, et ne manipulez pas de câbles abîmés.</p>
+  <Callout type="warning" title="Sécurité">Ne branchez que des panneaux et câbles compatibles avec la fiche de la station, ne dépassez pas les tensions indiquées, et ne manipulez pas de câbles abîmés.</Callout>
 
-  <h2>Questions fréquentes</h2>
+  <h2 id="questions-frequentes">Questions fréquentes</h2>
   {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
 
   <h2 id="sources">Sources</h2>

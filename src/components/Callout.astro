@@ -1,0 +1,14 @@
+---
+import Icon from './Icon.astro';
+// Encadrés harmonisés : réponse courte, astuce, sécurité, publicité.
+interface Props { type: 'answer' | 'tip' | 'warning' | 'ad'; title: string }
+const icons = { answer: 'check', tip: 'bulb', warning: 'alert', ad: 'info' } as const;
+const { type, title } = Astro.props;
+---
+<div class={`callout callout-${type}`} role="note">
+  <Icon name={icons[type]} />
+  <div>
+    <p class="callout-title">{title}</p>
+    <div class="callout-body"><slot /></div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Callout from '../components/Callout.astro';
 import { SITE_NAME, AMAZON_MENTION, LAST_UPDATE } from '../config';
 ---
 <Base title="Notre méthode et affiliation" description="Comment ce site est financé par l'affiliation Amazon, comment les produits sont choisis et ce que nous avons testé ou non.">
@@ -30,7 +31,7 @@ import { SITE_NAME, AMAZON_MENTION, LAST_UPDATE } from '../config';
   <p>Nous n'affichons pas de prix : ils changent souvent. Consultez-les sur la fiche Amazon.fr du produit.</p>
 
   <h2>Sécurité</h2>
-  <p class="warning">Une station électrique portable ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, avec les câbles fournis, et respectez les règles de transport des batteries au lithium (notamment en avion).</p>
+  <Callout type="warning" title="Sécurité">Une station électrique portable ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, avec les câbles fournis, et respectez les règles de transport des batteries au lithium (notamment en avion).</Callout>
 
   <h2>Corrections</h2>
   <p>Vous voyez une erreur ? Écrivez-nous (voir les <a href="/mentions-legales/">mentions légales</a>) et nous corrigerons.</p>

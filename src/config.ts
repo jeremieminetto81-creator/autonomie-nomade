@@ -15,7 +15,32 @@ export const EDITOR_EMAIL = 'mailpro83136@gmail.com';
 export const GOOGLE_SITE_VERIFICATION = '3M1hSo1q-ifrYyXSqHJ_KfUYPSpkOArNGlMB8FCIQPY';
 export const LAST_UPDATE = '31 octobre 2026';
 
+// Les guides alimentent la navigation, les cartes de l'accueil et le pied de page.
+export const GUIDES = [
+  {
+    href: '/quelle-capacite-station-electrique/',
+    short: 'Capacité',
+    title: 'Quelle capacité de station électrique choisir ?',
+    desc: "Calculez l'énergie dont vous avez besoin en Wh, appareil par appareil.",
+    icon: 'battery',
+  },
+  {
+    href: '/station-electrique-portable-vs-groupe-electrogene/',
+    short: 'Groupe électrogène',
+    title: 'Station électrique ou groupe électrogène ?',
+    desc: 'Bruit, autonomie, sécurité : lequel choisir selon votre usage.',
+    icon: 'plug',
+  },
+  {
+    href: '/panneau-solaire-portable-station-electrique/',
+    short: 'Solaire',
+    title: 'Quel panneau solaire pour sa station ?',
+    desc: 'Puissance réelle, tension et temps de recharge, avec calculateur.',
+    icon: 'sun',
+  },
+] as const;
+
 export const NAV = [
-  { href: '/', label: 'Accueil' },
+  ...GUIDES.map((g) => ({ href: g.href, label: g.short })),
   { href: '/a-propos/', label: 'Notre méthode' },
 ];

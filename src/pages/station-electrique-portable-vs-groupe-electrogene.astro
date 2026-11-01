@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
+import Callout from '../components/Callout.astro';
+import Toc from '../components/Toc.astro';
 import ProductTable from '../components/ProductTable.astro';
 import { articleSchemas } from '../lib/schema';
 import { LAST_UPDATE } from '../config';
@@ -38,13 +40,15 @@ const schemas = articleSchemas({
   <h1>Station électrique portable ou groupe électrogène : lequel choisir ?</h1>
   <p class="lead">Mis à jour le {LAST_UPDATE}</p>
 
-  <p><strong>Réponse courte :</strong> choisissez une station électrique portable pour des besoins modérés, du silence et un usage proche de vous, y compris à l'abri. Choisissez un groupe électrogène seulement si vous avez besoin de beaucoup d'énergie pendant longtemps et si vous pouvez l'utiliser en toute sécurité à l'extérieur.</p>
+  <Callout type="answer" title="Réponse courte">Choisissez une station électrique portable pour des besoins modérés, du silence et un usage proche de vous, y compris à l'abri. Choisissez un groupe électrogène seulement si vous avez besoin de beaucoup d'énergie pendant longtemps et si vous pouvez l'utiliser en toute sécurité à l'extérieur.</Callout>
 
-  <p class="warning"><strong>Sécurité.</strong> Un groupe électrogène rejette du monoxyde de carbone, un gaz sans odeur ni couleur. Il doit toujours être placé à l'extérieur des bâtiments, jamais dans une maison, une cave ou un garage, et éloigné des fenêtres et des prises d'air. Voir les <a href="#sources">sources officielles</a>.</p>
+  <Toc items={[{"id":"comparatif","label":"Comparatif"},{"id":"autonomie-ne-comparez-pas-les-chiffres-a-l-aveugle","label":"Autonomie : ne comparez pas les chiffres à l'aveugle"},{"id":"bruit-deux-mesures-differentes","label":"Bruit : deux mesures différentes"},{"id":"quel-choix-selon-votre-situation","label":"Quel choix selon votre situation ?"},{"id":"exemples-de-stations-disponibles-sur-amazon-fr","label":"Exemples de stations disponibles sur Amazon.fr"},{"id":"questions-frequentes","label":"Questions fréquentes"},{"id":"sources","label":"Sources"}]} />
+
+  <Callout type="warning" title="Sécurité">Un groupe électrogène rejette du monoxyde de carbone, un gaz sans odeur ni couleur. Il doit toujours être placé à l'extérieur des bâtiments, jamais dans une maison, une cave ou un garage, et éloigné des fenêtres et des prises d'air. Voir les <a href="#sources">sources officielles</a>.</Callout>
 
   <Disclosure />
 
-  <h2>Comparatif</h2>
+  <h2 id="comparatif">Comparatif</h2>
   <table>
     <thead><tr><th scope="col">Critère</th><th scope="col">Station électrique portable</th><th scope="col">Groupe électrogène</th></tr></thead>
     <tbody>
@@ -58,13 +62,13 @@ const schemas = articleSchemas({
     </tbody>
   </table>
 
-  <h2>Autonomie : ne comparez pas les chiffres à l'aveugle</h2>
+  <h2 id="autonomie-ne-comparez-pas-les-chiffres-a-l-aveugle">Autonomie : ne comparez pas les chiffres à l'aveugle</h2>
   <p>Pour une station, l'autonomie se calcule en Wh : voir notre <a href="/quelle-capacite-station-electrique/">guide et calculateur de capacité</a>. Pour un groupe, elle dépend de la taille du réservoir et de la charge. Les fabricants annoncent souvent l'autonomie à 25 % ou 50 % de charge : à pleine charge, elle est bien plus courte.</p>
 
-  <h2>Bruit : deux mesures différentes</h2>
+  <h2 id="bruit-deux-mesures-differentes">Bruit : deux mesures différentes</h2>
   <p>Les fiches de groupes électrogènes donnent parfois la puissance acoustique (en dB(A), norme européenne) et parfois la pression acoustique à une distance donnée, par exemple 7 m. Ces deux valeurs ne se comparent pas. Comparez toujours la même mesure.</p>
 
-  <h2>Quel choix selon votre situation ?</h2>
+  <h2 id="quel-choix-selon-votre-situation">Quel choix selon votre situation ?</h2>
   <table>
     <thead><tr><th scope="col">Situation</th><th scope="col">Plutôt</th><th scope="col">Pourquoi</th></tr></thead>
     <tbody>
@@ -75,12 +79,12 @@ const schemas = articleSchemas({
     </tbody>
   </table>
 
-  <h2>Exemples de stations disponibles sur Amazon.fr</h2>
+  <h2 id="exemples-de-stations-disponibles-sur-amazon-fr">Exemples de stations disponibles sur Amazon.fr</h2>
   <p>Quatre modèles de tailles différentes, à titre d'exemples. Les valeurs viennent de fiches de revendeurs et restent à confirmer sur la fiche du produit. Nous n'avons testé aucun de ces produits.</p>
   <ProductTable />
   <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
 
-  <h2>Questions fréquentes</h2>
+  <h2 id="questions-frequentes">Questions fréquentes</h2>
   {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
 
   <h2 id="sources">Sources</h2>

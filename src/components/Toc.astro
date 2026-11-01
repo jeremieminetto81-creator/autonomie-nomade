@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+interface Props { items: { id: string; label: string }[] }
+const { items } = Astro.props;
+---
+<nav class="toc" aria-labelledby="toc-title">
+  <p class="toc-title" id="toc-title"><Icon name="list" size={18} /> Sommaire</p>
+  <ol>
+    {items.map((i) => <li><a href={`#${i.id}`}>{i.label}</a></li>)}
+  </ol>
+</nav>
