@@ -51,5 +51,4 @@ export const GUIDES = [
 
 export const NAV = [
   ...GUIDES.map((g) => ({ href: g.href, label: g.short })),
-  { href: '/a-propos/', label: 'Notre méthode' },
 ];
