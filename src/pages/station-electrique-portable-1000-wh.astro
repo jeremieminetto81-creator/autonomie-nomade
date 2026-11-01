@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
-import ProductTable from '../components/ProductTable.astro';
+import ProductCards from '../components/ProductCards.astro';
 import products from '../data/products.json';
 import { articleSchemas } from '../lib/schema';
 import { LAST_UPDATE } from '../config';
@@ -125,7 +125,7 @@ const toc = [
   </Callout>
 
   <h2 id="liens">Voir les deux modèles sur Amazon.fr</h2>
-  <ProductTable ids={ids} />
+  <ProductCards ids={ids} />
   <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent.</p>
 
   <h2 id="questions-frequentes">Questions fréquentes</h2>

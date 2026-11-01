@@ -16,7 +16,8 @@
     ],
     "lastChecked": "2026-10-31",
     "source": "Fiches revendeurs et presse (newswire.com, galaxus.fr, storagereview.com). ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
-    "solarInputW": "200 (à confirmer)"
+    "solarInputW": "200 (à confirmer)",
+    "highlight": "Pour un usage léger : la plus petite capacité de notre sélection (268 Wh)"
   },
   {
     "id": "ecoflow-river-3-plus",
@@ -35,7 +36,8 @@
     ],
     "lastChecked": "2026-10-31",
     "source": "Fiches revendeurs (castorama.fr, galaxus.ch, camping-car-plus.com). Poids divergent selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
-    "solarInputW": "220 (à confirmer)"
+    "solarInputW": "220 (à confirmer)",
+    "highlight": "Extensible jusqu'à 858 Wh avec une batterie additionnelle"
   },
   {
     "id": "jackery-explorer-1000-v2",
@@ -59,7 +61,8 @@
     "acCharge": "1,7 h (1 h en mode urgence via l'application)",
     "ports": "2 prises CA, 2 USB-C, 1 USB-A, 1 allume-cigare",
     "cycles": "4000 cycles jusqu'à 70 % de capacité",
-    "warranty": "3 + 2 ans"
+    "warranty": "3 + 2 ans",
+    "highlight": "Le plus léger des modèles 1000 Wh de notre sélection"
   },
   {
     "id": "anker-solix-c1000-gen-2",
@@ -83,6 +86,7 @@
     "acCharge": "1200 W max (1600 W en mode UltraFast via l'application, recharge complète annoncée en 49 min sur la fiche Amazon)",
     "ports": "prises CA (nombre à vérifier), 3 USB-C, 1 USB-A, 1 allume-cigare",
     "cycles": "4000 cycles en gardant au moins 80 % (fiche Amazon)",
-    "warranty": "à vérifier"
+    "warranty": "à vérifier",
+    "highlight": "Le plus puissant de notre sélection (2000 W)"
   }
 ]

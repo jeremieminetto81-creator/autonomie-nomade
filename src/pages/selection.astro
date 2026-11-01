@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclosure from '../components/Disclosure.astro';
+import Callout from '../components/Callout.astro';
+import ProductCards from '../components/ProductCards.astro';
+import { articleSchemas } from '../lib/schema';
+import { GUIDES } from '../config';
+
+const title = 'Notre sélection de stations électriques portables';
+const description =
+  "Quatre stations électriques portables de 268 à 1070 Wh, présentées avec leurs caractéristiques clés et leur point fort, pour choisir selon votre usage.";
+const schemas = articleSchemas({
+  site: Astro.site!,
+  path: '/selection/',
+  title, description,
+  crumb: 'Sélection',
+  published: '2026-11-01', modified: '2026-11-01',
+});
+---
+<Base title="Sélection de stations électriques portables" description={description}>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Sélection</nav>
+  <h1>Notre sélection de stations électriques portables</h1>
+  <p class="lead">Quatre modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de 1000 Wh pour un week-end en van.</p>
+
+  <Disclosure />
+
+  <h2>Les modèles</h2>
+  <ProductCards />
+
+  <Callout type="tip" title="Avant de choisir">
+    Calculez d'abord l'énergie dont vous avez besoin avec notre <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a>, puis vérifiez la puissance de sortie et l'entrée solaire sur la fiche du produit.
+  </Callout>
+
+  <h2>Nos guides pour aller plus loin</h2>
+  <ul>
+    {GUIDES.map((g) => <li><a href={g.href}>{g.title}</a></li>)}
+  </ul>
+
+  <Callout type="warning" title="Sécurité">
+    Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et respectez les règles de transport des batteries au lithium.
+  </Callout>
+</Base>

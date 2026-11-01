@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
 import Callout from '../components/Callout.astro';
 import Icon from '../components/Icon.astro';
+import ProductCards from '../components/ProductCards.astro';
 import { SITE_NAME, GUIDES } from '../config';
 ---
 <Base title={SITE_NAME}>
@@ -27,6 +28,10 @@ import { SITE_NAME, GUIDES } from '../config';
       </a>
     ))}
   </div>
+
+  <h2>Notre sélection</h2>
+  <ProductCards />
+  <p><a href="/selection/">Voir toute la sélection</a></p>
 
   <h2>Notre approche</h2>
   <p>Nous n'avons testé aucun produit nous-mêmes : nos analyses reposent sur les caractéristiques publiées et des sources publiques, toujours citées.</p>

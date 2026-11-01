@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Disclosure from '../components/Disclosure.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
-import ProductTable from '../components/ProductTable.astro';
+import ProductCards from '../components/ProductCards.astro';
 import { articleSchemas } from '../lib/schema';
 import { LAST_UPDATE } from '../config';
 
@@ -78,7 +78,7 @@ const schemas = articleSchemas({
 
   <h2 id="entree-solaire-des-stations-de-notre-selection">Entrée solaire des stations de notre sélection</h2>
   <p>Valeurs relevées sur des fiches de revendeurs, à confirmer sur la fiche constructeur avant d'acheter un panneau.</p>
-  <ProductTable variant="solar" />
+  <ProductCards />
   <p>Nous n'avons testé aucun de ces produits. Prix et disponibilité : consultez-les sur Amazon.fr.</p>
 
   <Callout type="warning" title="Sécurité">Ne branchez que des panneaux et câbles compatibles avec la fiche de la station, ne dépassez pas les tensions indiquées, et ne manipulez pas de câbles abîmés.</Callout>

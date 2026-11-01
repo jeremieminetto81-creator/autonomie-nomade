@@ -9,7 +9,7 @@ import * as chromeLauncher from 'chrome-launcher';
 import puppeteer from 'puppeteer-core';
 
 const MIN = 90;
-const pages = ['/', '/quelle-capacite-station-electrique/', '/station-electrique-portable-vs-groupe-electrogene/', '/panneau-solaire-portable-station-electrique/', '/station-electrique-portable-1000-wh/', '/a-propos/'];
+const pages = ['/', '/quelle-capacite-station-electrique/', '/station-electrique-portable-vs-groupe-electrogene/', '/panneau-solaire-portable-station-electrique/', '/station-electrique-portable-1000-wh/', '/selection/', '/a-propos/'];
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.xml': 'application/xml', '.txt': 'text/plain' };
 
 const server = http.createServer(async (req, res) => {

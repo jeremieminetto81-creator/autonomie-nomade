@@ -1,0 +1,14 @@
+---
+// Illustration maison d'une station électrique (pas une photo du produit). Couleurs via la classe tone-N du parent.
+interface Props { capacity: string }
+const { capacity } = Astro.props;
+---
+<svg class="station" viewBox="0 0 92 70" width="110" height="84" aria-hidden="true" focusable="false">
+  <rect class="st-handle" x="30" y="5" width="32" height="10" rx="3" />
+  <rect class="st-body" x="6" y="14" width="80" height="50" rx="8" />
+  <rect class="st-screen" x="15" y="25" width="30" height="17" rx="3" />
+  <text class="st-text" x="30" y="37" text-anchor="middle">{capacity}</text>
+  <circle class="st-port" cx="57" cy="33" r="4" />
+  <circle class="st-port" cx="71" cy="33" r="4" />
+  <rect class="st-bar" x="15" y="49" width="62" height="6" rx="3" />
+</svg>

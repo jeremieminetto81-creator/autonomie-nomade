@@ -1,0 +1,45 @@
+---
+import products from '../data/products.json';
+import AffiliateLink from './AffiliateLink.astro';
+import StationVisual from './StationVisual.astro';
+import Icon from './Icon.astro';
+// Fiches produits façon boutique, sans image ni prix Amazon (réservés à leur API).
+interface Props { ids?: string[] }
+const { ids } = Astro.props;
+const list = ids ? ids.map((id) => products.find((p) => p.id === id)!).filter(Boolean) : products;
+const brands = [...new Set(products.map((p) => p.brand))];
+// Garde le nombre en tête d'une valeur (« 600 continu… » -> « 600 »), sinon rien.
+const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
+---
+<p class="pcards-ad">Publicité : liens affiliés vers Amazon.fr, nous percevons une commission sur les achats. Prix et disponibilité sur Amazon.</p>
+<ul class="pcards">
+  {list.map((p) => {
+    const cap = num(p.capacityWh);
+    const out = num(p.outputW);
+    const solar = num(p.solarInputW);
+    const weight = (p as { weightKg?: string }).weightKg;
+    const toConfirm = /confirmer|vérifier/.test(`${p.capacityWh} ${p.outputW}`);
+    return (
+      <li class="pcard">
+        <div class={`pcard-visual tone-${(brands.indexOf(p.brand) % 4) + 1}`}>
+          <span class="pcard-brand">{p.brand}</span>
+          <StationVisual capacity={cap ?? ''} />
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-title">{p.name}</h3>
+          <ul class="pcard-specs" aria-label="Caractéristiques clés">
+            {cap && <li>{cap} Wh</li>}
+            {out && <li>{out} W</li>}
+            {!/vérifier/.test(p.batteryType) && <li>{p.batteryType}</li>}
+            {weight && <li>{weight} kg</li>}
+          </ul>
+          {p.highlight && <p class="pcard-highlight"><Icon name="check" size={16} /> {p.highlight}</p>}
+          {solar && <p class="pcard-meta">Entrée solaire jusqu'à {solar} W</p>}
+          {toConfirm && <p class="pcard-meta">Valeurs à confirmer sur la fiche du produit</p>}
+          <AffiliateLink name={p.name} asin={p.asin} label="Voir le prix sur Amazon" />
+          <p class="pcard-ad">Publicité : lien affilié</p>
+        </div>
+      </li>
+    );
+  })}
+</ul>
