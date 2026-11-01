@@ -1,0 +1,25 @@
+---
+import Scene from './Scene.astro';
+import Icon from './Icon.astro';
+// Bandeau d'en-tête des guides : fil d'Ariane, catégorie, titre, date, temps de lecture, illustration.
+interface Props {
+  crumb: string;
+  kicker: string;
+  title: string;
+  updated: string;
+  minutes: number;
+  scene: 'capacity' | 'generator' | 'solar' | 'compare' | 'selection';
+}
+const { crumb, kicker, title, updated, minutes, scene } = Astro.props;
+---
+<section class="guide-hero">
+  <div class="wrap-wide guide-hero-inner">
+    <div class="guide-hero-text">
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › {crumb}</nav>
+      <p class="kicker">{kicker}</p>
+      <h1>{title}</h1>
+      <p class="guide-meta"><span><Icon name="check" size={16} /> Mis à jour le {updated}</span><span><Icon name="list" size={16} /> {minutes} min de lecture</span></p>
+    </div>
+    <div class="guide-hero-art"><Scene name={scene} /></div>
+  </div>
+</section>

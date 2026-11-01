@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import GuideHero from '../components/GuideHero.astro';
 import Callout from '../components/Callout.astro';
 import ProductCards from '../components/ProductCards.astro';
 import { listSchemas } from '../lib/schema';
-import { GUIDES } from '../config';
+import { GUIDES, LAST_UPDATE } from '../config';
 import products from '../data/products.json';
 
 const title = 'Notre sélection de stations électriques portables';
@@ -17,11 +18,10 @@ const schemas = listSchemas({
   items: products.map((p) => p.name),
 });
 ---
-<Base title="Sélection de stations électriques portables" description={description}>
+<Base title="Sélection de stations électriques portables" description={description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Sélection</nav>
-  <h1>Notre sélection de stations électriques portables</h1>
+  <GuideHero slot="hero" crumb="Sélection" kicker="Sélection" title="Notre sélection de stations électriques portables" updated={LAST_UPDATE} minutes={2} scene="selection" />
   <p class="lead">Quatre modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de 1000 Wh pour un week-end en van.</p>
 
 

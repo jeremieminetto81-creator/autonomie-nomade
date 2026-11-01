@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import GuideHero from '../components/GuideHero.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
 import ProductCards from '../components/ProductCards.astro';
@@ -32,12 +33,10 @@ const schemas = articleSchemas({
   published: '2026-10-31', modified: '2026-11-01', faq,
 });
 ---
-<Base title="Panneau solaire portable pour station électrique" description={description} ogType="article">
+<Base title="Panneau solaire portable pour station électrique" description={description} ogType="article" progress>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Panneau solaire portable</nav>
-  <h1>Quel panneau solaire portable pour sa station électrique ?</h1>
-  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+  <GuideHero slot="hero" crumb="Panneau solaire portable" kicker="Guide et calculateur" title="Quel panneau solaire portable pour sa station électrique ?" updated={LAST_UPDATE} minutes={5} scene="solar" />
 
   <Callout type="answer" title="Réponse courte">La puissance d'un panneau est une valeur de laboratoire. En pratique, comptez sensiblement moins, puis vérifiez que la station accepte cette puissance et cette tension. Pour estimer la recharge, multipliez la puissance réellement produite par le nombre d'heures de bon ensoleillement.</Callout>
 

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import GuideHero from '../components/GuideHero.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
 import ProductCards from '../components/ProductCards.astro';
@@ -32,12 +33,10 @@ const schemas = articleSchemas({
   published: '2026-10-31', modified: '2026-11-01', faq,
 });
 ---
-<Base title="Station électrique portable ou groupe électrogène ?" description={description} ogType="article">
+<Base title="Station électrique portable ou groupe électrogène ?" description={description} ogType="article" progress>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Station électrique ou groupe électrogène</nav>
-  <h1>Station électrique portable ou groupe électrogène : lequel choisir ?</h1>
-  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+  <GuideHero slot="hero" crumb="Station électrique ou groupe électrogène" kicker="Comparatif" title="Station électrique portable ou groupe électrogène : lequel choisir ?" updated={LAST_UPDATE} minutes={5} scene="generator" />
 
   <Callout type="answer" title="Réponse courte">Choisissez une station électrique portable pour des besoins modérés, du silence et un usage proche de vous, y compris à l'abri. Choisissez un groupe électrogène seulement si vous avez besoin de beaucoup d'énergie pendant longtemps et si vous pouvez l'utiliser en toute sécurité à l'extérieur.</Callout>
 

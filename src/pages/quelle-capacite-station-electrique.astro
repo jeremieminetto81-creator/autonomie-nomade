@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import GuideHero from '../components/GuideHero.astro';
 import Callout from '../components/Callout.astro';
 import Toc from '../components/Toc.astro';
 import ProductCards from '../components/ProductCards.astro';
@@ -57,12 +58,10 @@ const jsonLd = [
   },
 ];
 ---
-<Base title="Quelle capacité de station électrique choisir ?" description={description} ogType="article">
+<Base title="Quelle capacité de station électrique choisir ?" description={description} ogType="article" progress>
   {jsonLd.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Quelle capacité choisir</nav>
-  <h1>Quelle capacité de station électrique choisir ?</h1>
-  <p class="lead">Mis à jour le {LAST_UPDATE}</p>
+  <GuideHero slot="hero" crumb="Quelle capacité choisir" kicker="Guide et calculateur" title="Quelle capacité de station électrique choisir ?" updated={LAST_UPDATE} minutes={5} scene="capacity" />
 
   <Callout type="answer" title="Réponse courte">Additionnez, pour chaque appareil, sa puissance (W) multipliée par sa durée d'utilisation (h). Le résultat est l'énergie nécessaire en Wh. Ajoutez une marge, puis vérifiez que la puissance de sortie de la station (W) dépasse celle des appareils branchés en même temps.</Callout>
 
