@@ -1,6 +1,8 @@
 ---
 // Police des titres hébergée avec le site (aucune requête vers un serveur tiers).
 import '@fontsource-variable/bricolage-grotesque/wght.css';
+// Préchargement de la police des titres (elle dessine le plus gros élément de la page : meilleur LCP).
+import latinFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { organization } from '../lib/schema';
@@ -17,6 +19,8 @@ const ogImage = new URL(ogPaths.includes(path) ? `/og/${path.slice(1, -1)}.png` 
 // Le nom du site n'est ajouté que si le titre complet reste sous 60 caractères (au-delà, Google le coupe).
 const SUFFIX = ` | ${SITE_NAME}`;
 const fullTitle = title.length + SUFFIX.length <= 60 ? `${title}${SUFFIX}` : title;
+// WebSite : décrit le site entier, donc déclaré une seule fois, sur l'accueil.
+const isHome = path === '/';
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -34,6 +38,7 @@ const jsonLd = JSON.stringify({
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#b23c0a">
+  <link rel="preload" href={latinFont} as="font" type="font/woff2" crossorigin>
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
@@ -51,7 +56,7 @@ const jsonLd = JSON.stringify({
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={title}>
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json" set:html={jsonLd}></script>
+  {isHome && <script type="application/ld+json" set:html={jsonLd}></script>}
   <slot name="head" />
 </head>
 <body>
