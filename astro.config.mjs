@@ -8,7 +8,11 @@ export default defineConfig({
   site,
   trailingSlash: 'always',
   // Les pages marquées noindex ne doivent pas figurer dans le sitemap.
-  integrations: [sitemap({ filter: (page) => !/\/(mentions-legales|confidentialite)\/$/.test(page) })],
+  // lastmod : date de dernière révision du contenu, à mettre à jour quand on modifie les pages.
+  integrations: [sitemap({
+    filter: (page) => !/\/(mentions-legales|confidentialite)\/$/.test(page),
+    lastmod: new Date('2026-11-01'),
+  })],
   build: {
     // Le CSS reste dans un fichier : pas de style inline, donc une CSP stricte.
     inlineStylesheets: 'never',

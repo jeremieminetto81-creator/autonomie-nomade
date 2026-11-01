@@ -9,7 +9,7 @@ import { LAST_UPDATE } from '../config';
 
 const title = 'Station électrique portable 1000 Wh : que choisir ? (Jackery ou Anker)';
 const description =
-  "Ce qu'une station électrique de 1000 Wh permet d'alimenter, et comparaison du Jackery Explorer 1000 v2 et de l'Anker SOLIX C1000 Gen 2 d'après les fiches officielles.";
+  "Ce que permet une station de 1000 Wh, et le Jackery Explorer 1000 v2 face à l'Anker SOLIX C1000 Gen 2, d'après les fiches officielles.";
 
 const ids = ['jackery-explorer-1000-v2', 'anker-solix-c1000-gen-2'];
 const [jackery, anker] = ids.map((id) => products.find((p) => p.id === id)!);
@@ -67,7 +67,7 @@ const toc = [
   { id: 'sources', label: 'Sources' },
 ];
 ---
-<Base title="Station électrique portable 1000 Wh : que choisir ?" description={description}>
+<Base title="Station électrique portable 1000 Wh : que choisir ?" description={description} ogType="article">
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Station électrique 1000 Wh</nav>

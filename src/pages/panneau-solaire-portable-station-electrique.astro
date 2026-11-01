@@ -8,7 +8,7 @@ import { LAST_UPDATE } from '../config';
 
 const title = 'Quel panneau solaire portable pour sa station électrique ?';
 const description =
-  "Puissance réelle d'un panneau solaire portable, limite d'entrée solaire de la station, tension, temps de recharge : un guide et un calculateur pour bien dimensionner.";
+  "Puissance réelle d'un panneau solaire portable, entrée solaire, tension et temps de recharge : guide et calculateur pour bien dimensionner.";
 
 const faq = [
   {
@@ -29,10 +29,10 @@ const schemas = articleSchemas({
   path: '/panneau-solaire-portable-station-electrique/',
   title, description,
   crumb: 'Panneau solaire portable',
-  published: '2026-10-31', modified: '2026-10-31', faq,
+  published: '2026-10-31', modified: '2026-11-01', faq,
 });
 ---
-<Base title="Panneau solaire portable pour station électrique" description={description}>
+<Base title="Panneau solaire portable pour station électrique" description={description} ogType="article">
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Panneau solaire portable</nav>

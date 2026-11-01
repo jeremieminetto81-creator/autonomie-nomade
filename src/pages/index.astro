@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import ProductCards from '../components/ProductCards.astro';
 import { SITE_NAME, GUIDES } from '../config';
 ---
-<Base title={SITE_NAME}>
+<Base title="Station électrique portable : guides">
   <section class="hero">
     <h1>Choisir sa station électrique portable sans se tromper</h1>
     <p class="lead">Des guides clairs et sourcés pour trouver l'énergie nomade adaptée à votre usage : camping-car, van, camping, coupure de courant ou chantier.</p>
@@ -15,6 +15,10 @@ import { SITE_NAME, GUIDES } from '../config';
       <li><Icon name="check" size={18} /> Des avertissements de sécurité clairs</li>
     </ul>
   </section>
+
+  <h2>Pourquoi une station électrique portable ?</h2>
+  <p>Une station électrique portable est une grosse batterie équipée de prises 230 V, de ports USB et souvent d'une entrée solaire. Contrairement à un groupe électrogène, elle ne brûle pas de carburant : elle est silencieuse et peut s'utiliser à l'abri. On l'emporte en van, en camping-car ou en camping, on la garde pour les coupures de courant, ou on s'en sert sur un chantier sans prise à proximité.</p>
+  <p>Pour bien la choisir, deux chiffres comptent : sa capacité en wattheures (Wh), qui fixe combien de temps elle tient, et sa puissance de sortie en watts (W), qui fixe quels appareils elle peut alimenter. Nos guides vous aident à calculer les deux selon vos besoins réels.</p>
 
   <h2>Les guides</h2>
   <div class="cards">
@@ -29,7 +33,7 @@ import { SITE_NAME, GUIDES } from '../config';
   </div>
 
   <h2>Notre sélection</h2>
-  <ProductCards />
+  <ProductCards more={false} />
   <p><a href="/selection/">Voir toute la sélection</a></p>
 
   <h2>Notre approche</h2>

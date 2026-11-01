@@ -7,7 +7,7 @@ import { SITE_NAME, LAST_UPDATE } from '../config';
 
 const title = 'Quelle capacité de station électrique choisir ? (calculateur en Wh)';
 const description =
-  "Comment calculer la capacité en Wh et la puissance en W d'une station électrique portable selon vos appareils, avec un calculateur gratuit et sans collecte de données.";
+  "Calculez la capacité en Wh et la puissance en W de votre station électrique portable selon vos appareils, avec un calculateur gratuit.";
 const url = new URL('/quelle-capacite-station-electrique/', Astro.site).href;
 
 const faq = [
@@ -57,7 +57,7 @@ const jsonLd = [
   },
 ];
 ---
-<Base title="Quelle capacité de station électrique choisir ?" description={description}>
+<Base title="Quelle capacité de station électrique choisir ?" description={description} ogType="article">
   {jsonLd.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Quelle capacité choisir</nav>

@@ -8,7 +8,7 @@ import { LAST_UPDATE } from '../config';
 
 const title = 'Station électrique portable ou groupe électrogène : lequel choisir ?';
 const description =
-  "Station électrique portable ou groupe électrogène : bruit, autonomie, sécurité (monoxyde de carbone), usage en intérieur et en extérieur. Un comparatif clair pour choisir.";
+  "Station électrique portable ou groupe électrogène : bruit, autonomie, sécurité et usage intérieur. Un comparatif clair pour bien choisir.";
 
 const faq = [
   {
@@ -29,10 +29,10 @@ const schemas = articleSchemas({
   path: '/station-electrique-portable-vs-groupe-electrogene/',
   title, description,
   crumb: 'Station électrique ou groupe électrogène',
-  published: '2026-10-31', modified: '2026-10-31', faq,
+  published: '2026-10-31', modified: '2026-11-01', faq,
 });
 ---
-<Base title="Station électrique portable ou groupe électrogène ?" description={description}>
+<Base title="Station électrique portable ou groupe électrogène ?" description={description} ogType="article">
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Station électrique ou groupe électrogène</nav>
@@ -93,5 +93,5 @@ const schemas = articleSchemas({
     <li>Fiches techniques de fabricants de groupes électrogènes, pour les notions de puissance acoustique, pression acoustique et autonomie selon la charge.</li>
   </ul>
 
-  <p>À lire aussi : <a href="/quelle-capacite-station-electrique/">quelle capacité de station électrique choisir</a></p>
+  <p>À lire aussi : <a href="/quelle-capacite-station-electrique/">quelle capacité de station électrique choisir</a> · <a href="/station-electrique-portable-1000-wh/">station électrique 1000 Wh : Jackery ou Anker</a></p>
 </Base>

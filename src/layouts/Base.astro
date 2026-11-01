@@ -1,15 +1,23 @@
 ---
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
+import { organization } from '../lib/schema';
 import { SITE_NAME, SITE_DESCRIPTION, NAV, GUIDES, AMAZON_MENTION, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from '../config';
-interface Props { title: string; description?: string; noindex?: boolean }
-const { title, description = SITE_DESCRIPTION, noindex = false } = Astro.props;
+interface Props { title: string; description?: string; noindex?: boolean; ogType?: 'website' | 'article' }
+const { title, description = SITE_DESCRIPTION, noindex = false, ogType = 'website' } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
-const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+// Image de partage : une par guide et pour la sélection, sinon l'image générale (voir scripts/og-images.mjs).
+const ogPaths = [...GUIDES.map((g) => g.href as string), '/selection/'];
+const ogImage = new URL(ogPaths.includes(path) ? `/og/${path.slice(1, -1)}.png` : '/og/default.png', Astro.site).href;
+// Le nom du site n'est ajouté que si le titre complet reste sous 60 caractères (au-delà, Google le coupe).
+const SUFFIX = ` | ${SITE_NAME}`;
+const fullTitle = title.length + SUFFIX.length <= 60 ? `${title}${SUFFIX}` : title;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  description: SITE_DESCRIPTION,
+  publisher: organization(Astro.site!),
   name: SITE_NAME,
   url: new URL('/', Astro.site).href,
   inLanguage: 'fr',
@@ -20,17 +28,25 @@ const jsonLd = JSON.stringify({
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#b23c0a">
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
   {noindex && <meta name="robots" content="noindex">}
   {GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION}>}
   {BING_SITE_VERIFICATION && <meta name="msvalidate.01" content={BING_SITE_VERIFICATION}>}
-  <meta property="og:type" content="website">
+  <meta property="og:type" content={ogType}>
+  <meta property="og:site_name" content={SITE_NAME}>
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content={fullTitle}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={title}>
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json" set:html={jsonLd}></script>
   <slot name="head" />
 </head>

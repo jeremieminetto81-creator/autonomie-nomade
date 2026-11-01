@@ -90,6 +90,7 @@ caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);pad
 .pcard-meta{margin:0;color:var(--muted);font-size:.88rem}
 .pcard-body .btn{display:block;text-align:center;margin-top:auto}
 .pcard-ad{margin:0;color:var(--muted);font-size:.78rem}
+.pcards-more{margin:0 0 16px;font-weight:600}
 .crumbs{font-size:.85rem;color:var(--muted);margin-top:16px}
 .crumbs a{color:var(--muted)}
 

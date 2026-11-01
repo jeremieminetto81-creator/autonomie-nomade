@@ -1,7 +1,7 @@
 // Réglages du site. Les valeurs à compléter sont volontairement visibles.
 export const SITE_NAME = 'Autonomie Nomade';
 export const SITE_DESCRIPTION =
-  "Guides et comparatifs indépendants pour choisir une station électrique portable, des panneaux solaires portables ou un kit solaire de balcon.";
+  "Guides indépendants pour choisir une station électrique portable et des panneaux solaires portables : calculateurs, comparatifs et sources citées.";
 
 export const AMAZON_TAG: string = import.meta.env.AMAZON_TAG ?? 'VOTRE-TAG-21';
 
@@ -15,7 +15,7 @@ export const EDITOR_EMAIL = 'mailpro83136@gmail.com';
 export const GOOGLE_SITE_VERIFICATION = '3M1hSo1q-ifrYyXSqHJ_KfUYPSpkOArNGlMB8FCIQPY';
 // Code de validation Bing Webmaster Tools (balise msvalidate.01). Vide tant qu'il n'est pas utilisé.
 export const BING_SITE_VERIFICATION = '';
-export const LAST_UPDATE = '31 octobre 2026';
+export const LAST_UPDATE = '1er novembre 2026';
 
 // Les guides alimentent la navigation, les cartes de l'accueil et le pied de page.
 export const GUIDES = [

@@ -4,8 +4,8 @@ import AffiliateLink from './AffiliateLink.astro';
 import StationVisual from './StationVisual.astro';
 import Icon from './Icon.astro';
 // Fiches produits façon boutique, sans image ni prix Amazon (réservés à leur API).
-interface Props { ids?: string[] }
-const { ids } = Astro.props;
+interface Props { ids?: string[]; more?: boolean }
+const { ids, more = true } = Astro.props;
 const list = ids ? ids.map((id) => products.find((p) => p.id === id)!).filter(Boolean) : products;
 const brands = [...new Set(products.map((p) => p.brand))];
 // Garde le nombre en tête d'une valeur (« 600 continu… » -> « 600 »), sinon rien.
@@ -42,3 +42,4 @@ const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
     );
   })}
 </ul>
+{more && <p class="pcards-more"><a href="/selection/">Voir toute notre sélection de stations</a></p>}
