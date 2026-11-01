@@ -14,18 +14,46 @@ export function getStaticPaths() {
 }
 const { s } = Astro.props;
 const ids = idsFor(s.test);
+const list = ids.map((id) => products.find((p) => p.id === id)!);
 const schemas = listSchemas({
   site: Astro.site!,
   path: `/selection/${s.slug}/`,
   title: s.title,
   crumb: s.short,
   description: s.description,
+  faq: s.faq,
 });
 const related = GUIDES.filter((g) => s.related.includes(g.href));
+
+// Format des durées : « 4,3 h », « 1 h 40 » ou « 25 min ».
+const fmtH = (h: number) =>
+  h >= 2 ? `${Math.round(h * 10) / 10} h`.replace('.', ',') : h >= 1 ? `1 h ${Math.round((h - 1) * 60)}` : `${Math.round(h * 60)} min`;
+
+// Moins de 500 Wh : durées théoriques pour la plus petite et la plus grande capacité de la sélection.
+const caps = list.map((p) => p.capWh);
+const minCap = Math.min(...caps);
+const maxCap = Math.max(...caps);
+const powers = [...new Set(list.map((p) => p.outW))].sort((a, b) => a - b);
+const devices = [
+  { label: 'Éclairage LED', w: 10 },
+  { label: 'Ordinateur portable', w: 60 },
+  { label: 'Mini-frigo à compresseur, en marche', w: 50 },
+  ...powers.map((w) => ({ label: `Appareil de ${w} W (puissance maximale de certains modèles)`, w })),
+];
+const byPower = powers.map((w) => ({ w, names: list.filter((p) => p.outW === w).map((p) => p.name) }));
+
+// Camping : poids et entrée solaire telle que relevée dans les données, « à vérifier » sinon.
+const weightOf = (p: (typeof list)[number]) => ((p as { weightKg?: string }).weightKg ? `${(p as { weightKg?: string }).weightKg} kg` : 'à vérifier');
+// « 200 (à confirmer) » devient « 200 W (à confirmer) ».
+const solarOf = (p: (typeof list)[number]) => {
+  const m = String(p.solarInputW ?? '').match(/^(\d+)\s*(.*)$/);
+  return m ? `${m[1]} W${m[2] ? ' ' + m[2] : ''}` : 'à vérifier';
+};
+const allAbove160 = list.every((p) => p.capWh > 160);
 ---
 <Base title={s.title} description={s.description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
-  <GuideHero slot="hero" crumb={s.short} parent={{ href: '/selection/', label: 'Sélection' }} kicker={s.kicker} title={s.h1} updated={LAST_UPDATE} minutes={2} scene={s.scene} />
+  <GuideHero slot="hero" crumb={s.short} parent={{ href: '/selection/', label: 'Sélection' }} kicker={s.kicker} title={s.h1} updated={LAST_UPDATE} minutes={s.sections ? 4 : 2} scene={s.scene} />
 
   <div class="prose">
     {s.intro.map((p) => <p>{p}</p>)}
@@ -34,6 +62,59 @@ const related = GUIDES.filter((g) => s.related.includes(g.href));
 
   <h2>Les modèles ({ids.length})</h2>
   <ProductCards ids={ids} />
+
+  {s.sections?.filter((x) => x.id !== 'voyager-en-avion' || allAbove160).map((x) => (
+    <section class="prose">
+      <h2 id={x.id}>{x.title}</h2>
+      {x.text.map((t) => <p>{t}</p>)}
+
+      {s.slug === 'camping-randonnee' && x.id === 'poids-et-solaire' && (
+        <>
+          <table>
+            <thead><tr><th scope="col">Modèle</th><th scope="col">Poids</th><th scope="col">Entrée solaire maximale</th></tr></thead>
+            <tbody>
+              {list.map((p) => <tr><th scope="row">{p.name}</th><td>{weightOf(p)}</td><td>{solarOf(p)}</td></tr>)}
+            </tbody>
+          </table>
+          <p>Pour dimensionner un panneau, voir notre <a href="/panneau-solaire-portable-station-electrique/">guide des panneaux solaires portables</a>.</p>
+        </>
+      )}
+
+      {s.slug === 'moins-de-500-wh' && x.id === 'limites-de-puissance' && (
+        <table>
+            <thead><tr><th scope="col">Puissance de sortie continue</th><th scope="col">Modèles</th></tr></thead>
+            <tbody>
+              {byPower.map((b) => <tr><th scope="row">{b.w} W</th><td>{b.names.join(', ')}</td></tr>)}
+            </tbody>
+        </table>
+      )}
+
+      {s.slug === 'moins-de-500-wh' && x.id === 'durees-theoriques' && (
+        <>
+          <table>
+            <thead><tr><th scope="col">Appareil</th><th scope="col">Puissance</th><th scope="col">Avec {minCap} Wh</th><th scope="col">Avec {maxCap} Wh</th></tr></thead>
+            <tbody>
+              {devices.map((d) => <tr><th scope="row">{d.label}</th><td>{d.w} W</td><td>{fmtH(minCap / d.w)}</td><td>{fmtH(maxCap / d.w)}</td></tr>)}
+            </tbody>
+          </table>
+        </>
+      )}
+    </section>
+  ))}
+
+  {s.faq && (
+    <section class="prose">
+      <h2 id="questions-frequentes">Questions fréquentes</h2>
+      {s.faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+    </section>
+  )}
+
+  {s.sources && (
+    <section class="prose">
+      <h2 id="sources">Sources</h2>
+      <ul>{s.sources.map((x) => <li><a href={x.href}>{x.label}</a></li>)}</ul>
+    </section>
+  )}
 
   {related.length > 0 && (
     <Callout type="tip" title="Pour bien choisir">

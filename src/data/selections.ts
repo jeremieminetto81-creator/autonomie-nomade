@@ -5,6 +5,9 @@ import products from './products.json';
 type Product = (typeof products)[number];
 type Scene = 'capacity' | 'generator' | 'solar' | 'compare' | 'selection';
 
+export interface Section { id: string; title: string; text: string[] }
+export interface Faq { q: string; a: string }
+
 export interface Selection {
   slug: string;
   group: 'usage' | 'capacite';
@@ -20,6 +23,10 @@ export interface Selection {
   criteria: string;
   test: (p: Product) => boolean;
   related: string[];
+  // Contenu propre à la page, pour qu'aucune sélection ne ressemble à une autre.
+  sections?: Section[];
+  faq?: Faq[];
+  sources?: { label: string; href: string }[];
 }
 
 export const SELECTIONS: Selection[] = [
@@ -40,6 +47,37 @@ export const SELECTIONS: Selection[] = [
     criteria: 'Modèles de moins de 500 Wh de notre sélection.',
     test: (p) => p.capWh < 500,
     related: ['/quelle-capacite-station-electrique/', '/panneau-solaire-portable-station-electrique/'],
+    sections: [
+      {
+        id: 'preparer-son-bilan',
+        title: "Préparer son bilan d'énergie",
+        text: [
+          "Avant de partir, listez ce que vous voulez recharger : téléphones, lampe, enceinte, GPS, appareil photo, éventuellement une glacière électrique. Pour chaque appareil, notez sa puissance en watts et la durée d'utilisation prévue : notre calculateur en déduit l'énergie en Wh.",
+          "Sur un week-end, la glacière électrique est souvent le poste le plus gourmand. Elle fonctionne par cycles : calculez-la à part, sans compter 24 heures de fonctionnement continu.",
+        ],
+      },
+      {
+        id: 'poids-et-solaire',
+        title: 'Poids et recharge solaire des modèles',
+        text: [
+          "Deux critères comptent en randonnée : ce que l'on porte, et la possibilité de recharger sans prise. Les valeurs « à vérifier » n'ont pas été relevées sur une fiche : consultez la fiche du produit.",
+        ],
+      },
+      {
+        id: 'voyager-en-avion',
+        title: 'Peut-on voyager avec une station en avion ?',
+        text: [
+          "Le livret de la Direction générale de l'aviation civile sur les batteries au lithium impose de les garder en cabine. Entre 100 et 160 Wh, la limite est de 2 batteries par passager avec l'accord de la compagnie, et au-delà de 160 Wh le transport est interdit.",
+          "Toutes les stations de cette sélection dépassent 160 Wh : elles ne peuvent pas voyager en avion dans vos bagages. En cas de doute, reportez-vous à la documentation de votre compagnie.",
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quelle capacité emporter pour un week-end de camping ?', a: "Cela dépend de vos appareils. Additionnez l'énergie de chacun (puissance en watts multipliée par les heures d'usage) puis ajoutez une marge : notre calculateur de capacité le fait pour vous." },
+      { q: 'Peut-on recharger une station sans prise, en pleine nature ?', a: "Oui, avec un panneau solaire portable compatible avec l'entrée solaire de la station. La recharge dépend de l'ensoleillement : voir notre guide des panneaux solaires portables." },
+      { q: 'Peut-on emporter une station électrique en avion ?', a: "Pas dans les bagages des passagers si sa batterie dépasse 160 Wh, ce qui est le cas de tous les modèles de cette sélection, d'après le livret de la DGAC sur les batteries au lithium." },
+    ],
+    sources: [{ label: "DGAC, « Batteries lithium : anticiper le risque de feu à bord » (livret cabine ou soute)", href: 'https://www.ecologie.gouv.fr/sites/default/files/documents/Livret_cabine_ou_soute.pdf' }],
   },
   {
     slug: 'van-camping-car',
@@ -112,6 +150,28 @@ export const SELECTIONS: Selection[] = [
     criteria: 'Modèles de moins de 500 Wh de notre sélection.',
     test: (p) => p.capWh < 500,
     related: ['/quelle-capacite-station-electrique/'],
+    sections: [
+      {
+        id: 'limites-de-puissance',
+        title: 'Ce que ces stations ne peuvent pas alimenter',
+        text: [
+          "À cette capacité, la puissance de sortie est limitée, et elle varie du simple au double d'un modèle à l'autre (voir le tableau ci-dessous). Les appareils qui chauffent, comme une bouilloire, un radiateur, un sèche-cheveux ou une plaque de cuisson, demandent souvent plus que ce que ces stations peuvent fournir, et vident une batterie de cette taille en quelques minutes.",
+          "Pour ces usages, regardez plutôt les modèles de 1000 Wh et plus, dont la puissance de sortie est plus élevée.",
+        ],
+      },
+      {
+        id: 'durees-theoriques',
+        title: 'Combien de temps tient une petite station ?',
+        text: [
+          "Durée pour une station pleine, avec un seul appareil branché : capacité en Wh divisée par la puissance en W. Ce sont des calculs, pas des mesures, et ils ignorent les pertes de conversion. Notre calculateur de capacité les intègre avec une marge réglable.",
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien de temps tient une station de moins de 500 Wh ?', a: "Divisez sa capacité en Wh par la puissance de l'appareil en watts. Avec un appareil de 60 W, une station de 280 Wh tient en théorie environ 4,7 heures, avant de compter les pertes de conversion." },
+      { q: 'Une petite station peut-elle alimenter un mini-frigo ?', a: "Un mini-frigo à compresseur de quelques dizaines de watts, oui, pour quelques heures. Il fonctionne par cycles : calculez sa consommation réelle avec notre calculateur plutôt que de compter 24 heures." },
+      { q: 'Quelle différence entre 300 W et 600 W de puissance de sortie ?', a: "La puissance de sortie décide des appareils que l'on peut brancher, pas de la durée. Un appareil de 400 W ne fonctionne pas sur une station limitée à 300 W, même si sa batterie est pleine." },
+    ],
   },
   {
     slug: '1000-a-1500-wh',
