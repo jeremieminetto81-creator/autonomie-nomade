@@ -98,24 +98,26 @@
     "outW": 2000
   },
   {
+    "id": "jackery-explorer-300d",
+    "name": "Jackery Explorer 300D",
+    "brand": "Jackery",
     "category": "station-electrique",
+    "asin": "B0G6YCDF9Z",
+    "capacityWh": "288 (fiche Amazon)",
+    "outputW": "300 (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "weightKg": "2,5",
+    "ports": "3 USB-C (2 × 140 W, 1 × 65 W), 1 USB-A, 1 sortie 12 V ; aucune prise 230 V",
+    "cycles": "4000 cycles jusqu'à environ 70 % de capacité (fiche Amazon)",
     "strengths": [
       "à vérifier"
     ],
     "limits": [
       "à vérifier"
     ],
+    "highlight": "Sans prise 230 V : USB-C et 12 V uniquement, vendue avec un panneau de 100 W",
     "lastChecked": "2026-11-01",
-    "id": "jackery-explorer-300-plus",
-    "name": "Jackery Explorer 300 Plus",
-    "brand": "Jackery",
-    "asin": "à vérifier",
-    "capacityWh": "288 (fiche Amazon)",
-    "outputW": "300 continu, 600 en pointe (fiche Amazon)",
-    "batteryType": "LiFePO4",
-    "weightKg": "3,7",
-    "highlight": "Léger : 3,7 kg selon la fiche Amazon",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Seules des offres avec panneau solaire ont été trouvées : le lien mène à une recherche Amazon.",
+    "source": "Fiche Amazon.fr consultée le 01/11/2026 (titre, caractéristiques et description). Fiche officielle non consultée. Offre en kit avec panneau solaire de 100 W.",
     "capWh": 288,
     "outW": 300
   },
@@ -205,25 +207,26 @@
     "outW": 2200
   },
   {
+    "id": "bluetti-elite-200-v2",
+    "name": "Bluetti Elite 200 V2",
+    "brand": "Bluetti",
     "category": "station-electrique",
+    "asin": "B0DRFZ8C31",
+    "capacityWh": "2073 (fiche Amazon)",
+    "outputW": "2600 continu, 5200 en pointe (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "weightKg": "24,2",
+    "cycles": "plus de 6000 cycles (fiche Amazon)",
     "strengths": [
       "à vérifier"
     ],
     "limits": [
       "à vérifier"
     ],
+    "highlight": "La plus puissante de notre sélection (2600 W)",
     "lastChecked": "2026-11-01",
-    "id": "bluetti-ac200l",
-    "name": "Bluetti AC200L",
-    "brand": "Bluetti",
-    "asin": "à vérifier",
-    "capacityWh": "2048 (fiche Amazon)",
-    "outputW": "2400 continu, 3600 en mode Power Lifting (fiche Amazon)",
-    "batteryType": "LiFePO4",
-    "solarInputW": "1200 (fiche Amazon)",
-    "highlight": "La plus puissante de notre sélection (2400 W), extensible jusqu'à 8192 Wh",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Seules des offres avec panneau ou reconditionnées ont été trouvées : le lien mène à une recherche Amazon.",
-    "capWh": 2048,
-    "outW": 2400
+    "source": "Fiche Amazon.fr consultée le 01/11/2026 (titre, caractéristiques et description). Fiche officielle non consultée.",
+    "capWh": 2073,
+    "outW": 2600
   }
 ]
