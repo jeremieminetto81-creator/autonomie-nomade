@@ -4,6 +4,7 @@ import '@fontsource-variable/bricolage-grotesque/wght.css';
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { organization } from '../lib/schema';
+import { SELECTIONS } from '../data/selections';
 import { SITE_NAME, SITE_DESCRIPTION, NAV, GUIDES, AMAZON_MENTION, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from '../config';
 // wide : mise en page large (accueil, sélection). progress : barre de progression de lecture (guides).
 interface Props { title: string; description?: string; noindex?: boolean; ogType?: 'website' | 'article'; wide?: boolean; progress?: boolean }
@@ -76,6 +77,10 @@ const jsonLd = JSON.stringify({
         <div>
           <p class="footer-title">Guides</p>
           <ul>{GUIDES.map((g) => <li><a href={g.href}>{g.title}</a></li>)}</ul>
+        </div>
+        <div>
+          <p class="footer-title">Sélections</p>
+          <ul>{SELECTIONS.filter((s) => s.group === 'usage').map((s) => <li><a href={`/selection/${s.slug}/`}>{s.short}</a></li>)}</ul>
         </div>
         <div>
           <p class="footer-title">Le site</p>

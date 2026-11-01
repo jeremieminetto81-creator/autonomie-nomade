@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import GuideHero from '../../components/GuideHero.astro';
+import Callout from '../../components/Callout.astro';
+import ProductCards from '../../components/ProductCards.astro';
+import SelectionNav from '../../components/SelectionNav.astro';
+import { listSchemas } from '../../lib/schema';
+import { SELECTIONS, idsFor } from '../../data/selections';
+import products from '../../data/products.json';
+import { GUIDES, LAST_UPDATE } from '../../config';
+
+export function getStaticPaths() {
+  return SELECTIONS.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const ids = idsFor(s.test);
+const schemas = listSchemas({
+  site: Astro.site!,
+  path: `/selection/${s.slug}/`,
+  title: s.title,
+  crumb: s.short,
+  items: ids.map((id) => products.find((p) => p.id === id)!.name),
+});
+const related = GUIDES.filter((g) => s.related.includes(g.href));
+---
+<Base title={s.title} description={s.description} wide>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+  <GuideHero slot="hero" crumb={s.short} parent={{ href: '/selection/', label: 'Sélection' }} kicker={s.kicker} title={s.title} updated={LAST_UPDATE} minutes={2} scene={s.scene} />
+
+  <div class="prose">
+    {s.intro.map((p) => <p>{p}</p>)}
+    <p class="criteria"><strong>Comment nous avons choisi :</strong> {s.criteria} Nous n'avons testé aucun de ces produits.</p>
+  </div>
+
+  <h2>Les modèles ({ids.length})</h2>
+  <ProductCards ids={ids} />
+
+  {related.length > 0 && (
+    <Callout type="tip" title="Pour bien choisir">
+      {related.map((g, i) => <>{i > 0 && ' · '}<a href={g.href}>{g.title}</a></>)}
+    </Callout>
+  )}
+
+  <h2>Les autres sélections</h2>
+  <SelectionNav current={`/selection/${s.slug}/`} />
+</Base>

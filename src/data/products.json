@@ -17,7 +17,9 @@
     "lastChecked": "2026-10-31",
     "source": "Fiches revendeurs et presse (newswire.com, galaxus.fr, storagereview.com). ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
     "solarInputW": "200 (à confirmer)",
-    "highlight": "Pour un usage léger : la plus petite capacité de notre sélection (268 Wh)"
+    "highlight": "Pour un usage léger : la plus petite capacité de notre sélection (268 Wh)",
+    "capWh": 268,
+    "outW": 600
   },
   {
     "id": "ecoflow-river-3-plus",
@@ -37,7 +39,9 @@
     "lastChecked": "2026-10-31",
     "source": "Fiches revendeurs (castorama.fr, galaxus.ch, camping-car-plus.com). Poids divergent selon les sources. ASIN relevé dans l'URL d'une fiche Amazon.fr trouvée par recherche (non ouverte, offre à re-vérifier : vendeur, variante, disponibilité). Fiche officielle non consultée.",
     "solarInputW": "220 (à confirmer)",
-    "highlight": "Extensible jusqu'à 858 Wh avec une batterie additionnelle"
+    "highlight": "Extensible jusqu'à 858 Wh avec une batterie additionnelle",
+    "capWh": 286,
+    "outW": 600
   },
   {
     "id": "jackery-explorer-1000-v2",
@@ -62,7 +66,9 @@
     "ports": "2 prises CA, 2 USB-C, 1 USB-A, 1 allume-cigare",
     "cycles": "4000 cycles jusqu'à 70 % de capacité",
     "warranty": "3 + 2 ans",
-    "highlight": "Le plus léger des modèles 1000 Wh de notre sélection"
+    "highlight": "Recharge complète en 1 h en mode urgence, via l'application",
+    "capWh": 1070,
+    "outW": 1500
   },
   {
     "id": "anker-solix-c1000-gen-2",
@@ -87,6 +93,137 @@
     "ports": "prises CA (nombre à vérifier), 3 USB-C, 1 USB-A, 1 allume-cigare",
     "cycles": "4000 cycles en gardant au moins 80 % (fiche Amazon)",
     "warranty": "à vérifier",
-    "highlight": "Le plus puissant de notre sélection (2000 W)"
+    "highlight": "Recharge complète annoncée en 49 min (mode UltraFast, fiche Amazon)",
+    "capWh": 1024,
+    "outW": 2000
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "jackery-explorer-300-plus",
+    "name": "Jackery Explorer 300 Plus",
+    "brand": "Jackery",
+    "asin": "à vérifier",
+    "capacityWh": "288 (fiche Amazon)",
+    "outputW": "300 continu, 600 en pointe (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "weightKg": "3,7",
+    "highlight": "Léger : 3,7 kg selon la fiche Amazon",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Seules des offres avec panneau solaire ont été trouvées : le lien mène à une recherche Amazon.",
+    "capWh": 288,
+    "outW": 300
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "anker-solix-c300x",
+    "name": "Anker SOLIX C300X",
+    "brand": "Anker",
+    "asin": "B0DLLBMGC3",
+    "capacityWh": "288 (fiche Amazon)",
+    "outputW": "300 continu, 600 en pointe (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "highlight": "Deux prises CA pour une station de 288 Wh",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée.",
+    "capWh": 288,
+    "outW": 300
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "bluetti-ac180",
+    "name": "Bluetti AC180",
+    "brand": "Bluetti",
+    "asin": "B0C14D9DBB",
+    "capacityWh": "1152 (fiche Amazon)",
+    "outputW": "1800 continu, 2700 en mode Power Lifting (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "highlight": "Recharge de 0 à 80 % annoncée en 45 min",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Poids divergent selon les fiches (16 ou 18 kg).",
+    "capWh": 1152,
+    "outW": 1800
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "ecoflow-delta-3-plus",
+    "name": "EcoFlow DELTA 3 Plus",
+    "brand": "EcoFlow",
+    "asin": "B0DFPW2Y2C",
+    "capacityWh": "1024 (fiche Amazon)",
+    "outputW": "1800 (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "solarInputW": "1000 (fiche Amazon)",
+    "highlight": "Entrée solaire jusqu'à 1000 W selon la fiche Amazon",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée.",
+    "capWh": 1024,
+    "outW": 1800
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "jackery-explorer-2000-v2",
+    "name": "Jackery Explorer 2000 v2",
+    "brand": "Jackery",
+    "asin": "B0DSK8DN8N",
+    "capacityWh": "2042 (fiche Amazon)",
+    "outputW": "2200 continu, 4400 en pointe (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "highlight": "Plus de 2000 Wh pour les besoins importants",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Une autre fiche indique 2040 Wh.",
+    "capWh": 2042,
+    "outW": 2200
+  },
+  {
+    "category": "station-electrique",
+    "strengths": [
+      "à vérifier"
+    ],
+    "limits": [
+      "à vérifier"
+    ],
+    "lastChecked": "2026-11-01",
+    "id": "bluetti-ac200l",
+    "name": "Bluetti AC200L",
+    "brand": "Bluetti",
+    "asin": "à vérifier",
+    "capacityWh": "2048 (fiche Amazon)",
+    "outputW": "2400 continu, 3600 en mode Power Lifting (fiche Amazon)",
+    "batteryType": "LiFePO4",
+    "solarInputW": "1200 (fiche Amazon)",
+    "highlight": "La plus puissante de notre sélection (2400 W), extensible jusqu'à 8192 Wh",
+    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Seules des offres avec panneau ou reconditionnées ont été trouvées : le lien mène à une recherche Amazon.",
+    "capWh": 2048,
+    "outW": 2400
   }
 ]

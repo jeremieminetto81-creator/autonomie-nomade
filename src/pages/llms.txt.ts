@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { SITE_NAME, SITE_DESCRIPTION, GUIDES, AMAZON_MENTION } from '../config';
 import products from '../data/products.json';
+import { SELECTIONS, BRANDS, brandSlug } from '../data/selections';
 
 // Résumé du site pour les assistants IA (proposition llms.txt), généré au build à partir des guides et produits.
 export const GET: APIRoute = ({ site }) => {
@@ -16,6 +17,11 @@ export const GET: APIRoute = ({ site }) => {
     '',
     ...GUIDES.map((g) => `- [${g.title}](${abs(g.href)}) : ${g.desc}`),
     `- [Notre sélection de stations électriques portables](${abs('/selection/')}) : les modèles présentés, avec leurs caractéristiques clés.`,
+    '',
+    '## Sélections',
+    '',
+    ...SELECTIONS.map((x) => `- [${x.title}](${abs(`/selection/${x.slug}/`)}) : ${x.criteria}`),
+    ...BRANDS.map((b) => `- [Stations électriques ${b}](${abs(`/marque/${brandSlug(b)}/`)})`),
     '',
     '## Produits présentés',
     '',

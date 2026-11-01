@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import products from '../data/products.json';
+import { SELECTIONS, BRANDS, brandSlug, idsFor } from '../data/selections';
+// Navigation entre toutes les sélections, regroupées par usage, capacité et marque.
+interface Props { current?: string }
+const { current } = Astro.props;
+const groups = [
+  { title: 'Par usage', items: SELECTIONS.filter((s) => s.group === 'usage').map((s) => ({ href: `/selection/${s.slug}/`, label: s.short, icon: s.icon, n: idsFor(s.test).length })) },
+  { title: 'Par capacité', items: SELECTIONS.filter((s) => s.group === 'capacite').map((s) => ({ href: `/selection/${s.slug}/`, label: s.short, icon: s.icon, n: idsFor(s.test).length })) },
+  { title: 'Par marque', items: BRANDS.map((b) => ({ href: `/marque/${brandSlug(b)}/`, label: b, icon: 'check' as const, n: products.filter((p) => p.brand === b).length })) },
+];
+---
+<div class="sel-groups">
+  {groups.map((g) => (
+    <div class="sel-group">
+      <p class="sel-group-title">{g.title}</p>
+      <ul class="sel-chips">
+        {g.items.map((i) => (
+          <li><a class="sel-chip" href={i.href} aria-current={i.href === current ? 'page' : undefined}><Icon name={i.icon} size={18} />{i.label}<span class="sel-count">{i.n}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

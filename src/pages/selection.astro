@@ -3,13 +3,15 @@ import Base from '../layouts/Base.astro';
 import GuideHero from '../components/GuideHero.astro';
 import Callout from '../components/Callout.astro';
 import ProductCards from '../components/ProductCards.astro';
+import SelectionNav from '../components/SelectionNav.astro';
+import { idsFor } from '../data/selections';
 import { listSchemas } from '../lib/schema';
 import { GUIDES, LAST_UPDATE } from '../config';
 import products from '../data/products.json';
 
 const title = 'Notre sélection de stations électriques portables';
 const description =
-  "Quatre stations électriques portables de 268 à 1070 Wh, présentées avec leurs caractéristiques clés et leur point fort, pour choisir selon votre usage.";
+  "Dix stations électriques portables de 268 à 2048 Wh, classées par usage, par capacité et par marque, avec leurs caractéristiques clés et leur point fort.";
 const schemas = listSchemas({
   site: Astro.site!,
   path: '/selection/',
@@ -22,11 +24,14 @@ const schemas = listSchemas({
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <GuideHero slot="hero" crumb="Sélection" kicker="Sélection" title="Notre sélection de stations électriques portables" updated={LAST_UPDATE} minutes={2} scene="selection" />
-  <p class="lead">Quatre modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de 1000 Wh pour un week-end en van.</p>
+  <p class="lead">{products.length} modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de plus de 2000 Wh pour les besoins importants. Choisissez par usage, par capacité ou par marque.</p>
+
+  <h2>Choisir une sélection</h2>
+  <SelectionNav current="/selection/" />
 
 
-  <h2>Les modèles</h2>
-  <ProductCards more={false} />
+  <h2>Tous les modèles ({products.length})</h2>
+  <ProductCards ids={idsFor(() => true)} more={false} />
 
   <Callout type="tip" title="Avant de choisir">
     Calculez d'abord l'énergie dont vous avez besoin avec notre <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a>, puis vérifiez la puissance de sortie et l'entrée solaire sur la fiche du produit.

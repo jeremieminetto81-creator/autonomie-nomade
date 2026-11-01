@@ -18,6 +18,7 @@ const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
     const solar = num(p.solarInputW);
     const weight = (p as { weightKg?: string }).weightKg;
     const toConfirm = /confirmer|vérifier/.test(`${p.capacityWh} ${p.outputW}`);
+    const amazonOnly = !toConfirm && /fiche Amazon/.test(p.capacityWh);
     return (
       <li class="pcard">
         <div class={`pcard-visual tone-${(brands.indexOf(p.brand) % 4) + 1}`}>
@@ -35,6 +36,7 @@ const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
           {p.highlight && <p class="pcard-highlight"><Icon name="check" size={16} /> {p.highlight}</p>}
           {solar && <p class="pcard-meta">Entrée solaire jusqu'à {solar} W</p>}
           {toConfirm && <p class="pcard-meta">Valeurs à confirmer sur la fiche du produit</p>}
+          {amazonOnly && <p class="pcard-meta">Valeurs issues de la fiche Amazon, à confirmer</p>}
           <AffiliateLink name={p.name} asin={p.asin} label="Voir le prix sur Amazon" />
           <p class="pcard-ad">Publicité : lien affilié</p>
         </div>
