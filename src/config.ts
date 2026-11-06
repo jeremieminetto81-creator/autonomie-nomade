@@ -12,7 +12,7 @@ export const AMAZON_MENTION =
 
 export const EDITOR_EMAIL = 'mailpro83136@gmail.com';
 // Code de validation Google Search Console (balise HTML). Public, ce n'est pas un secret.
-export const GOOGLE_SITE_VERIFICATION = '3M1hSo1q-ifrYyXSqHJ_KfUYPSpkOArNGlMB8FCIQPY';
+export const GOOGLE_SITE_VERIFICATION = 'wSgkMcBZMIX3FudKAD971YGQs-VkPW9buZ1nn-wYA7I';
 // Code de validation Bing Webmaster Tools (balise msvalidate.01). Vide tant qu'il n'est pas utilisé.
 export const BING_SITE_VERIFICATION = '';
 export const LAST_UPDATE = '1er novembre 2026';
