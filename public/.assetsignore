@@ -1,0 +1,3 @@
+# _headers et _redirects sont lus par Cloudflare mais ne doivent pas être servis comme des fichiers publics.
+_headers
+_redirects

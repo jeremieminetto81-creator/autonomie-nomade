@@ -1,0 +1,12 @@
+{
+  // Hébergement Cloudflare : site statique (Astro) servi depuis le dossier dist/.
+  "name": "autonomie-nomade",
+  "compatibility_date": "2026-11-06",
+  "assets": {
+    "directory": "./dist",
+    // Les adresses sans slash final ou en « index.html » sont redirigées vers l'adresse propre.
+    "html_handling": "auto-trailing-slash",
+    // Une adresse inconnue renvoie notre page 404.html avec un vrai code 404.
+    "not_found_handling": "404-page"
+  }
+}

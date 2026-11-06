@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/minify-public.mjs",
+    "build": "astro build && node scripts/minify-public.mjs && node scripts/write-redirects.mjs",
     "preview": "astro preview",
     "check:affiliate": "node scripts/check-affiliate.mjs",
     "check:secrets": "node scripts/check-secrets.mjs",
@@ -17,7 +17,8 @@
     "indexnow": "node scripts/indexnow.mjs",
     "og-images": "node scripts/og-images.mjs",
     "check": "npm run build && npm run check:affiliate && npm run check:secrets && npm run check:headers && npm run check:links && npm run check:html",
-    "check:full": "npm run check && npm run audit:pages"
+    "check:full": "npm run check && npm run audit:pages",
+    "build:prod": "npm run build && npm run check:affiliate && npm run check:headers && npm run check:links && npm run check:prod"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
@@ -30,6 +31,7 @@
     "esbuild": "0.28.2",
     "html-validate": "11.17.0",
     "lighthouse": "13.5.0",
-    "puppeteer-core": "25.16.0"
+    "puppeteer-core": "25.16.0",
+    "wrangler": "4.158.0"
   }
 }

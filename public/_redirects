@@ -1,3 +1,0 @@
-# Une seule adresse par page : les variantes « index.html » redirigent vers l'adresse propre (301).
-/index.html          /                301!
-/*/index.html        /:splat/         301!
