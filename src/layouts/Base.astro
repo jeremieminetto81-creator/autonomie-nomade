@@ -9,8 +9,9 @@ import { organization } from '../lib/schema';
 import { SELECTIONS } from '../data/selections';
 import { SITE_NAME, SITE_DESCRIPTION, NAV, GUIDES, AMAZON_MENTION, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from '../config';
 // wide : mise en page large (accueil, sélection). progress : barre de progression de lecture (guides).
-interface Props { title: string; description?: string; noindex?: boolean; ogType?: 'website' | 'article'; wide?: boolean; progress?: boolean }
-const { title, description = SITE_DESCRIPTION, noindex = false, ogType = 'website', wide = false, progress = false } = Astro.props;
+// bare : la page gère elle-même ses conteneurs (bandeaux pleine largeur).
+interface Props { title: string; description?: string; noindex?: boolean; ogType?: 'website' | 'article'; wide?: boolean; progress?: boolean; bare?: boolean }
+const { title, description = SITE_DESCRIPTION, noindex = false, ogType = 'website', wide = false, progress = false, bare = false } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
 // Image de partage : une par guide et pour la sélection, sinon l'image générale (voir scripts/og-images.mjs).
@@ -72,9 +73,11 @@ const jsonLd = JSON.stringify({
   </header>
   <main id="contenu">
     <slot name="hero" />
-    <div class={wide ? 'wrap-wide' : 'wrap'}>
-      <slot />
-    </div>
+    {bare ? <slot /> : (
+      <div class={wide ? 'wrap-wide' : 'wrap'}>
+        <slot />
+      </div>
+    )}
   </main>
   <footer class="site-footer">
     <div class="wrap-wide">

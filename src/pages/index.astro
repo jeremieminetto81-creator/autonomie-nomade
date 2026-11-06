@@ -5,6 +5,7 @@ import Icon from '../components/Icon.astro';
 import Scene from '../components/Scene.astro';
 import ProductCards from '../components/ProductCards.astro';
 import SelectionNav from '../components/SelectionNav.astro';
+import products from '../data/products.json';
 import { GUIDES } from '../config';
 
 const steps = [
@@ -12,8 +13,13 @@ const steps = [
   { icon: 'scale', title: 'Comparez les modèles', text: 'Capacité, puissance, entrée solaire, poids : les chiffres des fiches officielles, côte à côte.', href: '/station-electrique-portable-1000-wh/' },
   { icon: 'check', title: 'Choisissez sereinement', text: 'Vérifiez le prix du modèle retenu sur Amazon.fr et gardez nos conseils de sécurité en tête.', href: '/selection/' },
 ] as const;
+const stats = [
+  { n: products.length, label: 'stations comparées' },
+  { n: GUIDES.length, label: 'guides détaillés' },
+  { n: 2, label: 'calculateurs gratuits' },
+];
 ---
-<Base title="Station électrique portable : guides" wide>
+<Base title="Station électrique portable : guides" bare>
   <section slot="hero" class="home-hero">
     <div class="wrap-wide home-hero-inner">
       <div class="home-hero-text">
@@ -32,51 +38,73 @@ const steps = [
       </div>
       <div class="home-hero-art"><Scene name="home" /></div>
     </div>
+    <div class="wrap-wide">
+      <ul class="hero-stats">
+        {stats.map((s) => <li><strong>{s.n}</strong><span>{s.label}</span></li>)}
+      </ul>
+    </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Comment ça marche</h2>
-    <ol class="steps">
-      {steps.map((s, i) => (
-        <li class="step">
-          <span class="step-num">{i + 1}</span>
-          <span class="step-icon"><Icon name={s.icon} size={24} /></span>
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-          <a href={s.href}>Commencer <Icon name="arrow" size={16} /></a>
-        </li>
-      ))}
-    </ol>
+  <section class="band band-soft">
+    <div class="wrap-wide">
+      <h2 class="section-title">Comment ça marche</h2>
+      <ol class="steps">
+        {steps.map((s, i) => (
+          <li class="step reveal">
+            <span class="step-num">{i + 1}</span>
+            <span class="step-icon"><Icon name={s.icon} size={24} /></span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <a href={s.href}>Commencer <Icon name="arrow" size={16} /></a>
+          </li>
+        ))}
+      </ol>
+    </div>
   </section>
 
-  <section class="section">
+  <section class="wrap-wide section">
     <h2 class="section-title">Les guides</h2>
-    <div class="cards">
+    <div class="gcards">
       {GUIDES.map((g) => (
-        <a class="card" href={g.href}>
-          <span class="card-icon"><Icon name={g.icon} size={24} /></span>
-          <span class="card-title">{g.title}</span>
-          <span class="card-desc">{g.desc}</span>
-          <span class="card-more">Lire le guide <Icon name="arrow" size={16} /></span>
+        <a class="gcard reveal" href={g.href}>
+          <span class={`gcard-art tone-${g.tone}`}><Scene name={g.scene} /></span>
+          <span class="gcard-body">
+            <span class="gcard-title">{g.title}</span>
+            <span class="gcard-desc">{g.desc}</span>
+            <span class="card-more">Lire le guide <Icon name="arrow" size={16} /></span>
+          </span>
         </a>
       ))}
     </div>
   </section>
 
-  <section class="section">
+  <section class="band band-dark">
+    <div class="wrap-wide cta-inner">
+      <div>
+        <p class="kicker kicker-light">Calculateur gratuit</p>
+        <h2 class="cta-title">Combien de Wh vous faut-il&nbsp;?</h2>
+        <p class="cta-text">Listez vos appareils, indiquez leur puissance et leur durée d'usage : le résultat est immédiat, et rien n'est enregistré.</p>
+      </div>
+      <a class="btn btn-light btn-lg" href="/quelle-capacite-station-electrique/">Ouvrir le calculateur <Icon name="arrow" size={18} /></a>
+    </div>
+  </section>
+
+  <section class="wrap-wide section">
     <h2 class="section-title">Notre sélection</h2>
     <SelectionNav />
-    <ProductCards ids={['anker-solix-c300x', 'jackery-explorer-1000-v2', 'ecoflow-delta-3-plus', 'bluetti-elite-200-v2']} more={false} />
+    <div class="home-cards"><ProductCards ids={["anker-solix-c300x", "jackery-explorer-1000-v2", "ecoflow-delta-3-plus", "bluetti-elite-200-v2"]} more={false} /></div>
     <p><a class="link-arrow" href="/selection/">Voir toute la sélection <Icon name="arrow" size={16} /></a></p>
   </section>
 
-  <section class="section prose">
-    <h2 class="section-title">Pourquoi une station électrique portable ?</h2>
-    <p>Une station électrique portable est une grosse batterie équipée de prises 230 V, de ports USB et souvent d'une entrée solaire. Contrairement à un groupe électrogène, elle ne brûle pas de carburant : elle est silencieuse et peut s'utiliser à l'abri. On l'emporte en van, en camping-car ou en camping, on la garde pour les coupures de courant, ou on s'en sert sur un chantier sans prise à proximité.</p>
-    <p>Pour bien la choisir, deux chiffres comptent : sa capacité en wattheures (Wh), qui fixe combien de temps elle tient, et sa puissance de sortie en watts (W), qui fixe quels appareils elle peut alimenter. Nos guides vous aident à calculer les deux selon vos besoins réels.</p>
-    <p>Nous n'avons testé aucun produit nous-mêmes : nos analyses reposent sur les caractéristiques publiées et des sources publiques, toujours citées.</p>
-    <Callout type="warning" title="Sécurité">
-      Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale.
-    </Callout>
+  <section class="band band-soft">
+    <div class="wrap-wide prose">
+      <h2 class="section-title">Pourquoi une station électrique portable ?</h2>
+      <p>Une station électrique portable est une grosse batterie équipée de prises 230 V, de ports USB et souvent d'une entrée solaire. Contrairement à un groupe électrogène, elle ne brûle pas de carburant : elle est silencieuse et peut s'utiliser à l'abri. On l'emporte en van, en camping-car ou en camping, on la garde pour les coupures de courant, ou on s'en sert sur un chantier sans prise à proximité.</p>
+      <p>Pour bien la choisir, deux chiffres comptent : sa capacité en wattheures (Wh), qui fixe combien de temps elle tient, et sa puissance de sortie en watts (W), qui fixe quels appareils elle peut alimenter. Nos guides vous aident à calculer les deux selon vos besoins réels.</p>
+      <p>Nous n'avons testé aucun produit nous-mêmes : nos analyses reposent sur les caractéristiques publiées et des sources publiques, toujours citées.</p>
+      <Callout type="warning" title="Sécurité">
+        Une station électrique ne remplace ni une installation électrique ni une alimentation médicale vitale.
+      </Callout>
+    </div>
   </section>
 </Base>

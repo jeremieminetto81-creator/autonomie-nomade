@@ -25,6 +25,8 @@ export const GUIDES = [
     title: 'Quelle capacité de station électrique choisir ?',
     desc: "Calculez l'énergie dont vous avez besoin en Wh, appareil par appareil.",
     icon: 'battery',
+    scene: 'capacity',
+    tone: 1,
   },
   {
     href: '/station-electrique-portable-vs-groupe-electrogene/',
@@ -32,6 +34,8 @@ export const GUIDES = [
     title: 'Station électrique ou groupe électrogène ?',
     desc: 'Bruit, autonomie, sécurité : lequel choisir selon votre usage.',
     icon: 'plug',
+    scene: 'generator',
+    tone: 3,
   },
   {
     href: '/panneau-solaire-portable-station-electrique/',
@@ -39,6 +43,8 @@ export const GUIDES = [
     title: 'Quel panneau solaire pour sa station ?',
     desc: 'Puissance réelle, tension et temps de recharge, avec calculateur.',
     icon: 'sun',
+    scene: 'solar',
+    tone: 2,
   },
   {
     href: '/station-electrique-portable-1000-wh/',
@@ -46,6 +52,8 @@ export const GUIDES = [
     title: 'Station électrique 1000 Wh : Jackery ou Anker ?',
     desc: 'Ce que 1000 Wh permettent, et deux modèles comparés sur fiches officielles.',
     icon: 'scale',
+    scene: 'compare',
+    tone: 4,
   },
 ] as const;
 

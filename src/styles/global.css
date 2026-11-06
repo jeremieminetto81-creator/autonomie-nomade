@@ -129,7 +129,7 @@ a:hover{color:var(--accent-d)}
 .toc-title{display:flex;align-items:center;gap:8px;margin:0 0 4px;font-weight:700}
 .toc ol{margin:0;padding-left:22px}
 .toc li{margin:0}
-.toc li a{display:inline-block;padding:4px 0}
+.toc li a{display:block;padding:4px 0}
 
 /* Tableaux */
 table{width:100%;border-collapse:separate;border-spacing:0;margin:18px 0;font-size:.95rem;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -207,3 +207,104 @@ caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);pad
 .footer-note{margin:18px 0 0;font-size:.85rem}
 
 @media(max-width:480px){body{font-size:17px}h1{font-size:1.75rem}}
+
+/* ===== Refonte visuelle : rythme, bandeaux, cartes illustrées ===== */
+:root{--hero-glow:#fff7ef;--band-dark:#2a1d15;--band-dark-fg:#f3ebe3}
+@media (prefers-color-scheme:dark){:root{--hero-glow:#4a2b1b}}
+
+/* Bandeaux pleine largeur, en alternance */
+.band{padding:64px 0}
+.band-soft{background:var(--card);border-block:1px solid var(--line)}
+.band-soft .step{background:var(--bg)}
+.band-dark{background:var(--band-dark);color:var(--band-dark-fg)}
+.wrap-wide.section{margin:64px auto}
+.band .wrap-wide.prose{max-width:1120px}
+.band .prose>p,.band .prose>.callout{max-width:760px}
+.kicker-light{color:#fdab7a}
+
+/* Bandeau d'accueil : halo lumineux et chiffres clés */
+.home-hero{background:radial-gradient(900px 420px at 88% -10%,var(--hero-glow) 0%,transparent 70%),var(--accent-soft)}
+.home-hero-inner{padding-bottom:28px}
+.home-hero-art .scene{max-width:480px;filter:drop-shadow(0 18px 24px rgba(42,33,27,.12))}
+.hero-stats{list-style:none;margin:0;padding:0 0 36px;display:flex;flex-wrap:wrap;gap:12px}
+.hero-stats li{display:flex;align-items:baseline;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px}
+.hero-stats strong{font-family:var(--font-display);font-size:1.7rem;line-height:1;color:var(--accent)}
+.hero-stats span{color:var(--muted);font-size:.95rem}
+.sc-chip rect{fill:var(--card);stroke:var(--line);stroke-width:2}
+.sc-chip text{fill:var(--fg);font-family:var(--font-display);font-size:11.5px;font-weight:700}
+
+/* Étapes : numéro dans un disque */
+.step-num{top:18px;right:18px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:1rem;font-weight:700}
+
+/* Cartes des guides avec illustration */
+.gcards{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:700px){.gcards{grid-template-columns:repeat(2,1fr)}}
+.gcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;color:var(--fg);text-decoration:none}
+.gcard:hover{border-color:var(--accent);color:var(--fg)}
+.gcard-art{display:flex;align-items:center;justify-content:center;height:156px;background:var(--tone-soft)}
+.gcard-art .scene{height:100%;width:auto}
+.gcard-body{display:flex;flex-direction:column;flex:1;gap:6px;padding:18px 22px 22px}
+.gcard-title{font-family:var(--font-display);font-weight:700;font-size:1.22rem;line-height:1.3}
+.gcard-desc{color:var(--muted);font-size:.97rem;flex:1}
+
+/* Appel à l'action du calculateur */
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px 40px;flex-wrap:wrap}
+.cta-title{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:6px 0 8px;color:var(--band-dark-fg)}
+.cta-text{margin:0;max-width:560px;color:#cbbcad}
+.btn-light{display:inline-flex;align-items:center;gap:10px;background:#fb8a4c;color:#1a0d05}
+.btn-light:hover{background:#fdab7a;color:#1a0d05}
+
+/* Fiches produits : visuel plus grand */
+.pcard-visual{height:164px}
+.pcard-visual .station{width:132px;height:auto}
+.pcard-visual::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--card);opacity:.55}
+.pcard-visual .station{position:relative}
+
+/* Survols : les cartes illustrées se soulèvent aussi */
+.gcard{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.gcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+/* Apparition douce au défilement, sans JavaScript (si le navigateur sait le faire) */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{animation:rise linear backwards;animation-timeline:view();animation-range:entry 0% entry 40%}
+  }
+}
+@media (prefers-reduced-motion:reduce){.gcard:hover{transform:none}}
+
+/* Sommaire en deux colonnes sur grand écran */
+@media(min-width:760px){.toc ol{columns:2;column-gap:36px}.toc li{break-inside:avoid}}
+
+/* Mobile : menu et pastilles défilent horizontalement, espacements resserrés */
+@media(max-width:700px){
+  .band{padding:44px 0}
+  .wrap-wide.section{margin:44px auto}
+  .hero-stats li{padding:8px 14px}
+  .hero-stats strong{font-size:1.4rem}
+  .sel-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px 6px}
+  .sel-chips::-webkit-scrollbar{display:none}
+  .sel-chip{flex:none}
+  .gcard-art{height:130px}
+}
+@media(max-width:640px){
+  .main-nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-right:28px;-webkit-mask-image:linear-gradient(to right,#000 86%,transparent);mask-image:linear-gradient(to right,#000 86%,transparent)}
+  .main-nav::-webkit-scrollbar{display:none}
+}
+
+/* Corrections mobile : pastilles sur une ligne, cartes de guides compactes, fiches en carrousel (accueil) */
+.sel-chip{white-space:nowrap}
+@media(max-width:700px){
+  .gcards{gap:12px}
+  .gcard{flex-direction:row;align-items:stretch}
+  .gcard-art{flex:none;width:112px;height:auto;min-height:118px}
+  .gcard-art .scene{width:100%;height:auto}
+  .gcard-body{padding:14px 16px 14px}
+  .gcard-title{font-size:1.02rem}
+  .gcard-desc{font-size:.9rem}
+  .home-cards .pcards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:16px;margin:0 -16px;padding:2px 16px 10px;scrollbar-width:none}
+  .home-cards .pcards::-webkit-scrollbar{display:none}
+  .home-cards .pcard{flex:0 0 82%;scroll-snap-align:start}
+  .home-hero-art .scene{max-width:260px}
+  .step{padding:18px 18px 14px}
+}

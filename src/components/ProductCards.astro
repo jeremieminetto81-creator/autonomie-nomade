@@ -20,7 +20,7 @@ const num = (v?: string) => String(v ?? '').match(/^\d+(,\d+)?/)?.[0];
     const toConfirm = /confirmer|vérifier/.test(`${p.capacityWh} ${p.outputW}`);
     const amazonOnly = !toConfirm && /fiche Amazon/.test(p.capacityWh);
     return (
-      <li class="pcard">
+      <li class="pcard reveal">
         <div class={`pcard-visual tone-${(brands.indexOf(p.brand) % 4) + 1}`}>
           <span class="pcard-brand">{p.brand}</span>
           <StationVisual capacity={cap ?? ''} />
