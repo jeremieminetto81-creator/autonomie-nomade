@@ -308,3 +308,70 @@ caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);pad
   .home-hero-art .scene{max-width:260px}
   .step{padding:18px 18px 14px}
 }
+
+/* ===== Responsive : règles de référence (WCAG reflow, cibles tactiles, texte redimensionnable) ===== */
+/* Texte en rem : il suit la taille choisie dans le navigateur ; marges latérales fluides */
+html{font-size:100%;scroll-padding-top:84px}
+body{font:1.125rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap,.wrap-wide{padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px)}
+@media(min-width:1600px){.wrap-wide{max-width:1240px}}
+
+/* En-tête : toujours collant, sur une seule ligne, avec menu burger sous 900 px */
+.site-header{position:sticky}
+.header-inner{flex-wrap:nowrap;gap:12px}
+.logo{min-width:0}
+.main-nav a{min-height:44px}
+.burger{display:none}
+@media(max-width:899.98px){
+  .main-nav{display:none}
+  .burger{display:block}
+}
+.burger summary{list-style:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--fg);font-weight:600;cursor:pointer;user-select:none}
+.burger summary::-webkit-details-marker{display:none}
+.burger summary:hover{border-color:var(--accent)}
+.burger-icon,.burger-icon::before,.burger-icon::after{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,background-color .2s ease}
+.burger-icon{position:relative}
+.burger-icon::before,.burger-icon::after{content:"";position:absolute;left:0}
+.burger-icon::before{top:-6px}
+.burger-icon::after{top:6px}
+.burger[open] .burger-icon{background:transparent}
+.burger[open] .burger-icon::before{top:0;transform:rotate(45deg)}
+.burger[open] .burger-icon::after{top:0;transform:rotate(-45deg)}
+.burger-panel{position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;gap:2px;padding:8px clamp(16px,4vw,32px) 16px;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow);max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto}
+.burger-panel a{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:10px;color:var(--fg);text-decoration:none;font-size:1.05rem}
+.burger-panel a:hover{background:var(--accent-soft)}
+.burger-panel a[aria-current=page]{background:var(--accent-soft);font-weight:600}
+@media(max-width:360px){
+  .logo{font-size:1rem;gap:8px}
+  .logo-mark{width:32px;height:32px}
+  .burger summary{padding:0 12px;gap:8px}
+}
+/* Écrans très peu hauts (téléphone à l'horizontale) : l'en-tête ne reste pas collé */
+@media(max-height:520px){.site-header{position:static}}
+
+/* Grilles : une colonne ne dépasse jamais l'écran (le contenu défilant ne l'élargit pas) */
+.sel-groups{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.sel-group{min-width:0}
+.steps{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
+.pcards{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
+.cards{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+
+/* Très petits écrans : tableaux et calculateurs se resserrent au lieu de déborder */
+@media(max-width:480px){
+  body{font-size:1.0625rem}
+  table{font-size:.85rem}
+  th,td{padding:7px 6px;overflow-wrap:anywhere}
+  .calc input[type=number]{max-width:68px}
+  .calc input[type=text]{min-width:0}
+  .hero-actions .btn,.hero-actions .btn-ghost{flex:1 1 100%;text-align:center}
+}
+
+/* Le texte réservé aux lecteurs d'écran est positionné en absolu : il doit s'ancrer dans sa fiche,
+   sinon il échappe aux conteneurs défilants (carrousel) et élargit toute la page. */
+.pcard,.btn,.btn-ghost,.btn-alt{position:relative}
+
+/* Petits écrans : le bouton burger ne garde que son icône (le mot « Menu » reste lu par les lecteurs d'écran) */
+@media(max-width:480px){
+  .burger summary{padding:0;width:44px;justify-content:center}
+  .burger summary span:last-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}

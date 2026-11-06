@@ -69,6 +69,13 @@ const jsonLd = JSON.stringify({
       <nav class="main-nav" aria-label="Navigation principale">
         {NAV.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
       </nav>
+      <!-- Petits écrans : menu burger sans JavaScript (details/summary). menu.js ajoute Échap et le clic extérieur. -->
+      <details class="burger" id="burger">
+        <summary><span class="burger-icon" aria-hidden="true"></span><span>Menu</span></summary>
+        <nav class="burger-panel" aria-label="Navigation mobile">
+          {NAV.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+        </nav>
+      </details>
     </div>
   </header>
   <main id="contenu">
@@ -103,6 +110,7 @@ const jsonLd = JSON.stringify({
       <p class="footer-note">{SITE_NAME} · guides indépendants sur l'énergie nomade</p>
     </div>
   </footer>
+  <script src="/menu.js" defer></script>
   {progress && <script src="/progress.js" defer></script>}
 </body>
 </html>
