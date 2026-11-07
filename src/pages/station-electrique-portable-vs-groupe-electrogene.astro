@@ -7,7 +7,7 @@ import ProductCards from '../components/ProductCards.astro';
 import { articleSchemas } from '../lib/schema';
 import { LAST_UPDATE } from '../config';
 
-const title = 'Station électrique portable ou groupe électrogène : lequel choisir ?';
+const title = 'Station électrique ou groupe électrogène : lequel choisir ?';
 const description =
   "Station électrique portable ou groupe électrogène : bruit, autonomie, sécurité et usage intérieur. Un comparatif clair pour bien choisir.";
 
@@ -33,14 +33,14 @@ const schemas = articleSchemas({
   published: '2026-10-31', modified: '2026-11-01', faq,
 });
 ---
-<Base title="Station électrique portable ou groupe électrogène ?" description={description} ogType="article" progress>
+<Base title="Station électrique ou groupe électrogène ?" description={description} ogType="article" progress>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <GuideHero slot="hero" crumb="Station électrique ou groupe électrogène" kicker="Comparatif" title="Station électrique portable ou groupe électrogène : lequel choisir ?" updated={LAST_UPDATE} minutes={5} scene="generator" />
+  <GuideHero slot="hero" crumb="Station électrique ou groupe électrogène" kicker="Comparatif" title={title} updated={LAST_UPDATE} minutes={5} scene="generator" />
 
   <Callout type="answer" title="Réponse courte">Choisissez une station électrique portable pour des besoins modérés, du silence et un usage proche de vous, y compris à l'abri. Choisissez un groupe électrogène seulement si vous avez besoin de beaucoup d'énergie pendant longtemps et si vous pouvez l'utiliser en toute sécurité à l'extérieur.</Callout>
 
-  <Toc items={[{"id":"comparatif","label":"Comparatif"},{"id":"autonomie-ne-comparez-pas-les-chiffres-a-l-aveugle","label":"Autonomie : ne comparez pas les chiffres à l'aveugle"},{"id":"bruit-deux-mesures-differentes","label":"Bruit : deux mesures différentes"},{"id":"quel-choix-selon-votre-situation","label":"Quel choix selon votre situation ?"},{"id":"exemples-de-stations-disponibles-sur-amazon-fr","label":"Exemples de stations disponibles sur Amazon.fr"},{"id":"questions-frequentes","label":"Questions fréquentes"},{"id":"sources","label":"Sources"}]} />
+  <Toc items={[{"id":"comparatif","label":"Comparatif"},{"id":"comment-fonctionnent-ils","label":"Comment fonctionnent-ils ?"},{"id":"autonomie-ne-comparez-pas-les-chiffres-a-l-aveugle","label":"Autonomie : ne comparez pas les chiffres à l'aveugle"},{"id":"bruit-deux-mesures-differentes","label":"Bruit : deux mesures différentes"},{"id":"quel-choix-selon-votre-situation","label":"Quel choix selon votre situation ?"},{"id":"exemples-de-stations-disponibles-sur-amazon-fr","label":"Exemples de stations disponibles sur Amazon.fr"},{"id":"questions-frequentes","label":"Questions fréquentes"},{"id":"sources","label":"Sources"}]} />
 
   <Callout type="warning" title="Sécurité">Un groupe électrogène rejette du monoxyde de carbone, un gaz sans odeur ni couleur. Il doit toujours être placé à l'extérieur des bâtiments, jamais dans une maison, une cave ou un garage, et éloigné des fenêtres et des prises d'air. Voir les <a href="#sources">sources officielles</a>.</Callout>
 
@@ -58,6 +58,10 @@ const schemas = articleSchemas({
       <tr><th scope="row">Entretien</th><td>Peu d'entretien ; surveiller la batterie</td><td>Entretien du moteur, stockage du carburant</td></tr>
     </tbody>
   </table>
+
+  <h2 id="comment-fonctionnent-ils">Comment fonctionnent-ils ?</h2>
+  <p>Un groupe électrogène brûle du carburant dans un moteur thermique, qui entraîne un alternateur : il produit du courant alternatif tant qu'il tourne. Il ne stocke rien, il faut donc le faire fonctionner pendant toute la durée d'utilisation.</p>
+  <p>Une station électrique portable stocke l'énergie dans des batteries lithium. Un onduleur transforme ensuite ce courant continu en courant alternatif 230 V pour les prises, et des ports USB ou 12 V alimentent directement les petits appareils. Sans moteur ni réservoir, ces stations sont plus faciles à transporter et à utiliser à l'abri, mais leur énergie est limitée à ce qu'elles ont stocké.</p>
 
   <h2 id="autonomie-ne-comparez-pas-les-chiffres-a-l-aveugle">Autonomie : ne comparez pas les chiffres à l'aveugle</h2>
   <p>Pour une station, l'autonomie se calcule en Wh : voir notre <a href="/quelle-capacite-station-electrique/">guide et calculateur de capacité</a>. Pour un groupe, elle dépend de la taille du réservoir et de la charge. Les fabricants annoncent souvent l'autonomie à 25 % ou 50 % de charge : à pleine charge, elle est bien plus courte.</p>

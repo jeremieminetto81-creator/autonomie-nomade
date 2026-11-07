@@ -35,7 +35,7 @@ export const SELECTIONS: Selection[] = [
     group: 'usage',
     short: 'Camping et randonnée',
     title: 'Stations électriques pour le camping et la randonnée',
-    h1: 'Quelle station électrique emporter en camping ou en randonnée ?',
+    h1: 'Station électrique camping et randonnée : laquelle emporter ?',
     description: "Petites stations électriques portables pour le camping : recharger téléphones, lampes et appareils photo sans prise, avec un poids réduit.",
     kicker: 'Sélection par usage',
     scene: 'solar',
@@ -83,8 +83,8 @@ export const SELECTIONS: Selection[] = [
     slug: 'van-camping-car',
     group: 'usage',
     short: 'Van et camping-car',
-    title: 'Stations électriques pour van et camping-car',
-    h1: 'Quelle station électrique pour un van ou un camping-car ?',
+    title: 'Station électrique camping-car et van : notre sélection',
+    h1: 'Station électrique camping-car et van : laquelle choisir ?',
     description: "Stations électriques portables pour van et camping-car : capacité autour de 1000 Wh pour le frigo, l'éclairage et le télétravail en itinérance.",
     kicker: 'Sélection par usage',
     scene: 'solar',
@@ -96,6 +96,29 @@ export const SELECTIONS: Selection[] = [
     criteria: 'Modèles de 1000 à 1200 Wh de notre sélection.',
     test: (p) => p.capWh >= 1000 && p.capWh <= 1200,
     related: ['/station-electrique-portable-1000-wh/', '/panneau-solaire-portable-station-electrique/'],
+    sections: [
+      {
+        id: 'bilan-quotidien',
+        title: "Faire le bilan d'une journée en van",
+        text: [
+          "En itinérance, raisonnez par jour : listez ce qui fonctionne chaque jour (frigo, éclairage, ordinateur, recharges de téléphones), avec la puissance et la durée d'utilisation de chaque appareil. Le total en Wh indique ce que la station doit fournir entre deux recharges.",
+          "Le frigo à compresseur est souvent le premier poste de consommation. Il tourne par cycles : sa consommation réelle dépend de la température extérieure et du réglage, et sa notice indique parfois une consommation quotidienne. Notre calculateur de capacité vous aide à faire le total.",
+        ],
+      },
+      {
+        id: 'recharge-en-itinerance',
+        title: 'Recharger la station en itinérance',
+        text: [
+          "Trois sources sont possibles : le secteur au camping ou sur une aire de services, le véhicule en roulant si la station accepte une recharge par la prise allume-cigare 12 V, et des panneaux solaires. La recharge par l'allume-cigare est lente et dépend du véhicule : vérifiez la fiche de la station et celle de votre véhicule.",
+          "Pour rester plusieurs jours sans branchement, le solaire devient décisif. Comparez l'entrée solaire maximale des modèles : c'est la puissance de panneaux que la station peut accepter, pas ce qu'elle produira réellement. Le poids compte aussi, car la station se déplace dans le véhicule.",
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Une station électrique remplace-t-elle une batterie auxiliaire de camping-car ?', a: "Elle peut jouer un rôle proche pour alimenter des appareils branchés sur ses prises, sans installation. Elle ne se raccorde pas pour autant au circuit 12 V du véhicule : pour une installation fixe, demandez conseil à un professionnel." },
+      { q: 'Quelle capacité pour un week-end en van ?', a: "Cela dépend surtout du frigo et des appareils que vous rechargez chaque jour. Calculez la consommation d'une journée, multipliez-la par le nombre de jours sans recharge, puis ajoutez une marge." },
+      { q: 'Peut-on recharger une station électrique en roulant ?', a: "Oui si elle accepte une recharge par la prise allume-cigare 12 V, ce que précise sa fiche. Cette recharge est lente : elle complète le solaire et le secteur plus qu'elle ne les remplace." },
+    ],
   },
   {
     slug: 'coupure-de-courant',
@@ -103,7 +126,7 @@ export const SELECTIONS: Selection[] = [
     short: 'Coupure de courant',
     title: 'Stations électriques pour les coupures de courant',
     h1: 'Quelle station électrique pour une coupure de courant ?',
-    description: "Stations électriques portables pour faire face à une coupure de courant : box internet, éclairage, recharges et petits appareils, à l'abri et sans bruit.",
+    description: "Station électrique en cas de coupure de courant : alimenter box internet, éclairage, recharges et petits appareils à l'abri et sans bruit. Notre sélection.",
     kicker: 'Sélection par usage',
     scene: 'capacity',
     icon: 'alert',
@@ -114,6 +137,36 @@ export const SELECTIONS: Selection[] = [
     criteria: 'Modèles de 1000 Wh et plus de notre sélection.',
     test: (p) => p.capWh >= 1000,
     related: ['/quelle-capacite-station-electrique/', '/station-electrique-portable-vs-groupe-electrogene/'],
+    sections: [
+      {
+        id: 'appareils-essentiels',
+        title: 'Quels appareils essentiels alimenter ?',
+        text: [
+          "En cas de coupure, gardez la station pour l'essentiel : l'éclairage avec des lampes LED, la box internet pour rester joignable, la recharge des téléphones et un ordinateur portable. La puissance de chaque appareil figure sur son étiquette ou sur son bloc d'alimentation.",
+          "Les appareils qui chauffent, comme un radiateur, un four ou une bouilloire, demandent beaucoup de puissance et vident vite la batterie. Une station ne remplace pas non plus une alimentation médicale vitale : dans ce cas, renseignez-vous auprès de votre fournisseur de matériel médical.",
+        ],
+      },
+      {
+        id: 'coupures-prolongees',
+        title: 'Pendant une coupure prolongée',
+        text: [
+          "Une station ne produit pas d'énergie : elle restitue ce qu'elle a stocké. Si la coupure dure, réduisez la consommation au strict nécessaire et débranchez ce qui ne sert pas. Pour recharger la station sans le réseau électrique, il faut des panneaux solaires compatibles avec son entrée solaire, ou la prise allume-cigare d'un véhicule si la station l'accepte.",
+          "Contrairement à un groupe électrogène, une station peut s'utiliser à l'intérieur, sans gaz d'échappement. Placez-la dans un endroit ventilé, à l'écart de la chaleur.",
+        ],
+      },
+      {
+        id: 'se-preparer',
+        title: 'Se préparer avant la prochaine coupure',
+        text: [
+          "Gardez la station chargée et vérifiez régulièrement son niveau, selon les conseils de stockage de sa notice. Faites un essai à l'avance avec vos appareils : vous saurez combien de temps elle tient et si sa puissance de sortie suffit.",
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien de temps une station électrique tient-elle pendant une coupure ?', a: "Cela dépend de sa capacité et de ce que vous branchez. Divisez sa capacité en Wh par la puissance totale des appareils en W pour obtenir une durée théorique, puis retirez une marge pour les pertes." },
+      { q: 'Peut-on brancher un réfrigérateur sur une station électrique ?', a: "C'est possible si la puissance de sortie de la station dépasse celle du réfrigérateur, y compris au démarrage du compresseur. Vérifiez l'étiquette de l'appareil et la fiche de la station, et calculez sa consommation sur la durée de la coupure." },
+      { q: 'Une station électrique peut-elle alimenter toute la maison ?', a: "Non. Elle alimente les appareils branchés sur ses prises, dans la limite de sa puissance de sortie. Elle ne se raccorde pas au tableau électrique sans installation spécifique réalisée par un professionnel." },
+    ],
   },
   {
     slug: 'chantier',

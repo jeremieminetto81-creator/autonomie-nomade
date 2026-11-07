@@ -68,7 +68,7 @@ const allAbove160 = list.every((p) => p.capWh > 160);
       <h2 id={x.id}>{x.title}</h2>
       {x.text.map((t) => <p>{t}</p>)}
 
-      {s.slug === 'camping-randonnee' && x.id === 'poids-et-solaire' && (
+      {((s.slug === 'camping-randonnee' && x.id === 'poids-et-solaire') || (s.slug === 'van-camping-car' && x.id === 'recharge-en-itinerance')) && (
         <>
           <table>
             <thead><tr><th scope="col">Modèle</th><th scope="col">Poids</th><th scope="col">Entrée solaire maximale</th></tr></thead>
