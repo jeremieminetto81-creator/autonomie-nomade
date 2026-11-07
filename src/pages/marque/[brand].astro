@@ -1,33 +1,88 @@
 ---
 import Base from '../../layouts/Base.astro';
 import GuideHero from '../../components/GuideHero.astro';
+import Callout from '../../components/Callout.astro';
 import ProductCards from '../../components/ProductCards.astro';
 import SelectionNav from '../../components/SelectionNav.astro';
 import { listSchemas } from '../../lib/schema';
 import { BRANDS, brandSlug, idsFor } from '../../data/selections';
+import { BRAND_CONTENT, BRANDS_UPDATE } from '../../data/brands';
 import products from '../../data/products.json';
-import { LAST_UPDATE } from '../../config';
 
 export function getStaticPaths() {
   return BRANDS.map((b) => ({ params: { brand: brandSlug(b) }, props: { b } }));
 }
 const { b } = Astro.props;
+const content = BRAND_CONTENT[b];
 const ids = idsFor((p) => p.brand === b);
 const list = ids.map((id) => products.find((p) => p.id === id)!);
 const title = `Stations électriques ${b} : notre sélection`;
 const description = `Les stations électriques portables ${b} de notre sélection, de ${list[0].capWh} à ${list[list.length - 1].capWh} Wh, avec leurs caractéristiques clés et leur point fort.`;
-const schemas = listSchemas({ site: Astro.site!, path: `/marque/${brandSlug(b)}/`, title, description, crumb: b });
+const schemas = listSchemas({ site: Astro.site!, path: `/marque/${brandSlug(b)}/`, title, description, crumb: b, faq: content.faq });
+
+// « 600 continu… (à confirmer) » devient « 600 W* » : l'astérisque renvoie à la note sous le tableau.
+const cell = (v: string | undefined, unit: string) => {
+  const n = String(v ?? '').match(/^\d+/)?.[0];
+  if (!n) return '—';
+  return `${n} ${unit}${/confirmer|Amazon/.test(String(v)) ? '*' : ''}`;
+};
+const weightOf = (p: (typeof list)[number]) => {
+  const w = (p as { weightKg?: string }).weightKg;
+  return w ? `${w} kg` : '—';
+};
+const shortName = (p: (typeof list)[number]) => p.name.replace(`${b} `, '');
+const hours = (wh: number, w: number) => `${String(Math.round((wh / w) * 10) / 10).replace('.', ',')} h`;
 ---
 <Base title={title} description={description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
-  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={`Les stations électriques portables ${b}`} updated={LAST_UPDATE} minutes={2} scene="selection" />
+  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={`Les stations électriques portables ${b}`} updated={BRANDS_UPDATE} minutes={3} scene="selection" />
 
   <div class="prose">
-    <p>{list.length} modèles {b} figurent dans notre sélection, classés du plus petit au plus grand. Les caractéristiques viennent des fiches des fabricants ou d'Amazon.fr, et chaque fiche indique sa source. Nous n'avons testé aucun de ces produits.</p>
+    {content.intro.map((p) => <p>{p}</p>)}
+    <p>Les modèles sont classés du plus petit au plus grand. Les caractéristiques viennent des fiches des fabricants, d'Amazon.fr ou de revendeurs, et nous n'avons testé aucun de ces produits.</p>
   </div>
 
   <h2>Les modèles {b} ({list.length})</h2>
   <ProductCards ids={ids} />
+
+  <section class="prose">
+    <h2 id="choisir">{content.chooseTitle}</h2>
+    {content.choose.map((p) => <p>{p}</p>)}
+  </section>
+
+  <section class="prose">
+    <h2 id="comparatif">Les modèles {b} côte à côte</h2>
+    <table class="table-words">
+      <thead><tr><th scope="col">Critère</th>{list.map((p) => <th scope="col">{shortName(p)}</th>)}</tr></thead>
+      <tbody>
+        <tr><th scope="row">Capacité</th>{list.map((p) => <td>{cell(p.capacityWh, 'Wh')}</td>)}</tr>
+        <tr><th scope="row">Puissance continue</th>{list.map((p) => <td>{cell(p.outputW, 'W')}</td>)}</tr>
+        <tr><th scope="row">Entrée solaire</th>{list.map((p) => <td>{cell(p.solarInputW, 'W')}</td>)}</tr>
+        <tr><th scope="row">Poids</th>{list.map((p) => <td>{weightOf(p)}</td>)}</tr>
+      </tbody>
+    </table>
+    <p>* Valeur relevée sur une fiche Amazon ou chez un revendeur, à confirmer sur la fiche du fabricant. Un tiret signifie que nous n'avons pas relevé cette valeur.</p>
+  </section>
+
+  <section class="prose">
+    <h2 id="durees">Combien de temps tiennent-elles ?</h2>
+    <p>Pour vous donner un ordre de grandeur, ce tableau divise la capacité de chaque modèle par la puissance de l'appareil. Ce sont des durées théoriques : les pertes de la station les réduisent, et notre <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a> en tient compte.</p>
+    <table class="table-words">
+      <thead><tr><th scope="col">Modèle</th><th scope="col">Éclairage LED (10 W)</th><th scope="col">Ordinateur portable (60 W)</th></tr></thead>
+      <tbody>
+        {list.map((p) => <tr><th scope="row">{shortName(p)}</th><td>{hours(p.capWh, 10)}</td><td>{hours(p.capWh, 60)}</td></tr>)}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="prose">
+    <h2 id="questions-frequentes">Questions fréquentes</h2>
+    {content.faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+  </section>
+
+  <Callout type="tip" title="Pour bien choisir">
+    <a href="/quelle-capacite-station-electrique/">Calculer la capacité qu'il vous faut</a> · <a href="/panneau-solaire-portable-station-electrique/">Choisir un panneau solaire</a>
+  </Callout>
 
   <h2>Les autres sélections</h2>
   <SelectionNav current={`/marque/${brandSlug(b)}/`} />
