@@ -219,7 +219,8 @@ caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);pad
 .band-dark{background:var(--band-dark);color:var(--band-dark-fg)}
 .wrap-wide.section{margin:64px auto}
 .band .wrap-wide.prose{max-width:1120px}
-.band .prose>p,.band .prose>.callout{max-width:760px}
+.band .prose>p{max-width:34em}
+.band .prose>.callout{max-width:760px}
 .kicker-light{color:#fdab7a}
 
 /* Bandeau d'accueil : halo lumineux et chiffres clés */
@@ -376,3 +377,15 @@ body{font:1.125rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   .burger summary{padding:0;width:44px;justify-content:center}
   .burger summary span:last-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
+
+/* Lisibilité : environ 70 caractères par ligne au maximum sur grand écran */
+main p,.prose li,.wrap>ul>li,.wrap>ol>li{max-width:34em}
+
+/* Cibles tactiles d'au moins 44 px (recommandation Apple et Google) */
+.logo,.step a,.link-arrow{min-height:44px}
+.toc li a{display:flex;align-items:center;min-height:44px;padding:4px 0}
+.crumbs a{padding:12px 2px}
+.site-footer li a{padding:11px 0}
+.calc input[type=text],.calc input[type=number]{min-height:44px}
+.del{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px}
+.del:hover{background:var(--accent-soft);color:var(--accent)}
