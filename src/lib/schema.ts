@@ -1,3 +1,4 @@
+import { updatedOn } from '../data/updates.mjs';
 import { SITE_NAME } from '../config';
 
 interface Faq { q: string; a: string }
@@ -30,7 +31,6 @@ export function articleSchemas(opts: {
   description: string;
   crumb: string;
   published: string;
-  modified: string;
   faq?: Faq[];
 }) {
   const url = new URL(opts.path, opts.site).href;
@@ -42,7 +42,7 @@ export function articleSchemas(opts: {
       description: opts.description,
       inLanguage: 'fr',
       datePublished: opts.published,
-      dateModified: opts.modified,
+      dateModified: updatedOn(opts.path),
       // Même image que le partage sur les réseaux (voir scripts/og-images.mjs).
       image: new URL(`/og/${opts.path.slice(1, -1)}.png`, opts.site).href,
       author: organization(opts.site),

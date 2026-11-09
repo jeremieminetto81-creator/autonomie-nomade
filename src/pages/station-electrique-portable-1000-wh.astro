@@ -6,7 +6,6 @@ import Toc from '../components/Toc.astro';
 import ProductCards from '../components/ProductCards.astro';
 import products from '../data/products.json';
 import { articleSchemas } from '../lib/schema';
-import { LAST_UPDATE } from '../config';
 
 const title = 'Station électrique 1000 Wh portable : que choisir ? (Jackery ou Anker)';
 const description =
@@ -57,7 +56,7 @@ const schemas = articleSchemas({
   path: '/station-electrique-portable-1000-wh/',
   title, description,
   crumb: 'Station électrique 1000 Wh',
-  published: '2026-11-01', modified: '2026-11-01', faq,
+  published: '2026-11-01', faq,
 });
 const toc = [
   { id: 'ce-que-permettent-1000-wh', label: 'Ce que permettent 1000 Wh' },
@@ -71,7 +70,7 @@ const toc = [
 <Base title="Station électrique 1000 Wh : Jackery ou Anker ?" description={description} ogType="article" progress>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <GuideHero slot="hero" crumb="Station électrique 1000 Wh" kicker="Comparatif" title="Station électrique 1000 Wh : laquelle choisir ?" updated={LAST_UPDATE} minutes={5} scene="compare" />
+  <GuideHero slot="hero" crumb="Station électrique 1000 Wh" kicker="Comparatif" title="Station électrique 1000 Wh : laquelle choisir ?" minutes={5} scene="compare" />
 
   <Callout type="answer" title="Réponse courte">
     Une station d'environ 1000 Wh convient bien pour un week-end en van, du télétravail nomade ou une coupure de courant de quelques heures. Entre les deux modèles de cette taille de notre sélection, l'Anker SOLIX C1000 Gen 2 offre plus de puissance de sortie et d'entrée solaire ; le Jackery Explorer 1000 v2 est un peu plus léger et a une capacité légèrement supérieure.

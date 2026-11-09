@@ -6,7 +6,7 @@ import ProductCards from '../../components/ProductCards.astro';
 import SelectionNav from '../../components/SelectionNav.astro';
 import { listSchemas } from '../../lib/schema';
 import { BRANDS, brandSlug, idsFor } from '../../data/selections';
-import { BRAND_CONTENT, BRANDS_UPDATE } from '../../data/brands';
+import { BRAND_CONTENT } from '../../data/brands';
 import products from '../../data/products.json';
 
 export function getStaticPaths() {
@@ -35,7 +35,7 @@ const hours = (wh: number, w: number) => `${String(Math.round((wh / w) * 10) / 1
 ---
 <Base title={title} description={description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
-  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={`Les stations électriques portables ${b}`} updated={BRANDS_UPDATE} minutes={3} scene="selection" />
+  <GuideHero slot="hero" crumb={b} parent={{ href: '/selection/', label: 'Sélection' }} kicker="Sélection par marque" title={`Les stations électriques portables ${b}`} minutes={3} scene="selection" />
 
   <div class="prose">
     {content.intro.map((p) => <p>{p}</p>)}

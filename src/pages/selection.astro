@@ -6,12 +6,12 @@ import ProductCards from '../components/ProductCards.astro';
 import SelectionNav from '../components/SelectionNav.astro';
 import { idsFor } from '../data/selections';
 import { listSchemas } from '../lib/schema';
-import { GUIDES, LAST_UPDATE } from '../config';
+import { GUIDES } from '../config';
 import products from '../data/products.json';
 
 const title = 'Notre sélection de stations électriques portables';
 const description =
-  "Dix stations électriques portables de 268 à 2048 Wh, classées par usage, par capacité et par marque, avec leurs caractéristiques clés et leur point fort.";
+  `Dix stations électriques portables de ${Math.min(...products.map((p) => p.capWh))} à ${Math.max(...products.map((p) => p.capWh))} Wh, classées par usage, par capacité et par marque, avec leurs caractéristiques clés et leur point fort.`;
 const schemas = listSchemas({
   site: Astro.site!,
   path: '/selection/',
@@ -23,7 +23,7 @@ const schemas = listSchemas({
 <Base title="Sélection de stations électriques portables" description={description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
-  <GuideHero slot="hero" crumb="Sélection" kicker="Sélection" title="Notre sélection de stations électriques portables" updated={LAST_UPDATE} minutes={2} scene="selection" />
+  <GuideHero slot="hero" crumb="Sélection" kicker="Sélection" title="Notre sélection de stations électriques portables" minutes={2} scene="selection" />
   <p class="lead">{products.length} modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de plus de 2000 Wh pour les besoins importants. Choisissez par usage, par capacité ou par marque.</p>
 
   <h2>Choisir une sélection</h2>

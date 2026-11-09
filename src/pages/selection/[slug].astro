@@ -7,7 +7,7 @@ import SelectionNav from '../../components/SelectionNav.astro';
 import { listSchemas } from '../../lib/schema';
 import { SELECTIONS, idsFor } from '../../data/selections';
 import products from '../../data/products.json';
-import { GUIDES, LAST_UPDATE } from '../../config';
+import { GUIDES } from '../../config';
 
 export function getStaticPaths() {
   return SELECTIONS.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -53,7 +53,7 @@ const allAbove160 = list.every((p) => p.capWh > 160);
 ---
 <Base title={s.title} description={s.description} wide>
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
-  <GuideHero slot="hero" crumb={s.short} parent={{ href: '/selection/', label: 'Sélection' }} kicker={s.kicker} title={s.h1} updated={LAST_UPDATE} minutes={s.sections ? 4 : 2} scene={s.scene} />
+  <GuideHero slot="hero" crumb={s.short} parent={{ href: '/selection/', label: 'Sélection' }} kicker={s.kicker} title={s.h1} minutes={s.sections ? 4 : 2} scene={s.scene} />
 
   <div class="prose">
     {s.intro.map((p) => <p>{p}</p>)}

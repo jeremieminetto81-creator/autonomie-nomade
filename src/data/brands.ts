@@ -1,8 +1,7 @@
 import type { Faq } from './selections';
 
 // Contenu propre à chaque page marque. Chaque chiffre vient de products.json :
-// si une fiche produit change, relire le texte de sa marque.
-export const BRANDS_UPDATE = '7 novembre 2026';
+// si une fiche produit change, relire le texte de sa marque et mettre sa date à jour dans updates.mjs.
 
 export interface BrandContent {
   intro: string[];
