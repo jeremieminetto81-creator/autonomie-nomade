@@ -103,108 +103,153 @@
     "brand": "Jackery",
     "category": "station-electrique",
     "asin": "B0G6YCDF9Z",
-    "capacityWh": "288 (fiche Amazon)",
-    "outputW": "300 (fiche Amazon)",
+    "capacityWh": "288",
+    "outputW": "300",
     "batteryType": "LiFePO4",
     "weightKg": "2,5",
-    "ports": "3 USB-C (2 × 140 W, 1 × 65 W), 1 USB-A, 1 sortie 12 V ; aucune prise 230 V",
-    "cycles": "4000 cycles jusqu'à environ 70 % de capacité (fiche Amazon)",
+    "ports": "3 USB-C (2 × 140 W, 1 × 65 W), 1 USB-A 15 W, 1 sortie 12 V / 10 A ; aucune prise 230 V",
+    "cycles": "4000 cycles jusqu'à 70 % de capacité",
     "strengths": [
-      "à vérifier"
+      "2,5 kg seulement",
+      "Deux ports USB-C de 140 W et un de 65 W",
+      "Sans ventilateur",
+      "4000 cycles jusqu'à 70 % de capacité"
     ],
     "limits": [
-      "à vérifier"
+      "Aucune prise 230 V",
+      "Un seul panneau solaire, 100 W au maximum",
+      "Ni application ni batterie additionnelle",
+      "Pas de protection contre l'eau et la poussière"
     ],
     "highlight": "Sans prise 230 V : USB-C et 12 V uniquement, vendue avec un panneau de 100 W",
-    "lastChecked": "2026-11-01",
-    "source": "Fiche Amazon.fr consultée le 01/11/2026 (titre, caractéristiques et description). Fiche officielle non consultée. Offre en kit avec panneau solaire de 100 W.",
+    "lastChecked": "2026-11-10",
+    "source": "Fiche d'assistance officielle Jackery « Explorer 300D Basic Information » (faq.jackery.com) et page produit Jackery Europe (eu.jackery.com), en anglais, consultées le 10/11/2026. Offre en kit avec panneau de 100 W d'après la fiche Amazon.fr.",
     "capWh": 288,
-    "outW": 300
+    "outW": 300,
+    "solarInputW": "100",
+    "warranty": "5 ans"
   },
   {
     "category": "station-electrique",
     "strengths": [
-      "à vérifier"
+      "Prises 230 V de 300 W, jusqu'à 600 W avec la fonction SurgePad",
+      "Recharge par USB-C jusqu'à 140 W",
+      "Fonction onduleur (UPS), bascule en moins de 10 ms"
     ],
     "limits": [
-      "à vérifier"
+      "Entrée solaire limitée à 100 W, entre 11 et 28 V",
+      "Recharge sur secteur limitée à 330 W",
+      "SurgePad inactif quand la station se recharge avec la sortie CA activée"
     ],
-    "lastChecked": "2026-11-01",
+    "lastChecked": "2026-11-10",
     "id": "anker-solix-c300x",
     "name": "Anker SOLIX C300X",
     "brand": "Anker",
     "asin": "B0DLLBMGC3",
-    "capacityWh": "288 (fiche Amazon)",
-    "outputW": "300 continu, 600 en pointe (fiche Amazon)",
+    "capacityWh": "288",
+    "outputW": "300 continu, 600 avec la fonction SurgePad",
     "batteryType": "LiFePO4",
-    "highlight": "Deux prises CA pour une station de 288 Wh",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée.",
+    "highlight": "Fonction onduleur (UPS) et recharge par USB-C jusqu'à 140 W",
+    "source": "Guide de l'utilisateur officiel Anker SOLIX C300X (A1723), version France, sur support.ankersolix.com, consulté le 10/11/2026. Nombre de prises CA non relevé dans ce guide.",
     "capWh": 288,
-    "outW": 300
+    "outW": 300,
+    "solarInputW": "100",
+    "weightKg": "4,13",
+    "acCharge": "330 W max",
+    "ports": "prises CA (nombre à vérifier), 2 USB-C 140 W dont un en entrée et sortie, 1 USB-C 15 W, 1 USB-A 12 W, 1 sortie 12 V / 10 A"
   },
   {
     "category": "station-electrique",
     "strengths": [
-      "à vérifier"
+      "1800 W en continu, jusqu'à 2700 W en mode Power Lifting pour les appareils chauffants",
+      "Recharge sur secteur jusqu'à 1440 W",
+      "Fonction UPS",
+      "Garantie de 5 ans"
     ],
     "limits": [
-      "à vérifier"
+      "Entrée solaire limitée à 500 W",
+      "Un seul port USB-C, limité à 100 W",
+      "16 kg"
     ],
-    "lastChecked": "2026-11-01",
+    "lastChecked": "2026-11-10",
     "id": "bluetti-ac180",
     "name": "Bluetti AC180",
     "brand": "Bluetti",
     "asin": "B0C14D9DBB",
-    "capacityWh": "1152 (fiche Amazon)",
-    "outputW": "1800 continu, 2700 en mode Power Lifting (fiche Amazon)",
+    "capacityWh": "1152",
+    "outputW": "1800 continu, 2700 en mode Power Lifting",
     "batteryType": "LiFePO4",
-    "highlight": "Recharge de 0 à 80 % annoncée en 45 min",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Poids divergent selon les fiches (16 ou 18 kg).",
+    "highlight": "Mode Power Lifting : jusqu'à 2700 W pour les appareils chauffants",
+    "source": "Fiche officielle Bluetti France (fr.bluettipower.eu/pages/ac180), consultée le 10/11/2026. Le tableau technique indique 16 kg ; un paragraphe de la même page indique 17 kg.",
     "capWh": 1152,
-    "outW": 1800
+    "outW": 1800,
+    "solarInputW": "500",
+    "weightKg": "16",
+    "acCharge": "1440 W max en mode turbo",
+    "cycles": "plus de 3500 cycles jusqu'à 80 % de capacité",
+    "ports": "2 prises CA, 1 USB-C 100 W, 4 USB-A, 1 sortie 12 V / 10 A, 1 recharge sans fil 15 W",
+    "warranty": "5 ans"
   },
   {
     "category": "station-electrique",
     "strengths": [
-      "à vérifier"
+      "Entrée solaire jusqu'à 1000 W (2 × 500 W)",
+      "Recharge complète sur secteur annoncée en 56 min",
+      "Extensible jusqu'à 5 kWh avec des batteries additionnelles",
+      "UPS : bascule en moins de 10 ms",
+      "Moins de 30 dB sous 600 W"
     ],
     "limits": [
-      "à vérifier"
+      "1024 Wh de base : aller au-delà demande des batteries additionnelles",
+      "Jusqu'à 40 dB annoncés à 1200 W"
     ],
-    "lastChecked": "2026-11-01",
+    "lastChecked": "2026-11-10",
     "id": "ecoflow-delta-3-plus",
     "name": "EcoFlow DELTA 3 Plus",
     "brand": "EcoFlow",
     "asin": "B0DFPW2Y2C",
-    "capacityWh": "1024 (fiche Amazon)",
-    "outputW": "1800 (fiche Amazon)",
+    "capacityWh": "1024",
+    "outputW": "1800 continu, 3600 en pointe (2400 avec X-Boost)",
     "batteryType": "LiFePO4",
-    "solarInputW": "1000 (fiche Amazon)",
-    "highlight": "Entrée solaire jusqu'à 1000 W selon la fiche Amazon",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée.",
+    "solarInputW": "1000",
+    "highlight": "Entrée solaire jusqu'à 1000 W et capacité extensible jusqu'à 5 kWh",
+    "source": "Fiche officielle EcoFlow Europe (eu.ecoflow.com, gamme DELTA 3, en anglais), consultée le 10/11/2026. Poids annoncé : 12,5 kg au maximum.",
     "capWh": 1024,
-    "outW": 1800
+    "outW": 1800,
+    "weightKg": "12,5",
+    "acCharge": "1500 W, recharge complète annoncée en 56 min",
+    "cycles": "4000 cycles jusqu'à 80 % de capacité",
+    "ports": "prises CA (nombre à vérifier pour la version française), 2 USB-C 140 W, 2 USB-A 36 W, 1 sortie 12,6 V / 10 A"
   },
   {
     "category": "station-electrique",
     "strengths": [
-      "à vérifier"
+      "2200 W en continu",
+      "Recharge sur secteur en 1,7 h, ou 1,33 h en mode urgence via l'application",
+      "UPS : bascule en moins de 20 ms",
+      "Recharge silencieuse (30 dB au plus), à activer dans l'application"
     ],
     "limits": [
-      "à vérifier"
+      "Non extensible : pas de batterie additionnelle",
+      "Second port USB-C limité à 30 W",
+      "Un seul port USB-A"
     ],
-    "lastChecked": "2026-11-01",
+    "lastChecked": "2026-11-10",
     "id": "jackery-explorer-2000-v2",
     "name": "Jackery Explorer 2000 v2",
     "brand": "Jackery",
     "asin": "B0DSK8DN8N",
-    "capacityWh": "2042 (fiche Amazon)",
-    "outputW": "2200 continu, 4400 en pointe (fiche Amazon)",
+    "capacityWh": "2042",
+    "outputW": "2200 continu, 4400 en pointe (pointe : fiche Amazon)",
     "batteryType": "LiFePO4",
     "highlight": "Plus de 2000 Wh pour les besoins importants",
-    "source": "Titre et description de la fiche Amazon.fr trouvée par recherche le 01/11/2026 (ASIN relevé dans l'URL, à re-vérifier). Fiche officielle non consultée. Une autre fiche indique 2040 Wh.",
+    "source": "Fiche officielle Jackery Europe (eu.jackery.com/products/explorer-2000-v2-portable-power-station, en anglais), consultée le 10/11/2026. Puissance de pointe d'après la fiche Amazon.fr ; poids et entrée solaire non relevés.",
     "capWh": 2042,
-    "outW": 2200
+    "outW": 2200,
+    "acCharge": "1,7 h (1,33 h en mode urgence via l'application)",
+    "cycles": "4000 cycles",
+    "ports": "2 prises CA, 2 USB-C (100 W et 30 W), 1 USB-A 18 W, 1 allume-cigare",
+    "warranty": "3 ans, 5 ans avec l'extension de garantie"
   },
   {
     "id": "bluetti-elite-200-v2",
@@ -212,21 +257,31 @@
     "brand": "Bluetti",
     "category": "station-electrique",
     "asin": "B0DRFZ8C31",
-    "capacityWh": "2073 (fiche Amazon)",
-    "outputW": "2600 continu, 5200 en pointe (fiche Amazon)",
+    "capacityWh": "2073",
+    "outputW": "2600 continu, 3900 en mode Power Lifting",
     "batteryType": "LiFePO4",
     "weightKg": "24,2",
     "cycles": "plus de 6000 cycles (fiche Amazon)",
     "strengths": [
-      "à vérifier"
+      "2600 W en continu, jusqu'à 3900 W en mode Power Lifting pour les appareils chauffants",
+      "Recharge sur secteur jusqu'à 2300 W : 80 % annoncés en 1,1 h",
+      "Entrée solaire jusqu'à 1000 W",
+      "UPS : bascule en 15 ms au plus",
+      "Garantie de 5 ans"
     ],
     "limits": [
-      "à vérifier"
+      "24,2 kg",
+      "Ports USB-C limités à 100 W",
+      "Entrée solaire entre 12 et 60 V"
     ],
     "highlight": "La plus puissante de notre sélection (2600 W)",
-    "lastChecked": "2026-11-01",
-    "source": "Fiche Amazon.fr consultée le 01/11/2026 (titre, caractéristiques et description). Fiche officielle non consultée.",
+    "lastChecked": "2026-11-10",
+    "source": "Fiche officielle Bluetti France (shop-fr.bluettipower.com), consultée le 10/11/2026 : capacité exacte de 2073,6 Wh. Nombre de cycles d'après la fiche Amazon.fr.",
     "capWh": 2073,
-    "outW": 2600
+    "outW": 2600,
+    "solarInputW": "1000",
+    "acCharge": "2300 W max, 80 % annoncés en 1,1 h",
+    "ports": "2 prises CA, 2 USB-C 100 W, 2 USB-A 15 W, 1 allume-cigare 120 W",
+    "warranty": "5 ans"
   }
 ]

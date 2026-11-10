@@ -31,7 +31,9 @@ const weightOf = (p: (typeof list)[number]) => {
   const w = (p as { weightKg?: string }).weightKg;
   return w ? `${w} kg` : '—';
 };
-const shortName = (p: (typeof list)[number]) => p.name.replace(`${b} `, '');
+// Points forts et limites : seulement pour les fiches vérifiées (les autres portent « à vérifier »).
+const detailed = list.filter((p) => p.strengths[0] !== 'à vérifier' && p.limits[0] !== 'à vérifier');
+const shortName =(p: (typeof list)[number]) => p.name.replace(`${b} `, '');
 const hours = (wh: number, w: number) => `${String(Math.round((wh / w) * 10) / 10).replace('.', ',')} h`;
 ---
 <Base title={title} description={description} wide>
@@ -50,6 +52,23 @@ const hours = (wh: number, w: number) => `${String(Math.round((wh / w) * 10) / 1
     <h2 id="choisir">{content.chooseTitle}</h2>
     {content.choose.map((p) => <p>{p}</p>)}
   </section>
+
+  {detailed.length > 0 && (
+    <section class="prose">
+      <h2 id="points-forts-et-limites">Points forts et limites</h2>
+      <p>Ces points reprennent les caractéristiques annoncées par le fabricant, sans jugement de notre part : nous n'avons pas testé ces modèles. La source de chaque fiche est indiquée ci-dessous.</p>
+      {detailed.map((p) => (
+        <>
+          <h3>{p.name}</h3>
+          <p><strong>Points forts</strong></p>
+          <ul>{p.strengths.map((x) => <li>{x}</li>)}</ul>
+          <p><strong>Limites</strong></p>
+          <ul>{p.limits.map((x) => <li>{x}</li>)}</ul>
+          <p class="pcard-meta">Source : {p.source}</p>
+        </>
+      ))}
+    </section>
+  )}
 
   <section class="prose">
     <h2 id="comparatif">Les modèles {b} côte à côte</h2>

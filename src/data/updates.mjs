@@ -4,17 +4,23 @@
 export const DEFAULT_UPDATE = '2026-11-01';
 
 export const PAGE_UPDATES = {
-  '/': '2026-11-07',
+  '/': '2026-11-10',
   '/station-electrique-portable-1000-wh/': '2026-11-07',
-  '/quelle-capacite-station-electrique/': '2026-11-07',
-  '/station-electrique-portable-vs-groupe-electrogene/': '2026-11-07',
-  '/selection/camping-randonnee/': '2026-11-07',
-  '/selection/van-camping-car/': '2026-11-07',
-  '/selection/coupure-de-courant/': '2026-11-07',
-  '/marque/anker/': '2026-11-07',
-  '/marque/bluetti/': '2026-11-07',
-  '/marque/ecoflow/': '2026-11-07',
-  '/marque/jackery/': '2026-11-07',
+  '/quelle-capacite-station-electrique/': '2026-11-10',
+  '/station-electrique-portable-vs-groupe-electrogene/': '2026-11-10',
+  '/panneau-solaire-portable-station-electrique/': '2026-11-10',
+  '/selection/': '2026-11-10',
+  '/selection/camping-randonnee/': '2026-11-10',
+  '/selection/van-camping-car/': '2026-11-10',
+  '/selection/coupure-de-courant/': '2026-11-10',
+  '/selection/chantier/': '2026-11-10',
+  '/selection/moins-de-500-wh/': '2026-11-10',
+  '/selection/1000-a-1500-wh/': '2026-11-10',
+  '/selection/2000-wh-et-plus/': '2026-11-10',
+  '/marque/anker/': '2026-11-10',
+  '/marque/bluetti/': '2026-11-10',
+  '/marque/ecoflow/': '2026-11-10',
+  '/marque/jackery/': '2026-11-10',
 };
 
 /** Date ISO (AAAA-MM-JJ) de la page, ou la date par défaut. */

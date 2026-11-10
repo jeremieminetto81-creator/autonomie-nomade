@@ -17,7 +17,7 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
     ],
     chooseTitle: 'C300X ou C1000 Gen 2 : laquelle choisir ?',
     choose: [
-      "La C300X convient quand on veut recharger de petits appareils : ordinateur portable, téléphones, lampes. Sa fiche Amazon annonce 300 W en continu et 600 W en pointe, avec deux prises CA. Un appareil qui demande plus de 300 W en continu dépasse sa puissance : vérifiez l'étiquette de vos appareils avant de choisir.",
+      "La C300X convient quand on veut recharger de petits appareils : ordinateur portable, téléphones, lampes. Son guide officiel annonce 300 W en continu sur ses prises 230 V, et jusqu'à 600 W avec la fonction SurgePad. Elle pèse 4,13 kg et accepte un panneau solaire de 100 W au maximum. Un appareil qui demande plus de 300 W en continu dépasse sa puissance : vérifiez l'étiquette de vos appareils avant de choisir.",
       "La C1000 Gen 2 vise les usages plus exigeants : 2000 W en continu d'après sa fiche Amazon, soit de quoi alimenter des appareils bien plus gourmands, et une entrée solaire de 600 W. Elle pèse 11,3 kg : elle se déplace, mais on ne la porte pas longtemps à la main.",
       "Sa recharge complète annoncée en 49 minutes demande le mode UltraFast, activé depuis l'application. Hors de ce mode, la charge sur secteur est limitée à 1200 W.",
     ],
@@ -28,7 +28,7 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
       },
       {
         q: 'La C300X peut-elle remplacer une prise de maison ?',
-        a: "Pas pour tous les appareils. Ses prises CA sont limitées à 300 W en continu et ses 288 Wh s'épuisent vite avec un appareil puissant. Elle reste un modèle d'appoint.",
+        a: "Pas pour tous les appareils. Ses prises 230 V sont limitées à 300 W en continu et ses 288 Wh s'épuisent vite avec un appareil puissant. Elle reste un modèle d'appoint.",
       },
     ],
   },
@@ -39,13 +39,13 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
     chooseTitle: 'EB3A, AC180 ou Elite 200 V2 : laquelle choisir ?',
     choose: [
       "L'EB3A correspond à un usage léger : c'est la plus petite capacité de notre sélection. Ses valeurs viennent de revendeurs et restent à confirmer sur la fiche du fabricant, notamment sa puissance de 600 W en continu.",
-      "L'AC180 est le format intermédiaire : 1152 Wh et 1800 W en continu d'après sa fiche Amazon, avec une recharge de 0 à 80 % annoncée en 45 minutes. Son poids varie selon les fiches, 16 ou 18 kg : vérifiez-le si vous devez la porter.",
-      "L'Elite 200 V2 est la plus puissante de notre sélection, avec 2600 W en continu et 5200 W en pointe selon sa fiche Amazon. Elle pèse 24,2 kg : elle est plutôt faite pour rester à poste, dans un fourgon ou à la maison, que pour être portée souvent.",
+      "L'AC180 est le format intermédiaire : 1152 Wh et 1800 W en continu d'après sa fiche officielle, avec une recharge sur secteur jusqu'à 1440 W et une entrée solaire de 500 W. Son tableau technique indique 16 kg, et la garantie est de 5 ans.",
+      "L'Elite 200 V2 est la plus puissante de notre sélection, avec 2600 W en continu et jusqu'à 3900 W en mode Power Lifting selon sa fiche officielle. Elle accepte 1000 W de panneaux solaires et pèse 24,2 kg : elle est plutôt faite pour rester à poste, dans un fourgon ou à la maison, que pour être portée souvent.",
     ],
     faq: [
       {
         q: 'Que signifie le mode Power Lifting de l\'AC180 ?',
-        a: "La fiche Amazon de l'AC180 annonce 2700 W avec ce mode, contre 1800 W en continu sans lui. Consultez la notice du fabricant pour savoir avec quels appareils il fonctionne, car nous n'avons pas pu le tester.",
+        a: "D'après Bluetti, ce mode permet de faire fonctionner des appareils chauffants jusqu'à 2700 W, comme un radiateur électrique ou un sèche-cheveux, contre 1800 W en continu sans lui. Nous ne l'avons pas testé : consultez la notice pour les autres types d'appareils.",
       },
       {
         q: 'Quelle Bluetti tient le plus longtemps ?',
@@ -60,13 +60,13 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
     chooseTitle: 'River 3 Plus ou DELTA 3 Plus : laquelle choisir ?',
     choose: [
       "La River 3 Plus démarre à 286 Wh, et peut monter jusqu'à 858 Wh avec une batterie additionnelle. C'est intéressant si vos besoins sont petits aujourd'hui mais peuvent grandir. Ses valeurs viennent de revendeurs et restent à confirmer, en particulier sa puissance de 600 W en continu.",
-      "La DELTA 3 Plus offre 1024 Wh et 1800 W d'après sa fiche Amazon. Son point marquant est son entrée solaire, annoncée jusqu'à 1000 W : c'est la plus élevée de notre sélection. Elle a donc du sens si vous prévoyez plusieurs panneaux, en van ou en camping-car par exemple.",
+      "La DELTA 3 Plus offre 1024 Wh et 1800 W en continu d'après sa fiche officielle, avec une recharge complète sur secteur annoncée en 56 minutes. Son point marquant est son entrée solaire, jusqu'à 1000 W avec deux entrées de 500 W : aucun modèle de notre sélection n'en annonce davantage. Elle a donc du sens si vous prévoyez plusieurs panneaux, en van ou en camping-car par exemple.",
       "Avant d'acheter des panneaux, calculez ce que votre installation produira vraiment : une entrée solaire de 1000 W est une limite maximale, pas une production garantie.",
     ],
     faq: [
       {
         q: "Peut-on augmenter la capacité d'une EcoFlow ?",
-        a: "Oui pour la River 3 Plus, qui peut atteindre 858 Wh avec une batterie additionnelle. Pour la DELTA 3 Plus, nous n'avons pas relevé cette information : vérifiez-la sur la fiche du produit.",
+        a: "Oui pour les deux. La River 3 Plus peut atteindre 858 Wh avec une batterie additionnelle, d'après des fiches revendeurs. La DELTA 3 Plus est extensible jusqu'à 5 kWh avec des batteries additionnelles compatibles, d'après sa fiche officielle.",
       },
       {
         q: 'Que signifie le mode X-Boost de la River 3 Plus ?',
@@ -76,18 +76,18 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
   },
   Jackery: {
     intro: [
-      "Notre sélection compte trois stations Jackery, de 288 à 2042 Wh. L'Explorer 1000 v2 est celle dont nous avons le plus de détails, car ses valeurs viennent de la fiche officielle du fabricant. Celles des deux autres viennent de leurs fiches Amazon.",
+      "Notre sélection compte trois stations Jackery, de 288 à 2042 Wh. L'Explorer 1000 v2 est celle dont nous avons le plus de détails, car ses valeurs viennent de la fiche officielle du fabricant. Les deux autres ont été vérifiées sur les pages officielles de Jackery, sauf mention contraire.",
     ],
     chooseTitle: 'Explorer 300D, 1000 v2 ou 2000 v2 : laquelle choisir ?',
     choose: [
-      "L'Explorer 300D est à part : elle n'a aucune prise 230 V. Elle fournit de l'USB-C, de l'USB-A et du 12 V, et elle est vendue avec un panneau de 100 W. Avec ses 2,5 kg, elle convient aux appareils qui se rechargent en USB, pas à ceux qui se branchent sur une prise classique.",
+      "L'Explorer 300D est à part : elle n'a aucune prise 230 V. Elle fournit de l'USB-C, de l'USB-A et du 12 V, et elle est vendue avec un panneau de 100 W. Elle pèse 2,5 kg, n'a pas de ventilateur et accepte un seul panneau de 100 W au maximum. Elle convient aux appareils qui se rechargent en USB, pas à ceux qui se branchent sur une prise classique.",
       "L'Explorer 1000 v2 est le modèle polyvalent : 1070 Wh, 1500 W en continu, 400 W d'entrée solaire et 10,8 kg. Sa fiche officielle annonce une recharge en 1,7 h, ou en 1 h avec le mode urgence de l'application, et 4000 cycles jusqu'à 70 % de capacité.",
-      "L'Explorer 2000 v2 s'adresse aux besoins importants : 2042 Wh et 2200 W en continu d'après sa fiche Amazon. Une autre fiche indique 2040 Wh : l'écart est faible, mais il rappelle qu'il faut confirmer les chiffres avant d'acheter.",
+      "L'Explorer 2000 v2 s'adresse aux besoins importants : 2042 Wh et 2200 W en continu d'après sa fiche officielle, avec une recharge sur secteur en 1,7 h. Elle n'est pas extensible : il n'existe pas de batterie additionnelle pour ce modèle.",
     ],
     faq: [
       {
         q: "L'Explorer 300D peut-elle alimenter un appareil 230 V ?",
-        a: "Pas directement : sa fiche Amazon ne mentionne aucune prise 230 V, seulement de l'USB-C, de l'USB-A et une sortie 12 V. Pour un appareil à brancher sur une prise classique, il faut un modèle avec prises CA.",
+        a: "Non : sa fiche officielle précise qu'elle n'a aucune sortie 230 V, seulement de l'USB-C, de l'USB-A et une sortie 12 V. Pour un appareil à brancher sur une prise classique, il faut un modèle avec prises CA.",
       },
       {
         q: "Quelle garantie pour l'Explorer 1000 v2 ?",
