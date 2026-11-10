@@ -10,8 +10,10 @@ import { GUIDES } from '../config';
 import products from '../data/products.json';
 
 const title = 'Notre sélection de stations électriques portables';
+// Nombre et capacités calculés : la description reste juste si la liste de produits change.
+const NOMBRES = ['Zéro', 'Une', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix', 'Onze', 'Douze'];
 const description =
-  `Dix stations électriques portables de ${Math.min(...products.map((p) => p.capWh))} à ${Math.max(...products.map((p) => p.capWh))} Wh, classées par usage, par capacité et par marque, avec leurs caractéristiques clés et leur point fort.`;
+  `${NOMBRES[products.length] ?? products.length} stations électriques portables de ${Math.min(...products.map((p) => p.capWh))} à ${Math.max(...products.map((p) => p.capWh))} Wh, classées par usage, par capacité et par marque, avec leurs caractéristiques clés et leur point fort.`;
 const schemas = listSchemas({
   site: Astro.site!,
   path: '/selection/',

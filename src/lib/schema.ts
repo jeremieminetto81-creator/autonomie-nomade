@@ -13,14 +13,18 @@ export function organization(site: URL) {
   };
 }
 
-function breadcrumb(site: URL, url: string, crumb: string) {
+// Le fil d'Ariane des données doit suivre celui affiché sur la page (voir GuideHero).
+interface Parent { href: string; label: string }
+function breadcrumb(site: URL, url: string, crumb: string, parent?: Parent) {
+  const steps = [
+    { name: 'Accueil', item: new URL('/', site).href },
+    ...(parent ? [{ name: parent.label, item: new URL(parent.href, site).href }] : []),
+    { name: crumb, item: url },
+  ];
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', site).href },
-      { '@type': 'ListItem', position: 2, name: crumb, item: url },
-    ],
+    itemListElement: steps.map((s, i) => ({ '@type': 'ListItem', position: i + 1, ...s })),
   };
 }
 
@@ -68,7 +72,7 @@ export function articleSchemas(opts: {
 // Page de sélection : une page de collection. Pas d'ItemList : Google l'interprète comme un
 // carrousel, qui exige une page par élément sur ce site (nos produits renvoient vers Amazon).
 // Pas de Product non plus : il exigerait prix ou avis, que nous n'avons pas.
-export function listSchemas(opts: { site: URL; path: string; title: string; description: string; crumb: string; faq?: Faq[] }) {
+export function listSchemas(opts: { site: URL; path: string; title: string; description: string; crumb: string; parent?: Parent; faq?: Faq[] }) {
   const url = new URL(opts.path, opts.site).href;
   const out: object[] = [
     {
@@ -80,7 +84,7 @@ export function listSchemas(opts: { site: URL; path: string; title: string; desc
       inLanguage: 'fr',
       isPartOf: { '@type': 'WebSite', url: new URL('/', opts.site).href },
     },
-    breadcrumb(opts.site, url, opts.crumb),
+    breadcrumb(opts.site, url, opts.crumb, opts.parent),
   ];
   if (opts.faq?.length) {
     out.push({

@@ -1,6 +1,6 @@
 // Signale à IndexNow (Bing, Yandex, Seznam…) les pages du sitemap après une mise en ligne.
 // Usage : node scripts/indexnow.mjs   (le fichier de clé public/c3c672cdf9b825cceca407b4e177df9b.txt doit déjà être en ligne)
-const SITE = process.env.SITE_URL || 'https://autonomie-nomade.netlify.app';
+const SITE = process.env.SITE_URL || 'https://autonomie-nomade.autonomie-nomade.workers.dev';
 const KEY = 'c3c672cdf9b825cceca407b4e177df9b';
 
 const xml = await (await fetch(`${SITE}/sitemap-0.xml`)).text();
