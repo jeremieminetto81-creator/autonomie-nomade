@@ -38,7 +38,7 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
     ],
     chooseTitle: 'EB3A, AC180 ou Elite 200 V2 : laquelle choisir ?',
     choose: [
-      "L'EB3A correspond à un usage léger : c'est la plus petite capacité de notre sélection. Ses valeurs viennent de revendeurs et restent à confirmer sur la fiche du fabricant, notamment sa puissance de 600 W en continu.",
+      "L'EB3A correspond à un usage léger : c'est la plus petite capacité de notre sélection, avec 268 Wh, 600 W en continu et une entrée solaire de 200 W d'après Bluetti. Attention : le site Bluetti France indique que sa production est arrêtée. Vérifiez sa disponibilité avant de la retenir.",
       "L'AC180 est le format intermédiaire : 1152 Wh et 1800 W en continu d'après sa fiche officielle, avec une recharge sur secteur jusqu'à 1440 W et une entrée solaire de 500 W. Son tableau technique indique 16 kg, et la garantie est de 5 ans.",
       "L'Elite 200 V2 est la plus puissante de notre sélection, avec 2600 W en continu et jusqu'à 3900 W en mode Power Lifting selon sa fiche officielle. Elle accepte 1000 W de panneaux solaires et pèse 24,2 kg : elle est plutôt faite pour rester à poste, dans un fourgon ou à la maison, que pour être portée souvent.",
     ],
@@ -55,22 +55,22 @@ export const BRAND_CONTENT: Record<string, BrandContent> = {
   },
   EcoFlow: {
     intro: [
-      "Notre sélection retient deux stations EcoFlow, une par gamme : la River 3 Plus, petite et extensible, et la DELTA 3 Plus, d'environ 1000 Wh, dont la fiche Amazon annonce une entrée solaire élevée.",
+      "Notre sélection retient deux stations EcoFlow, une par gamme : la River 3 Plus, petite et extensible, et la DELTA 3 Plus, d'environ 1000 Wh, dont la fiche officielle annonce une entrée solaire élevée.",
     ],
     chooseTitle: 'River 3 Plus ou DELTA 3 Plus : laquelle choisir ?',
     choose: [
-      "La River 3 Plus démarre à 286 Wh, et peut monter jusqu'à 858 Wh avec une batterie additionnelle. C'est intéressant si vos besoins sont petits aujourd'hui mais peuvent grandir. Ses valeurs viennent de revendeurs et restent à confirmer, en particulier sa puissance de 600 W en continu.",
+      "La River 3 Plus démarre à 286 Wh, et peut monter jusqu'à 858 Wh avec une batterie additionnelle. C'est intéressant si vos besoins sont petits aujourd'hui mais peuvent grandir. D'après sa fiche officielle, elle fournit 600 W en continu sur trois prises 230 V, pèse 4,7 kg et se recharge sur secteur en 60 minutes.",
       "La DELTA 3 Plus offre 1024 Wh et 1800 W en continu d'après sa fiche officielle, avec une recharge complète sur secteur annoncée en 56 minutes. Son point marquant est son entrée solaire, jusqu'à 1000 W avec deux entrées de 500 W : aucun modèle de notre sélection n'en annonce davantage. Elle a donc du sens si vous prévoyez plusieurs panneaux, en van ou en camping-car par exemple.",
       "Avant d'acheter des panneaux, calculez ce que votre installation produira vraiment : une entrée solaire de 1000 W est une limite maximale, pas une production garantie.",
     ],
     faq: [
       {
         q: "Peut-on augmenter la capacité d'une EcoFlow ?",
-        a: "Oui pour les deux. La River 3 Plus peut atteindre 858 Wh avec une batterie additionnelle, d'après des fiches revendeurs. La DELTA 3 Plus est extensible jusqu'à 5 kWh avec des batteries additionnelles compatibles, d'après sa fiche officielle.",
+        a: "Oui pour les deux. La River 3 Plus peut atteindre 858 Wh avec une batterie additionnelle, d'après sa fiche officielle. La DELTA 3 Plus est extensible jusqu'à 5 kWh avec des batteries additionnelles compatibles, d'après sa fiche officielle.",
       },
       {
         q: 'Que signifie le mode X-Boost de la River 3 Plus ?',
-        a: "Les fiches revendeurs indiquent 1200 W en pointe avec ce mode, contre 600 W en continu sans lui. Ces chiffres restent à confirmer et ce mode ne convient pas forcément à tous les appareils : consultez la notice du fabricant.",
+        a: "La fiche officielle indique 1200 W avec ce mode, contre 600 W en continu sans lui. Il ne convient pas forcément à tous les appareils : consultez la notice du fabricant.",
       },
     ],
   },
