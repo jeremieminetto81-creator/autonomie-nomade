@@ -1,20 +1,25 @@
 ---
-import Scene from './Scene.astro';
 import Icon from './Icon.astro';
 import { updatedOn, frDate } from '../data/updates.mjs';
-// Bandeau d'en-tête des guides : fil d'Ariane, catégorie, titre, date, temps de lecture, illustration.
+import { hero, heroKeyFor } from '../lib/hero';
+// Bandeau d'en-tête des pages : image d'ambiance, fil d'Ariane, catégorie, titre, date, temps de lecture.
 interface Props {
   crumb: string;
   parent?: { href: string; label: string };
   kicker: string;
   title: string;
   minutes: number;
-  scene: 'capacity' | 'generator' | 'solar' | 'compare' | 'selection';
+  // Conservé pour compatibilité avec les pages : l'illustration dessinée a laissé place aux images.
+  scene?: string;
 }
-const { crumb, parent, kicker, title, minutes, scene } = Astro.props;
+const { crumb, parent, kicker, title, minutes } = Astro.props;
 const updated = frDate(updatedOn(Astro.url.pathname));
+const key = heroKeyFor(Astro.url.pathname);
+const img = key ? await hero(key) : null;
 ---
-<section class="guide-hero">
+<section class:list={['guide-hero', img && 'has-img']}>
+  {img && <img class="gh-img" src={img.src} srcset={img.srcset} sizes="100vw" width={img.width} height={img.height} alt={img.alt} fetchpriority="high" decoding="async">}
+  {img && <div class="gh-shade"></div>}
   <div class="wrap-wide guide-hero-inner">
     <div class="guide-hero-text">
       <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › {parent && <><a href={parent.href}>{parent.label}</a> › </>}{crumb}</nav>
@@ -22,6 +27,5 @@ const updated = frDate(updatedOn(Astro.url.pathname));
       <h1>{title}</h1>
       <p class="guide-meta"><span><Icon name="check" size={16} /> Mis à jour le {updated}</span><span><Icon name="list" size={16} /> {minutes} min de lecture</span></p>
     </div>
-    <div class="guide-hero-art"><Scene name={scene} /></div>
   </div>
 </section>

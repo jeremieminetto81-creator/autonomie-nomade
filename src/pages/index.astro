@@ -2,17 +2,20 @@
 import Base from '../layouts/Base.astro';
 import Callout from '../components/Callout.astro';
 import Icon from '../components/Icon.astro';
-import Scene from '../components/Scene.astro';
 import ProductCards from '../components/ProductCards.astro';
 import SelectionNav from '../components/SelectionNav.astro';
 import products from '../data/products.json';
 import { GUIDES } from '../config';
+import { hero, heroKeyFor } from '../lib/hero';
 
 const steps = [
   { icon: 'battery', title: 'Calculez vos besoins', text: 'Listez vos appareils : le calculateur donne la capacité en Wh et la puissance en W à viser.', href: '/quelle-capacite-station-electrique/' },
   { icon: 'scale', title: 'Comparez les modèles', text: 'Capacité, puissance, entrée solaire, poids : les chiffres des fiches officielles, côte à côte.', href: '/station-electrique-portable-1000-wh/' },
   { icon: 'check', title: 'Choisissez sereinement', text: 'Vérifiez le prix du modèle retenu sur Amazon.fr et gardez nos conseils de sécurité en tête.', href: '/selection/' },
 ] as const;
+const img = await hero('accueil');
+// Vignettes des guides : la même image que le bandeau de chaque guide.
+const thumbs = await Promise.all(GUIDES.map((g) => hero(heroKeyFor(g.href), [480, 800])));
 const stats = [
   { n: products.length, label: 'stations comparées' },
   { n: GUIDES.length, label: 'guides détaillés' },
@@ -20,29 +23,26 @@ const stats = [
 ];
 ---
 <Base title="Station électrique portable : guides" bare>
-  <section slot="hero" class="home-hero">
-    <div class="wrap-wide home-hero-inner">
-      <div class="home-hero-text">
-        <p class="kicker">Énergie nomade</p>
-        <h1>Choisir sa station électrique portable sans se tromper</h1>
-        <p class="lead">Des guides clairs et sourcés pour trouver l'énergie adaptée à votre usage : camping-car, van, camping, coupure de courant ou chantier.</p>
-        <div class="hero-actions">
-          <a class="btn btn-lg" href="/quelle-capacite-station-electrique/">Calculer mes besoins</a>
-          <a class="btn-ghost btn-lg" href="/selection/">Voir la sélection</a>
-        </div>
-        <ul class="hero-points">
-          <li><Icon name="check" size={18} /> Calculateurs gratuits</li>
-          <li><Icon name="check" size={18} /> Sources citées</li>
-          <li><Icon name="check" size={18} /> Aucun avis inventé</li>
-        </ul>
+  <section slot="hero" class="hx">
+    <div class="hx-stage">
+      <img class="hx-layer" src={img.src} srcset={img.srcset} sizes="(max-width:760px) 180vw, 100vw" width={img.width} height={img.height} alt="" fetchpriority="high" decoding="async">
+      <div class="hx-shade"></div>
+      <!-- Grand mot décoratif : il passe derrière la station grâce au second calque de l'image. -->
+      <p class="hx-title" aria-hidden="true">L’ÉNERGIE</p>
+      <img class="hx-layer hx-front" src={img.src} srcset={img.srcset} sizes="(max-width:760px) 180vw, 100vw" width={img.width} height={img.height} alt={img.alt} decoding="async">
+      <p class="hx-kicker"><i></i>Guides techniques · énergie nomade</p>
+    </div>
+    <div class="hx-copy">
+      <h1>Choisir sa station électrique portable sans se tromper</h1>
+      <p class="lead">Des guides clairs et sourcés pour trouver l'énergie adaptée à votre usage : camping-car, van, camping, coupure de courant ou chantier.</p>
+      <div class="hero-actions">
+        <a class="btn btn-lg" href="/quelle-capacite-station-electrique/">Calculer mes besoins</a>
+        <a class="btn-ghost btn-lg" href="/selection/">Voir la sélection</a>
       </div>
-      <div class="home-hero-art"><Scene name="home" /></div>
     </div>
-    <div class="wrap-wide">
-      <ul class="hero-stats">
-        {stats.map((s) => <li><strong>{s.n}</strong><span>{s.label}</span></li>)}
-      </ul>
-    </div>
+    <ul class="hero-stats">
+      {stats.map((s) => <li><strong>{s.n}</strong><span>{s.label}</span></li>)}
+    </ul>
   </section>
 
   <section class="band band-soft">
@@ -65,9 +65,9 @@ const stats = [
   <section class="wrap-wide section">
     <h2 class="section-title">Les guides</h2>
     <div class="gcards">
-      {GUIDES.map((g) => (
+      {GUIDES.map((g, i) => (
         <a class="gcard reveal" href={g.href}>
-          <span class={`gcard-art tone-${g.tone}`}><Scene name={g.scene} /></span>
+          <span class="gcard-art"><img src={thumbs[i].src} srcset={thumbs[i].srcset} sizes="(max-width:700px) 120px, 540px" width={thumbs[i].width} height={thumbs[i].height} alt="" loading="lazy" decoding="async"></span>
           <span class="gcard-body">
             <span class="gcard-title">{g.title}</span>
             <span class="gcard-desc">{g.desc}</span>

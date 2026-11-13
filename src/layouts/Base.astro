@@ -1,8 +1,11 @@
 ---
-// Police des titres hébergée avec le site (aucune requête vers un serveur tiers).
-import '@fontsource-variable/bricolage-grotesque/wght.css';
+// Polices hébergées avec le site (aucune requête vers un serveur tiers) :
+// Anton pour les titres, Inter pour le texte, JetBrains Mono pour les étiquettes.
+import '@fontsource/anton/400.css';
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/jetbrains-mono/wght.css';
 // Préchargement de la police des titres (elle dessine le plus gros élément de la page : meilleur LCP).
-import latinFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import latinFont from '@fontsource/anton/files/anton-latin-400-normal.woff2?url';
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { organization } from '../lib/schema';
@@ -38,7 +41,7 @@ const jsonLd = JSON.stringify({
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#b23c0a">
+  <meta name="theme-color" content="#0d0b09">
   <link rel="preload" href={latinFont} as="font" type="font/woff2" crossorigin>
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
@@ -65,7 +68,7 @@ const jsonLd = JSON.stringify({
   {progress && <div class="read-progress" aria-hidden="true"><span id="read-progress-bar"></span></div>}
   <header class="site-header">
     <div class="wrap-wide header-inner">
-      <a class="logo" href="/"><span class="logo-mark"><Icon name="battery" size={22} /></span>{SITE_NAME}</a>
+      <a class="logo" href="/" aria-label={`${SITE_NAME}, accueil`}><span aria-hidden="true">A<b>/</b>NOMADE</span></a>
       <nav class="main-nav" aria-label="Navigation principale">
         {NAV.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
       </nav>
