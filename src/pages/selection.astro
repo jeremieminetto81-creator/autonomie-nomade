@@ -26,7 +26,7 @@ const schemas = listSchemas({
   {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
 
   <GuideHero slot="hero" crumb="Sélection" kicker="Sélection" title="Notre sélection de stations électriques portables" minutes={2} scene="selection" />
-  <p class="lead">{products.length} modèles disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de plus de 2000 Wh pour les besoins importants. Choisissez par usage, par capacité ou par marque.</p>
+  <p class="lead">{products.length} stations électriques nomades disponibles sur Amazon.fr, de la petite station pour recharger quelques appareils au modèle de plus de 2000 Wh pour les besoins importants. Choisissez par usage, par capacité ou par marque.</p>
 
   <h2>Choisir une sélection</h2>
   <SelectionNav current="/selection/" />

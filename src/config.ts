@@ -1,7 +1,7 @@
 // Réglages du site. Les valeurs à compléter sont volontairement visibles.
 export const SITE_NAME = 'Autonomie Nomade';
 export const SITE_DESCRIPTION =
-  "Guides indépendants pour choisir une station électrique portable et des panneaux solaires portables : calculateurs, comparatifs et sources citées.";
+  "Guides indépendants pour choisir une station électrique nomade et des panneaux solaires portables : calculateurs, comparatifs et sources citées.";
 
 export const AMAZON_TAG: string = import.meta.env.AMAZON_TAG ?? 'VOTRE-TAG-21';
 

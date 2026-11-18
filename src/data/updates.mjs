@@ -4,12 +4,12 @@
 export const DEFAULT_UPDATE = '2026-11-01';
 
 export const PAGE_UPDATES = {
-  '/': '2026-11-10',
+  '/': '2026-11-18',
   '/station-electrique-portable-1000-wh/': '2026-11-07',
   '/quelle-capacite-station-electrique/': '2026-11-10',
   '/station-electrique-portable-vs-groupe-electrogene/': '2026-11-10',
   '/panneau-solaire-portable-station-electrique/': '2026-11-10',
-  '/selection/': '2026-11-10',
+  '/selection/': '2026-11-18',
   '/selection/camping-randonnee/': '2026-11-10',
   '/selection/van-camping-car/': '2026-11-10',
   '/selection/coupure-de-courant/': '2026-11-10',
