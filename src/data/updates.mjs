@@ -4,7 +4,8 @@
 export const DEFAULT_UPDATE = '2026-11-01';
 
 export const PAGE_UPDATES = {
-  '/': '2026-11-18',
+  '/': '2026-11-21',
+  '/batterie-nomade/': '2026-11-21',
   '/station-electrique-portable-1000-wh/': '2026-11-07',
   '/quelle-capacite-station-electrique/': '2026-11-10',
   '/station-electrique-portable-vs-groupe-electrogene/': '2026-11-10',

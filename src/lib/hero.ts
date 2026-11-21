@@ -11,6 +11,7 @@ const BY_PATH: Record<string, string> = {
   '/station-electrique-portable-vs-groupe-electrogene/': 'groupe-electrogene',
   '/panneau-solaire-portable-station-electrique/': 'solaire',
   '/station-electrique-portable-1000-wh/': '1000-wh',
+  '/batterie-nomade/': 'moins-500',
   '/selection/': 'marques',
   '/selection/camping-randonnee/': 'camping',
   '/selection/van-camping-car/': 'van',

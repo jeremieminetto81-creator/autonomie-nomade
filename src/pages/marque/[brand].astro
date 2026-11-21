@@ -25,7 +25,7 @@ const schemas = listSchemas({ site: Astro.site!, path: `/marque/${brandSlug(b)}/
 const cell = (v: string | undefined, unit: string) => {
   const n = String(v ?? '').match(/^\d+/)?.[0];
   if (!n) return '—';
-  return `${n} ${unit}${/confirmer|Amazon/.test(String(v)) ? '*' : ''}`;
+  return `${n} ${unit}${(/confirmer/.test(String(v)) || (/fiche Amazon\)\s*$/.test(String(v)) && !/pointe : fiche Amazon/.test(String(v)))) ? '*' : ''}`;
 };
 const weightOf = (p: (typeof list)[number]) => {
   const w = (p as { weightKg?: string }).weightKg;

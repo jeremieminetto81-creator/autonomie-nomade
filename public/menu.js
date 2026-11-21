@@ -9,5 +9,5 @@
   }
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
   document.addEventListener('click', function (e) { if (!d.contains(e.target)) close(false); });
-  window.matchMedia('(min-width: 900px)').addEventListener('change', function (m) { if (m.matches) close(false); });
+  window.matchMedia('(min-width: 1000px)').addEventListener('change', function (m) { if (m.matches) close(false); });
 })();

@@ -1,0 +1,179 @@
+---
+import Base from '../layouts/Base.astro';
+import GuideHero from '../components/GuideHero.astro';
+import Callout from '../components/Callout.astro';
+import Toc from '../components/Toc.astro';
+import ProductCards from '../components/ProductCards.astro';
+import { articleSchemas } from '../lib/schema';
+import products from '../data/products.json';
+
+// Mot-clé principal : « batterie nomade » (voir docs/MOTS-CLES.md).
+const title = 'Batterie nomade : laquelle choisir ?';
+const description =
+  "Batterie nomade : batterie externe ou station électrique, Wh et W, modèles 2000 W ou 3000 W, recharge solaire et règles en avion. Le guide pour bien choisir.";
+
+const faq = [
+  {
+    q: 'Quelle est la différence entre une batterie nomade et une batterie externe ?',
+    a: "Le terme désigne les deux. Une batterie externe (power bank) recharge des téléphones et des tablettes en USB et se mesure en mAh. Une station électrique est une batterie nomade bien plus grosse, avec des prises 230 V, qui se mesure en Wh et alimente des appareils domestiques.",
+  },
+  {
+    q: 'Combien de Wh fait une batterie de 20 000 mAh ?',
+    a: "Environ 74 Wh, en comptant la tension nominale de 3,7 V des cellules lithium : 20 000 × 3,7 ÷ 1000. Vérifiez la valeur en Wh imprimée sur la batterie, c'est elle qui fait foi.",
+  },
+  {
+    q: 'Peut-on emporter une batterie nomade en avion ?',
+    a: "Une batterie externe de moins de 100 Wh voyage en cabine, jamais en soute. Entre 100 et 160 Wh, il faut l'accord de la compagnie, dans la limite de deux. Au-delà de 160 Wh, le transport est interdit : c'est le cas de toutes les stations électriques de notre sélection.",
+  },
+  {
+    q: 'Une batterie nomade de 2000 W peut-elle tout alimenter ?',
+    a: "Non. 2000 W est la puissance maximale qu'elle fournit à un instant donné, pas sa réserve d'énergie. Elle peut faire démarrer un appareil gourmand, mais sa durée de fonctionnement dépend de sa capacité en Wh.",
+  },
+  {
+    q: 'Peut-on recharger une batterie nomade avec un panneau solaire ?',
+    a: "Oui, si elle a une entrée solaire. Vérifiez sa puissance maximale, la tension acceptée et le connecteur. Un panneau produit en pratique moins que sa puissance nominale : notre calculateur solaire donne un ordre de grandeur.",
+  },
+  {
+    q: 'Combien de temps dure une batterie nomade ?',
+    a: "Les fabricants l'expriment en cycles de charge. Pour notre sélection, ils annoncent de plus de 2500 à plus de 6000 cycles, avec une capacité restante de 70 ou 80 % selon les modèles. Comparez les deux chiffres ensemble.",
+  },
+];
+
+const schemas = articleSchemas({
+  site: Astro.site!,
+  path: '/batterie-nomade/',
+  title, description,
+  crumb: 'Batterie nomade',
+  published: '2026-11-21', faq,
+});
+
+// Tableau construit à partir de products.json : il reste juste si la sélection change.
+type P = (typeof products)[number];
+const list = [...products].sort((a, b) => a.capWh - b.capWh);
+const fromAmazon = (v?: string) => /confirmer/.test(String(v)) || (/fiche Amazon\)\s*$/.test(String(v)) && !/pointe : fiche Amazon/.test(String(v)));
+const cell = (v: string | undefined, unit: string) => {
+  const n = String(v ?? '').match(/^\d+/)?.[0];
+  if (!n) return '—';
+  return `${n} ${unit}${fromAmazon(v) ? '*' : ''}`;
+};
+// « la Bluetti », « l'Anker », « l'EcoFlow »
+const art = (name: string) => (/^[AEIOUÉ]/.test(name) ? `l'${name}` : `la ${name}`);
+const weights = products.map((p) => parseFloat(String((p as { weightKg?: string }).weightKg ?? '').replace(',', '.'))).filter((n) => !Number.isNaN(n));
+const lightest = String(Math.min(...weights)).replace('.', ',');
+const hours = (wh: number, w: number) => `${String(Math.round((wh / w) * 10) / 10).replace('.', ',')} h`;
+const small = list[0];
+const mid = list.find((p) => p.capWh >= 1000)!;
+const big = list[list.length - 1];
+const over2000 = list.filter((p) => p.outW >= 2000);
+const byName = (id: string) => products.find((p) => p.id === id) as P;
+---
+<Base title={title} description={description} ogType="article" progress>
+  {schemas.map((d) => <script slot="head" type="application/ld+json" set:html={JSON.stringify(d)}></script>)}
+
+  <GuideHero slot="hero" crumb="Batterie nomade" kicker="Guide d'achat" title={title} minutes={8} />
+
+  <p>Tapez « batterie nomade » dans un moteur de recherche : vous tomberez aussi bien sur la petite batterie qui dépanne un téléphone que sur une valise de plus de 20 kilos capable de faire chauffer une bouilloire. Même nom, deux mondes (et deux budgets). Ce guide vous aide d'abord à savoir lequel vous cherchez, puis à choisir la bonne taille.</p>
+
+  <Callout type="answer" title="Réponse courte">Pour recharger un téléphone ou une tablette, une batterie externe de quelques milliers de mAh suffit. Pour brancher des appareils sur une prise 230 V, en van, en camping ou pendant une coupure, il faut une station électrique : choisissez sa capacité en Wh selon la durée voulue, et sa puissance en W selon l'appareil le plus gourmand.</Callout>
+
+  <Toc items={[
+    { id: 'deux-produits-un-meme-nom', label: 'Deux produits, un même nom' },
+    { id: 'mah-et-wh', label: 'Convertir des mAh en Wh' },
+    { id: 'wh-et-w', label: 'Wh et W : capacité et puissance' },
+    { id: 'batterie-nomade-2000-w-ou-3000-w', label: 'Batterie nomade 2000 W, 2400 W ou 3000 W ?' },
+    { id: 'batterie-nomade-solaire', label: 'Batterie nomade solaire' },
+    { id: 'quelle-taille-selon-l-usage', label: "Quelle taille selon l'usage ?" },
+    { id: 'en-avion', label: 'Prendre l\'avion avec une batterie nomade' },
+    { id: 'les-modeles-de-notre-selection', label: 'Les modèles de notre sélection' },
+    { id: 'questions-frequentes', label: 'Questions fréquentes' },
+    { id: 'sources', label: 'Sources' },
+  ]} />
+
+  <h2 id="deux-produits-un-meme-nom">Deux produits, un même nom</h2>
+  <p>Dans les rayons comme dans les résultats de recherche, « batterie nomade » désigne deux familles d'appareils qui n'ont pas grand-chose en commun, à part leur batterie au lithium.</p>
+  <table>
+    <thead><tr><th scope="col">Critère</th><th scope="col">Batterie externe (power bank)</th><th scope="col">Station électrique</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Unité affichée</th><td>mAh (milliampères-heure)</td><td>Wh (wattheures)</td></tr>
+      <tr><th scope="row">Sorties</th><td>USB-A, USB-C</td><td>Prises 230 V, USB, 12 V</td></tr>
+      <tr><th scope="row">Ce qu'elle alimente</th><td>Téléphone, tablette, parfois un ordinateur portable en USB-C</td><td>Appareils domestiques : lampe, ordinateur, mini-frigo, outils</td></tr>
+      <tr><th scope="row">Poids</th><td>Quelques centaines de grammes</td><td>De {lightest} kg à plus de 20 kg dans notre sélection</td></tr>
+      <tr><th scope="row">En avion</th><td>Possible en cabine sous conditions</td><td>Interdite au-delà de 160 Wh</td></tr>
+    </tbody>
+  </table>
+  <p>Le reste de ce guide parle surtout des stations électriques, le sujet de ce site. Si vous cherchez seulement de quoi recharger un téléphone en voyage, la section sur les mAh et celle sur l'avion vous suffiront.</p>
+
+  <h2 id="mah-et-wh">Convertir des mAh en Wh</h2>
+  <p>Les batteries externes affichent leur capacité en mAh, les stations électriques en Wh. Pour les comparer, il faut convertir avec la tension de la batterie :</p>
+  <p><strong>Wh = mAh × tension (V) ÷ 1000</strong></p>
+  <p>Les cellules lithium des batteries externes ont une tension nominale d'environ 3,6 à 3,7 V. Une batterie de 20 000 mAh stocke donc environ 74 Wh (20 000 × 3,7 ÷ 1000). À titre de comparaison, la plus petite station de notre sélection, {art(small.name)}, annonce {small.capWh} Wh, soit environ {Math.round(small.capWh / 74)} fois plus.</p>
+  <p>Si la batterie indique directement sa capacité en Wh sur son étiquette, fiez-vous à cette valeur : c'est elle que regardent aussi les compagnies aériennes.</p>
+
+  <h2 id="wh-et-w">Wh et W : capacité et puissance</h2>
+  <p>Deux chiffres décident du choix d'une station électrique, et on les confond souvent :</p>
+  <ul>
+    <li><strong>La capacité, en Wh,</strong> est la réserve d'énergie. Elle fixe combien de temps vous tenez.</li>
+    <li><strong>La puissance de sortie, en W,</strong> est ce que la station peut fournir à un instant donné. Elle fixe quels appareils vous pouvez brancher.</li>
+  </ul>
+  <p>Un ordinateur portable de 60 W tient en théorie {hours(small.capWh, 60)} sur une station de {small.capWh} Wh, {hours(mid.capWh, 60)} sur une station de {mid.capWh} Wh et {hours(big.capWh, 60)} sur une station de {big.capWh} Wh. En pratique, comptez moins à cause des pertes de conversion : notre <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a> applique une marge à votre liste d'appareils.</p>
+
+  <h2 id="batterie-nomade-2000-w-ou-3000-w">Batterie nomade 2000 W, 2400 W ou 3000 W ?</h2>
+  <p>Ces chiffres, très recherchés, parlent de puissance et non de capacité. Une « batterie nomade 2000 W » peut faire démarrer un appareil de 2000 W, mais ne dit rien de sa durée de fonctionnement. Il faut aussi distinguer deux valeurs :</p>
+  <ul>
+    <li><strong>La puissance continue,</strong> que la station tient dans la durée : c'est elle qu'il faut comparer à vos appareils.</li>
+    <li><strong>La puissance de pointe,</strong> qu'elle supporte quelques instants, par exemple au démarrage d'un moteur.</li>
+  </ul>
+  <h3>2000 W et plus en continu</h3>
+  <p>Dans notre sélection, {over2000.length} modèles annoncent au moins 2000 W en continu : {over2000.map((p, i) => <>{i > 0 && (i === over2000.length - 1 ? ' et ' : ', ')}{art(p.name)} ({p.outW} W{fromAmazon(p.outputW) ? ', fiche Amazon' : ''})</>)}.</p>
+  <h3>2400 W</h3>
+  <p>L'{byName('ecoflow-delta-3-plus').name} fournit 1800 W en continu, et jusqu'à 2400 W avec son mode X-Boost, d'après la fiche officielle d'EcoFlow. Ce mode est prévu pour certains appareils, comme les appareils chauffants : vérifiez la notice avant de compter dessus.</p>
+  <h3>3000 W</h3>
+  <p>Aucun modèle de notre sélection n'annonce 3000 W en continu. Ce chiffre apparaît en puissance de pointe, par exemple 3000 W pour la {byName('jackery-explorer-1000-v2').name}, ou grâce à un mode spécial, comme les 3900 W du mode Power Lifting de la {byName('bluetti-elite-200-v2').name}. Pour un usage durable à 3000 W, il faut viser un modèle plus gros que ceux présentés ici.</p>
+
+  <h2 id="batterie-nomade-solaire">Batterie nomade solaire</h2>
+  <p>Une « batterie nomade solaire » est une station électrique qui accepte des panneaux solaires sur son entrée dédiée. Trois limites sont à vérifier avant d'acheter des panneaux : la puissance solaire maximale de la station, la plage de tension qu'elle accepte et le type de connecteur.</p>
+  <p>Dans notre sélection, l'entrée solaire va de 100 W pour les plus petits modèles à 1000 W pour l'{byName('ecoflow-delta-3-plus').name} et la {byName('bluetti-elite-200-v2').name}. Un panneau produit en pratique sensiblement moins que sa puissance nominale, selon l'orientation, la saison et les nuages. Notre <a href="/panneau-solaire-portable-station-electrique/">guide des panneaux solaires portables</a> et son calculateur aident à estimer le temps de recharge.</p>
+
+  <h2 id="quelle-taille-selon-l-usage">Quelle taille selon l'usage ?</h2>
+  <table>
+    <thead><tr><th scope="col">Besoin</th><th scope="col">Capacité à viser</th><th scope="col">Notre sélection</th></tr></thead>
+    <tbody>
+      <tr><td>Recharger téléphones, lampe, appareil photo en randonnée ou en camping</td><td>Moins de 500 Wh</td><td><a href="/selection/moins-de-500-wh/">Moins de 500 Wh</a> · <a href="/selection/camping-randonnee/">Camping</a></td></tr>
+      <tr><td>Week-end en van, télétravail nomade, courte coupure de courant</td><td>Autour de 1000 Wh</td><td><a href="/selection/van-camping-car/">Van et camping-car</a> · <a href="/selection/1000-a-1500-wh/">1000 à 1500 Wh</a></td></tr>
+      <tr><td>Longue coupure, outils de chantier, gros appareils</td><td>2000 Wh et plus</td><td><a href="/selection/2000-wh-et-plus/">2000 Wh et plus</a> · <a href="/selection/chantier/">Chantier</a></td></tr>
+    </tbody>
+  </table>
+  <p>Ce sont des ordres de grandeur. Le plus sûr reste de lister vos appareils et leur durée d'utilisation dans le <a href="/quelle-capacite-station-electrique/">calculateur de capacité</a>.</p>
+
+  <h2 id="en-avion">Prendre l'avion avec une batterie nomade</h2>
+  <p>Le livret de la Direction générale de l'aviation civile (DGAC) sur les batteries au lithium fixe des règles simples : les batteries de rechange voyagent en cabine, jamais en soute. Entre 100 et 160 Wh, il faut l'accord de la compagnie, dans la limite de deux batteries par passager. Au-delà de 160 Wh, le transport est interdit.</p>
+  <p>Une batterie externe de 20 000 mAh, soit environ 74 Wh, reste donc sous le seuil des 100 Wh. En revanche, toutes les stations électriques de notre sélection dépassent 160 Wh : elles ne peuvent pas voyager en avion avec vous. Les compagnies peuvent ajouter leurs propres règles : vérifiez-les avant le départ.</p>
+
+  <Callout type="warning" title="Sécurité">Une batterie nomade ne remplace pas une alimentation médicale vitale. Utilisez-la dans un endroit ventilé, à l'écart de la chaleur, et ne la rechargez qu'avec des chargeurs et des panneaux compatibles avec sa fiche.</Callout>
+
+  <h2 id="les-modeles-de-notre-selection">Les modèles de notre sélection</h2>
+  <p>Les {list.length} stations électriques de notre sélection, de la plus petite à la plus grande. Les valeurs viennent des fiches des fabricants ; l'astérisque signale celles relevées sur Amazon.fr. Nous n'avons testé aucun de ces produits.</p>
+  <table class="table-words">
+    <thead><tr><th scope="col">Modèle</th><th scope="col">Capacité</th><th scope="col">Puissance continue</th><th scope="col">Entrée solaire</th></tr></thead>
+    <tbody>
+      {list.map((p) => <tr><th scope="row">{p.name}</th><td>{cell(p.capacityWh, 'Wh')}</td><td>{cell(p.outputW, 'W')}</td><td>{cell(p.solarInputW, 'W')}</td></tr>)}
+    </tbody>
+  </table>
+  <p>* Valeur relevée sur la fiche Amazon.fr. Un tiret signifie que nous n'avons pas relevé la valeur.</p>
+  <p>Quelques exemples, d'une taille à l'autre :</p>
+  <ProductCards ids={['anker-solix-c300x', 'ecoflow-river-3-plus', 'jackery-explorer-1000-v2', 'ecoflow-delta-3-plus', 'bluetti-elite-200-v2']} />
+  <p>Prix et disponibilité : consultez-les sur Amazon.fr, ils changent souvent. Pour comparer par marque : <a href="/marque/bluetti/">Bluetti</a>, <a href="/marque/ecoflow/">EcoFlow</a>, <a href="/marque/jackery/">Jackery</a> et <a href="/marque/anker/">Anker</a>.</p>
+
+  <h2 id="questions-frequentes">Questions fréquentes</h2>
+  {faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+  <h2 id="sources">Sources</h2>
+  <ul>
+    <li><a href="https://www.ecologie.gouv.fr/sites/default/files/documents/Livret_cabine_ou_soute.pdf">DGAC, « Batteries lithium : anticiper le risque de feu à bord » (livret cabine ou soute)</a></li>
+    <li><a href="https://eu.ecoflow.com/products/delta-3-series-portable-power-station">EcoFlow Europe, fiche officielle de la gamme DELTA 3</a></li>
+    <li><a href="https://fr.bluettipower.eu/pages/ac180">Bluetti France, fiche officielle de l'AC180</a></li>
+    <li>Fiches officielles des autres modèles : voir la source indiquée sur chaque <a href="/selection/">page de sélection</a>.</li>
+  </ul>
+
+  <p>À lire aussi : <a href="/station-electrique-portable-vs-groupe-electrogene/">station électrique ou groupe électrogène</a> · <a href="/station-electrique-portable-1000-wh/">station électrique 1000 Wh</a></p>
+</Base>

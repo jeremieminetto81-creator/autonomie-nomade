@@ -47,6 +47,15 @@ export const GUIDES = [
     tone: 2,
   },
   {
+    href: '/batterie-nomade/',
+    short: 'Batterie nomade',
+    title: 'Batterie nomade : laquelle choisir ?',
+    desc: 'Batterie externe ou station, Wh et W, solaire et avion : bien choisir sa batterie nomade.',
+    icon: 'battery',
+    scene: 'selection',
+    tone: 1,
+  },
+  {
     href: '/station-electrique-portable-1000-wh/',
     short: '1000 Wh',
     title: 'Station électrique 1000 Wh : Jackery ou Anker ?',

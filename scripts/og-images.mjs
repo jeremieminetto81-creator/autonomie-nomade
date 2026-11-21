@@ -10,6 +10,7 @@ const pages = [
   { slug: 'station-electrique-portable-vs-groupe-electrogene', kicker: 'Comparatif', title: 'Station électrique ou groupe électrogène ?' },
   { slug: 'panneau-solaire-portable-station-electrique', kicker: 'Guide et calculateur', title: 'Quel panneau solaire pour sa station ?' },
   { slug: 'station-electrique-portable-1000-wh', kicker: 'Comparatif', title: 'Station électrique 1000 Wh : Jackery ou Anker ?' },
+  { slug: 'batterie-nomade', kicker: 'Guide d\'achat', title: 'Batterie nomade : laquelle choisir ?' },
   { slug: 'selection', kicker: 'Sélection', title: 'Notre sélection de stations électriques portables' },
 ];
 
