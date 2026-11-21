@@ -40,9 +40,9 @@ const ALT: Record<string, string> = {
 export const heroKeyFor = (path: string) => (path.startsWith('/marque/') ? 'marques' : BY_PATH[path]);
 
 /** Image d'ambiance en plusieurs largeurs (WebP), à utiliser avec `sizes`. */
-export async function hero(key: string, widths = [640, 1100, 1672]) {
+export async function hero(key: string, widths = [640, 1100, 1400, 1672]) {
   const meta = files[`../assets/hero/${key}.webp`].default;
-  const imgs = await Promise.all(widths.map((w) => getImage({ src: meta, width: w, format: 'webp', quality: 70 })));
+  const imgs = await Promise.all(widths.map((w) => getImage({ src: meta, width: w, format: 'webp', quality: 62 })));
   return {
     src: imgs[imgs.length - 1].src,
     srcset: imgs.map((im, i) => `${im.src} ${widths[i]}w`).join(', '),

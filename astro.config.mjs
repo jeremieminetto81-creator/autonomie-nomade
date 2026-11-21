@@ -14,6 +14,7 @@ export default defineConfig({
     filter: (page) => !/\/(mentions-legales|confidentialite)\/$/.test(page),
     serialize: (item) => ({ ...item, lastmod: new Date(updatedOn(new URL(item.url).pathname)).toISOString() }),
   })],
+  vite: { build: { assetsInlineLimit: 0 } },
   build: {
     // Le CSS reste dans un fichier : pas de style inline, donc une CSP stricte.
     inlineStylesheets: 'never',

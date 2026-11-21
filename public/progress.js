@@ -2,6 +2,8 @@
 (function () {
   var bar = document.getElementById('read-progress-bar');
   if (!bar) return;
+  // Navigateurs récents : la barre est animée par le CSS (animation-timeline), sans JavaScript.
+  if (window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()')) return;
   var ticking = false;
   function update() {
     var max = document.documentElement.scrollHeight - window.innerHeight;

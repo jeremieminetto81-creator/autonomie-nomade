@@ -1,11 +1,11 @@
 ---
 // Polices hébergées avec le site (aucune requête vers un serveur tiers) :
 // Anton pour les titres, Inter pour le texte, JetBrains Mono pour les étiquettes.
-import '@fontsource/anton/400.css';
-import '@fontsource-variable/inter/wght.css';
-import '@fontsource-variable/jetbrains-mono/wght.css';
-// Préchargement de la police des titres (elle dessine le plus gros élément de la page : meilleur LCP).
+import '@fontsource/anton/latin-400.css';
+import '../styles/fonts.css';
+// Préchargement des deux polices qui dessinent la première vue (titres et texte) : meilleur affichage et meilleur LCP.
 import latinFont from '@fontsource/anton/files/anton-latin-400-normal.woff2?url';
+import bodyFont from '../assets/fonts/inter-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { organization } from '../lib/schema';
@@ -43,6 +43,7 @@ const jsonLd = JSON.stringify({
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#0d0b09">
   <link rel="preload" href={latinFont} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin>
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
